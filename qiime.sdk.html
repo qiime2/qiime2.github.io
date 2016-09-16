@@ -1,0 +1,518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>qiime.sdk package &#8212; QIIME 2 2.0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="QIIME 2 2.0.3 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="qiime-sdk-package">
+<h1>qiime.sdk package<a class="headerlink" href="#qiime-sdk-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qiime.sdk.tests.html">qiime.sdk.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qiime.sdk.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.sdk.tests.html#module-qiime.sdk.tests.test_artifact">qiime.sdk.tests.test_artifact module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.sdk.tests.html#module-qiime.sdk.tests.test_method">qiime.sdk.tests.test_method module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.sdk.tests.html#module-qiime.sdk.tests.test_plugin_manager">qiime.sdk.tests.test_plugin_manager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.sdk.tests.html#module-qiime.sdk.tests.test_provenance">qiime.sdk.tests.test_provenance module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.sdk.tests.html#module-qiime.sdk.tests.test_result">qiime.sdk.tests.test_result module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.sdk.tests.html#module-qiime.sdk.tests.test_visualization">qiime.sdk.tests.test_visualization module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.sdk.tests.html#module-qiime.sdk.tests.test_visualizer">qiime.sdk.tests.test_visualizer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.sdk.tests.html#module-qiime.sdk.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qiime.sdk.action">
+<span id="qiime-sdk-action-module"></span><h2>qiime.sdk.action module<a class="headerlink" href="#module-qiime.sdk.action" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiime.sdk.action.Action">
+<em class="property">class </em><code class="descclassname">qiime.sdk.action.</code><code class="descname">Action</code><a class="headerlink" href="#qiime.sdk.action.Action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="qiime.sdk.action.Action.async">
+<code class="descname">async</code><a class="headerlink" href="#qiime.sdk.action.Action.async" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.action.Action.id">
+<code class="descname">id</code><a class="headerlink" href="#qiime.sdk.action.Action.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.action.Action.signature">
+<code class="descname">signature</code><a class="headerlink" href="#qiime.sdk.action.Action.signature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiime.sdk.plugin_manager">
+<span id="qiime-sdk-plugin-manager-module"></span><h2>qiime.sdk.plugin_manager module<a class="headerlink" href="#module-qiime.sdk.plugin_manager" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiime.sdk.plugin_manager.PluginManager">
+<em class="property">class </em><code class="descclassname">qiime.sdk.plugin_manager.</code><code class="descname">PluginManager</code><a class="headerlink" href="#qiime.sdk.plugin_manager.PluginManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="qiime.sdk.plugin_manager.PluginManager.get_directory_format">
+<code class="descname">get_directory_format</code><span class="sig-paren">(</span><em>semantic_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.plugin_manager.PluginManager.get_directory_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiime.sdk.provenance">
+<span id="qiime-sdk-provenance-module"></span><h2>qiime.sdk.provenance module<a class="headerlink" href="#module-qiime.sdk.provenance" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiime.sdk.provenance.Provenance">
+<em class="property">class </em><code class="descclassname">qiime.sdk.provenance.</code><code class="descname">Provenance</code><span class="sig-paren">(</span><em>execution_uuid</em>, <em>executor_reference</em>, <em>artifact_uuids</em>, <em>parameter_references</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.provenance.Provenance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="qiime.sdk.provenance.Provenance.artifact_uuids">
+<code class="descname">artifact_uuids</code><a class="headerlink" href="#qiime.sdk.provenance.Provenance.artifact_uuids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.provenance.Provenance.execution_uuid">
+<code class="descname">execution_uuid</code><a class="headerlink" href="#qiime.sdk.provenance.Provenance.execution_uuid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.provenance.Provenance.executor_reference">
+<code class="descname">executor_reference</code><a class="headerlink" href="#qiime.sdk.provenance.Provenance.executor_reference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.provenance.Provenance.parameter_references">
+<code class="descname">parameter_references</code><a class="headerlink" href="#qiime.sdk.provenance.Provenance.parameter_references" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiime.sdk.result">
+<span id="qiime-sdk-result-module"></span><h2>qiime.sdk.result module<a class="headerlink" href="#module-qiime.sdk.result" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiime.sdk.result.Artifact">
+<em class="property">class </em><code class="descclassname">qiime.sdk.result.</code><code class="descname">Artifact</code><a class="headerlink" href="#qiime.sdk.result.Artifact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.sdk.result.Result" title="qiime.sdk.result.Result"><code class="xref py py-class docutils literal"><span class="pre">qiime.sdk.result.Result</span></code></a></p>
+<dl class="attribute">
+<dt id="qiime.sdk.result.Artifact.extension">
+<code class="descname">extension</code><em class="property"> = '.qza'</em><a class="headerlink" href="#qiime.sdk.result.Artifact.extension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="qiime.sdk.result.Artifact.import_data">
+<em class="property">classmethod </em><code class="descname">import_data</code><span class="sig-paren">(</span><em>type</em>, <em>view</em>, <em>view_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Artifact.import_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.sdk.result.Artifact.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Artifact.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.sdk.result.Artifact.view">
+<code class="descname">view</code><span class="sig-paren">(</span><em>view_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Artifact.view" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.sdk.result.Result">
+<em class="property">class </em><code class="descclassname">qiime.sdk.result.</code><code class="descname">Result</code><a class="headerlink" href="#qiime.sdk.result.Result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Base class for QIIME 2 result classes (Artifact and Visualization).</p>
+<p>This class is not intended to be instantiated. Instead, it acts as a public
+factory and namespace for interacting with Artifacts and Visualizations in
+a generic way. It also acts as a base class for code reuse and provides an
+API shared by Artifact and Visualization.</p>
+<dl class="classmethod">
+<dt id="qiime.sdk.result.Result.extract">
+<em class="property">classmethod </em><code class="descname">extract</code><span class="sig-paren">(</span><em>filepath</em>, <em>output_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Result.extract" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.result.Result.format">
+<code class="descname">format</code><a class="headerlink" href="#qiime.sdk.result.Result.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="qiime.sdk.result.Result.load">
+<em class="property">classmethod </em><code class="descname">load</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Result.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Factory for loading Artifacts and Visualizations.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="qiime.sdk.result.Result.peek">
+<em class="property">classmethod </em><code class="descname">peek</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Result.peek" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.result.Result.provenance">
+<code class="descname">provenance</code><a class="headerlink" href="#qiime.sdk.result.Result.provenance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.sdk.result.Result.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Result.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.result.Result.type">
+<code class="descname">type</code><a class="headerlink" href="#qiime.sdk.result.Result.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.result.Result.uuid">
+<code class="descname">uuid</code><a class="headerlink" href="#qiime.sdk.result.Result.uuid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.sdk.result.ResultMetadata">
+<em class="property">class </em><code class="descclassname">qiime.sdk.result.</code><code class="descname">ResultMetadata</code><span class="sig-paren">(</span><em>uuid</em>, <em>type</em>, <em>format</em>, <em>provenance</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.ResultMetadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tuple</span></code></p>
+<dl class="attribute">
+<dt id="qiime.sdk.result.ResultMetadata.format">
+<code class="descname">format</code><a class="headerlink" href="#qiime.sdk.result.ResultMetadata.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.result.ResultMetadata.provenance">
+<code class="descname">provenance</code><a class="headerlink" href="#qiime.sdk.result.ResultMetadata.provenance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.result.ResultMetadata.type">
+<code class="descname">type</code><a class="headerlink" href="#qiime.sdk.result.ResultMetadata.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.result.ResultMetadata.uuid">
+<code class="descname">uuid</code><a class="headerlink" href="#qiime.sdk.result.ResultMetadata.uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.sdk.result.Visualization">
+<em class="property">class </em><code class="descclassname">qiime.sdk.result.</code><code class="descname">Visualization</code><a class="headerlink" href="#qiime.sdk.result.Visualization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.sdk.result.Result" title="qiime.sdk.result.Result"><code class="xref py py-class docutils literal"><span class="pre">qiime.sdk.result.Result</span></code></a></p>
+<dl class="attribute">
+<dt id="qiime.sdk.result.Visualization.extension">
+<code class="descname">extension</code><em class="property"> = '.qzv'</em><a class="headerlink" href="#qiime.sdk.result.Visualization.extension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.sdk.result.Visualization.get_index_paths">
+<code class="descname">get_index_paths</code><span class="sig-paren">(</span><em>relative=True</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Visualization.get_index_paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.sdk.result.Visualization.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Visualization.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiime.sdk">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qiime.sdk" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiime.sdk.Result">
+<em class="property">class </em><code class="descclassname">qiime.sdk.</code><code class="descname">Result</code><a class="headerlink" href="#qiime.sdk.Result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Base class for QIIME 2 result classes (Artifact and Visualization).</p>
+<p>This class is not intended to be instantiated. Instead, it acts as a public
+factory and namespace for interacting with Artifacts and Visualizations in
+a generic way. It also acts as a base class for code reuse and provides an
+API shared by Artifact and Visualization.</p>
+<dl class="classmethod">
+<dt id="qiime.sdk.Result.extract">
+<em class="property">classmethod </em><code class="descname">extract</code><span class="sig-paren">(</span><em>filepath</em>, <em>output_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Result.extract" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.Result.format">
+<code class="descname">format</code><a class="headerlink" href="#qiime.sdk.Result.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="qiime.sdk.Result.load">
+<em class="property">classmethod </em><code class="descname">load</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Result.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Factory for loading Artifacts and Visualizations.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="qiime.sdk.Result.peek">
+<em class="property">classmethod </em><code class="descname">peek</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Result.peek" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.Result.provenance">
+<code class="descname">provenance</code><a class="headerlink" href="#qiime.sdk.Result.provenance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.sdk.Result.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Result.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.Result.type">
+<code class="descname">type</code><a class="headerlink" href="#qiime.sdk.Result.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.Result.uuid">
+<code class="descname">uuid</code><a class="headerlink" href="#qiime.sdk.Result.uuid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.sdk.Artifact">
+<em class="property">class </em><code class="descclassname">qiime.sdk.</code><code class="descname">Artifact</code><a class="headerlink" href="#qiime.sdk.Artifact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.sdk.result.Result" title="qiime.sdk.result.Result"><code class="xref py py-class docutils literal"><span class="pre">qiime.sdk.result.Result</span></code></a></p>
+<dl class="attribute">
+<dt id="qiime.sdk.Artifact.extension">
+<code class="descname">extension</code><em class="property"> = '.qza'</em><a class="headerlink" href="#qiime.sdk.Artifact.extension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="qiime.sdk.Artifact.import_data">
+<em class="property">classmethod </em><code class="descname">import_data</code><span class="sig-paren">(</span><em>type</em>, <em>view</em>, <em>view_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Artifact.import_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.sdk.Artifact.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Artifact.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.sdk.Artifact.view">
+<code class="descname">view</code><span class="sig-paren">(</span><em>view_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Artifact.view" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.sdk.Visualization">
+<em class="property">class </em><code class="descclassname">qiime.sdk.</code><code class="descname">Visualization</code><a class="headerlink" href="#qiime.sdk.Visualization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.sdk.result.Result" title="qiime.sdk.result.Result"><code class="xref py py-class docutils literal"><span class="pre">qiime.sdk.result.Result</span></code></a></p>
+<dl class="attribute">
+<dt id="qiime.sdk.Visualization.extension">
+<code class="descname">extension</code><em class="property"> = '.qzv'</em><a class="headerlink" href="#qiime.sdk.Visualization.extension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.sdk.Visualization.get_index_paths">
+<code class="descname">get_index_paths</code><span class="sig-paren">(</span><em>relative=True</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Visualization.get_index_paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.sdk.Visualization.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Visualization.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.sdk.Action">
+<em class="property">class </em><code class="descclassname">qiime.sdk.</code><code class="descname">Action</code><a class="headerlink" href="#qiime.sdk.Action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="qiime.sdk.Action.async">
+<code class="descname">async</code><a class="headerlink" href="#qiime.sdk.Action.async" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.Action.id">
+<code class="descname">id</code><a class="headerlink" href="#qiime.sdk.Action.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.Action.signature">
+<code class="descname">signature</code><a class="headerlink" href="#qiime.sdk.Action.signature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.sdk.PluginManager">
+<em class="property">class </em><code class="descclassname">qiime.sdk.</code><code class="descname">PluginManager</code><a class="headerlink" href="#qiime.sdk.PluginManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="qiime.sdk.PluginManager.get_directory_format">
+<code class="descname">get_directory_format</code><span class="sig-paren">(</span><em>semantic_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.PluginManager.get_directory_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.sdk.Provenance">
+<em class="property">class </em><code class="descclassname">qiime.sdk.</code><code class="descname">Provenance</code><span class="sig-paren">(</span><em>execution_uuid</em>, <em>executor_reference</em>, <em>artifact_uuids</em>, <em>parameter_references</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Provenance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="qiime.sdk.Provenance.artifact_uuids">
+<code class="descname">artifact_uuids</code><a class="headerlink" href="#qiime.sdk.Provenance.artifact_uuids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.Provenance.execution_uuid">
+<code class="descname">execution_uuid</code><a class="headerlink" href="#qiime.sdk.Provenance.execution_uuid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.Provenance.executor_reference">
+<code class="descname">executor_reference</code><a class="headerlink" href="#qiime.sdk.Provenance.executor_reference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.sdk.Provenance.parameter_references">
+<code class="descname">parameter_references</code><a class="headerlink" href="#qiime.sdk.Provenance.parameter_references" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="qiime.sdk.parse_type">
+<code class="descclassname">qiime.sdk.</code><code class="descname">parse_type</code><span class="sig-paren">(</span><em>string</em>, <em>expect=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.parse_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a string into a TypeExpression</p>
+<dl class="docutils">
+<dt>string</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>The string type expression to convert into a TypeExpression</dd>
+<dt>expect</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">{&#8216;semantic&#8217;, &#8216;primitive&#8217;, &#8216;visualization&#8217;}, optional</span><dd>Will raise a TypeError if the resulting TypeExpression is not a member
+of <cite>expect</cite>.</dd>
+</dl>
+<p>TypeExpression</p>
+<dl class="docutils">
+<dt>ValueError</dt>
+<dd>Raised when <cite>expect</cite> has an invalid value</dd>
+<dt>TypeError</dt>
+<dd>Raised when the expression contains invalid characters</dd>
+<dt>TypeError</dt>
+<dd>Raised when the expression does not result in a member of <cite>expect</cite></dd>
+<dt>UnknownTypeError</dt>
+<dd>Raised when unkown types are present in the expression.</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">qiime.sdk package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-qiime.sdk.action">qiime.sdk.action module</a></li>
+<li><a class="reference internal" href="#module-qiime.sdk.plugin_manager">qiime.sdk.plugin_manager module</a></li>
+<li><a class="reference internal" href="#module-qiime.sdk.provenance">qiime.sdk.provenance module</a></li>
+<li><a class="reference internal" href="#module-qiime.sdk.result">qiime.sdk.result module</a></li>
+<li><a class="reference internal" href="#module-qiime.sdk">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/qiime.sdk.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, QIIME 2 Development Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/qiime.sdk.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
