@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>qiime.core.testing package &#8212; QIIME 2 2.0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="QIIME 2 2.0.3 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="qiime-core-testing-package">
+<h1>qiime.core.testing package<a class="headerlink" href="#qiime-core-testing-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qiime.core.testing.format">
+<span id="qiime-core-testing-format-module"></span><h2>qiime.core.testing.format module<a class="headerlink" href="#module-qiime.core.testing.format" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiime.core.testing.format.FourIntsDirectoryFormat">
+<em class="property">class </em><code class="descclassname">qiime.core.testing.format.</code><code class="descname">FourIntsDirectoryFormat</code><span class="sig-paren">(</span><em>path=None</em>, <em>mode='w'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.format.FourIntsDirectoryFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiime.plugin.model.html#qiime.plugin.model.directory_format.DirectoryFormat" title="qiime.plugin.model.directory_format.DirectoryFormat"><code class="xref py py-class docutils literal"><span class="pre">qiime.plugin.model.directory_format.DirectoryFormat</span></code></a></p>
+<p>A sequence of exactly four integers stored across multiple files, some of
+which are in a nested directory. Each file contains a single integer.
+Since this is a sequence, the integers have an order (corresponding to
+filename) and repetition of elements is allowed.</p>
+<dl class="attribute">
+<dt id="qiime.core.testing.format.FourIntsDirectoryFormat.single_ints">
+<code class="descname">single_ints</code><a class="headerlink" href="#qiime.core.testing.format.FourIntsDirectoryFormat.single_ints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.core.testing.format.FourIntsDirectoryFormat.single_ints_path_maker">
+<code class="descname">single_ints_path_maker</code><a class="headerlink" href="#qiime.core.testing.format.FourIntsDirectoryFormat.single_ints_path_maker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.testing.format.IntSequenceFormat">
+<em class="property">class </em><code class="descclassname">qiime.core.testing.format.</code><code class="descname">IntSequenceFormat</code><span class="sig-paren">(</span><em>path=None</em>, <em>mode='w'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.format.IntSequenceFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiime.plugin.model.html#qiime.plugin.model.file_format.TextFileFormat" title="qiime.plugin.model.file_format.TextFileFormat"><code class="xref py py-class docutils literal"><span class="pre">qiime.plugin.model.file_format.TextFileFormat</span></code></a></p>
+<p>A sequence of integers stored on new lines in a file. Since this is a
+sequence, the integers have an order and repetition of elements is allowed.</p>
+<dl class="method">
+<dt id="qiime.core.testing.format.IntSequenceFormat.sniff">
+<code class="descname">sniff</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.format.IntSequenceFormat.sniff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.testing.format.MappingDirectoryFormat">
+<em class="property">class </em><code class="descclassname">qiime.core.testing.format.</code><code class="descname">MappingDirectoryFormat</code><span class="sig-paren">(</span><em>path=None</em>, <em>mode='w'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.format.MappingDirectoryFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiime.plugin.model.html#qiime.plugin.model.directory_format.DirectoryFormat" title="qiime.plugin.model.directory_format.DirectoryFormat"><code class="xref py py-class docutils literal"><span class="pre">qiime.plugin.model.directory_format.DirectoryFormat</span></code></a></p>
+<dl class="attribute">
+<dt id="qiime.core.testing.format.MappingDirectoryFormat.mapping">
+<code class="descname">mapping</code><a class="headerlink" href="#qiime.core.testing.format.MappingDirectoryFormat.mapping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.testing.format.MappingFormat">
+<em class="property">class </em><code class="descclassname">qiime.core.testing.format.</code><code class="descname">MappingFormat</code><span class="sig-paren">(</span><em>path=None</em>, <em>mode='w'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.format.MappingFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiime.plugin.model.html#qiime.plugin.model.file_format.TextFileFormat" title="qiime.plugin.model.file_format.TextFileFormat"><code class="xref py py-class docutils literal"><span class="pre">qiime.plugin.model.file_format.TextFileFormat</span></code></a></p>
+<p>A mapping of keys to values stored in a TSV file. Since this is a
+mapping, key-value pairs do not have an order and duplicate keys are
+disallowed.</p>
+<dl class="method">
+<dt id="qiime.core.testing.format.MappingFormat.sniff">
+<code class="descname">sniff</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.format.MappingFormat.sniff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.testing.format.SingleIntFormat">
+<em class="property">class </em><code class="descclassname">qiime.core.testing.format.</code><code class="descname">SingleIntFormat</code><span class="sig-paren">(</span><em>path=None</em>, <em>mode='w'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.format.SingleIntFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qiime.plugin.model.html#qiime.plugin.model.file_format.TextFileFormat" title="qiime.plugin.model.file_format.TextFileFormat"><code class="xref py py-class docutils literal"><span class="pre">qiime.plugin.model.file_format.TextFileFormat</span></code></a></p>
+<p>Exactly one int on a single line in the file.</p>
+<dl class="method">
+<dt id="qiime.core.testing.format.SingleIntFormat.sniff">
+<code class="descname">sniff</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.format.SingleIntFormat.sniff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiime.core.testing.method">
+<span id="qiime-core-testing-method-module"></span><h2>qiime.core.testing.method module<a class="headerlink" href="#module-qiime.core.testing.method" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qiime.core.testing.method.concatenate_ints">
+<code class="descclassname">qiime.core.testing.method.</code><code class="descname">concatenate_ints</code><span class="sig-paren">(</span><em>ints1: list</em>, <em>ints2: list</em>, <em>ints3: list</em>, <em>int1: int</em>, <em>int2: int</em><span class="sig-paren">)</span> &rarr; list<a class="headerlink" href="#qiime.core.testing.method.concatenate_ints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qiime.core.testing.method.merge_mappings">
+<code class="descclassname">qiime.core.testing.method.</code><code class="descname">merge_mappings</code><span class="sig-paren">(</span><em>mapping1: dict</em>, <em>mapping2: dict</em><span class="sig-paren">)</span> &rarr; dict<a class="headerlink" href="#qiime.core.testing.method.merge_mappings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qiime.core.testing.method.split_ints">
+<code class="descclassname">qiime.core.testing.method.</code><code class="descname">split_ints</code><span class="sig-paren">(</span><em>ints: list) -&gt; (&lt;class 'list'&gt;</em>, <em>&lt;class 'list'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.method.split_ints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="qiime-core-testing-plugin-module">
+<h2>qiime.core.testing.plugin module<a class="headerlink" href="#qiime-core-testing-plugin-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qiime.core.testing.transformer">
+<span id="qiime-core-testing-transformer-module"></span><h2>qiime.core.testing.transformer module<a class="headerlink" href="#module-qiime.core.testing.transformer" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qiime.core.testing.type">
+<span id="qiime-core-testing-type-module"></span><h2>qiime.core.testing.type module<a class="headerlink" href="#module-qiime.core.testing.type" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qiime.core.testing.util">
+<span id="qiime-core-testing-util-module"></span><h2>qiime.core.testing.util module<a class="headerlink" href="#module-qiime.core.testing.util" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qiime.core.testing.util.get_dummy_plugin">
+<code class="descclassname">qiime.core.testing.util.</code><code class="descname">get_dummy_plugin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.util.get_dummy_plugin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-qiime.core.testing.visualizer">
+<span id="qiime-core-testing-visualizer-module"></span><h2>qiime.core.testing.visualizer module<a class="headerlink" href="#module-qiime.core.testing.visualizer" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qiime.core.testing.visualizer.mapping_viz">
+<code class="descclassname">qiime.core.testing.visualizer.</code><code class="descname">mapping_viz</code><span class="sig-paren">(</span><em>output_dir: str</em>, <em>mapping1: dict</em>, <em>mapping2: dict</em>, <em>key_label: str</em>, <em>value_label: str</em><span class="sig-paren">)</span> &rarr; None<a class="headerlink" href="#qiime.core.testing.visualizer.mapping_viz" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qiime.core.testing.visualizer.most_common_viz">
+<code class="descclassname">qiime.core.testing.visualizer.</code><code class="descname">most_common_viz</code><span class="sig-paren">(</span><em>output_dir: str</em>, <em>ints: collections.Counter</em><span class="sig-paren">)</span> &rarr; None<a class="headerlink" href="#qiime.core.testing.visualizer.most_common_viz" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qiime.core.testing.visualizer.multi_html_viz">
+<code class="descclassname">qiime.core.testing.visualizer.</code><code class="descname">multi_html_viz</code><span class="sig-paren">(</span><em>output_dir: str</em>, <em>ints: list</em><span class="sig-paren">)</span> &rarr; None<a class="headerlink" href="#qiime.core.testing.visualizer.multi_html_viz" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-qiime.core.testing">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qiime.core.testing" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">qiime.core.testing package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-qiime.core.testing.format">qiime.core.testing.format module</a></li>
+<li><a class="reference internal" href="#module-qiime.core.testing.method">qiime.core.testing.method module</a></li>
+<li><a class="reference internal" href="#qiime-core-testing-plugin-module">qiime.core.testing.plugin module</a></li>
+<li><a class="reference internal" href="#module-qiime.core.testing.transformer">qiime.core.testing.transformer module</a></li>
+<li><a class="reference internal" href="#module-qiime.core.testing.type">qiime.core.testing.type module</a></li>
+<li><a class="reference internal" href="#module-qiime.core.testing.util">qiime.core.testing.util module</a></li>
+<li><a class="reference internal" href="#module-qiime.core.testing.visualizer">qiime.core.testing.visualizer module</a></li>
+<li><a class="reference internal" href="#module-qiime.core.testing">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/qiime.core.testing.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, QIIME 2 Development Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/qiime.core.testing.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
