@@ -1,0 +1,566 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>qiime.core.type package &#8212; QIIME 2 2.0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="QIIME 2 2.0.3 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="qiime-core-type-package">
+<h1>qiime.core.type package<a class="headerlink" href="#qiime-core-type-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qiime.core.type.tests.html">qiime.core.type.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qiime.core.type.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.core.type.tests.html#module-qiime.core.type.tests.test_grammar">qiime.core.type.tests.test_grammar module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.core.type.tests.html#module-qiime.core.type.tests.test_primitive">qiime.core.type.tests.test_primitive module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.core.type.tests.html#module-qiime.core.type.tests.test_semantic">qiime.core.type.tests.test_semantic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.core.type.tests.html#module-qiime.core.type.tests.test_signature">qiime.core.type.tests.test_signature module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.core.type.tests.html#module-qiime.core.type.tests.test_util">qiime.core.type.tests.test_util module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.core.type.tests.html#module-qiime.core.type.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qiime.core.type.grammar">
+<span id="qiime-core-type-grammar-module"></span><h2>qiime.core.type.grammar module<a class="headerlink" href="#module-qiime.core.type.grammar" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiime.core.type.grammar.CompositeType">
+<em class="property">class </em><code class="descclassname">qiime.core.type.grammar.</code><code class="descname">CompositeType</code><span class="sig-paren">(</span><em>name</em>, <em>field_names</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.CompositeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar._ImmutableBase</span></code></p>
+<dl class="method">
+<dt id="qiime.core.type.grammar.CompositeType.is_concrete">
+<code class="descname">is_concrete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.CompositeType.is_concrete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.grammar.CompositeType.iter_symbols">
+<code class="descname">iter_symbols</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.CompositeType.iter_symbols" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.grammar.IntersectionTypeExpression">
+<em class="property">class </em><code class="descclassname">qiime.core.type.grammar.</code><code class="descname">IntersectionTypeExpression</code><span class="sig-paren">(</span><em>members</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.IntersectionTypeExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar._SetOperationBase</span></code></p>
+<dl class="method">
+<dt id="qiime.core.type.grammar.IntersectionTypeExpression.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.IntersectionTypeExpression.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.grammar.MappingTypeExpression">
+<em class="property">class </em><code class="descclassname">qiime.core.type.grammar.</code><code class="descname">MappingTypeExpression</code><span class="sig-paren">(</span><em>name</em>, <em>mapping</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.MappingTypeExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.grammar.TypeExpression" title="qiime.core.type.grammar.TypeExpression"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar.TypeExpression</span></code></a></p>
+<dl class="method">
+<dt id="qiime.core.type.grammar.MappingTypeExpression.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.MappingTypeExpression.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.grammar.Predicate">
+<em class="property">class </em><code class="descclassname">qiime.core.type.grammar.</code><code class="descname">Predicate</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.Predicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar._ImmutableBase</span></code></p>
+<dl class="method">
+<dt id="qiime.core.type.grammar.Predicate.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.Predicate.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.grammar.TypeExpression">
+<em class="property">class </em><code class="descclassname">qiime.core.type.grammar.</code><code class="descname">TypeExpression</code><span class="sig-paren">(</span><em>name</em>, <em>fields=()</em>, <em>predicate=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.TypeExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar._ImmutableBase</span></code></p>
+<dl class="method">
+<dt id="qiime.core.type.grammar.TypeExpression.equals">
+<code class="descname">equals</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.TypeExpression.equals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.grammar.TypeExpression.is_concrete">
+<code class="descname">is_concrete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.TypeExpression.is_concrete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.grammar.TypeExpression.iter_symbols">
+<code class="descname">iter_symbols</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.TypeExpression.iter_symbols" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.grammar.TypeExpression.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.TypeExpression.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.grammar.UnionTypeExpression">
+<em class="property">class </em><code class="descclassname">qiime.core.type.grammar.</code><code class="descname">UnionTypeExpression</code><span class="sig-paren">(</span><em>members</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.UnionTypeExpression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar._SetOperationBase</span></code></p>
+<dl class="method">
+<dt id="qiime.core.type.grammar.UnionTypeExpression.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.grammar.UnionTypeExpression.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiime.core.type.primitive">
+<span id="qiime-core-type-primitive-module"></span><h2>qiime.core.type.primitive module<a class="headerlink" href="#module-qiime.core.type.primitive" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiime.core.type.primitive.Arguments">
+<em class="property">class </em><code class="descclassname">qiime.core.type.primitive.</code><code class="descname">Arguments</code><span class="sig-paren">(</span><em>parameter</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.primitive.Arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.grammar.Predicate" title="qiime.core.type.grammar.Predicate"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar.Predicate</span></code></a></p>
+<dl class="method">
+<dt id="qiime.core.type.primitive.Arguments.iter_boundaries">
+<code class="descname">iter_boundaries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.primitive.Arguments.iter_boundaries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.primitive.Arguments.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.primitive.Arguments.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.primitive.Choices">
+<em class="property">class </em><code class="descclassname">qiime.core.type.primitive.</code><code class="descname">Choices</code><span class="sig-paren">(</span><em>choices</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.primitive.Choices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.grammar.Predicate" title="qiime.core.type.grammar.Predicate"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar.Predicate</span></code></a></p>
+<dl class="method">
+<dt id="qiime.core.type.primitive.Choices.iter_boundaries">
+<code class="descname">iter_boundaries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.primitive.Choices.iter_boundaries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.primitive.Choices.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.primitive.Choices.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.primitive.Range">
+<em class="property">class </em><code class="descclassname">qiime.core.type.primitive.</code><code class="descname">Range</code><span class="sig-paren">(</span><em>*args</em>, <em>*</em>, <em>inclusive_start=True</em>, <em>inclusive_end=False</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.primitive.Range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.grammar.Predicate" title="qiime.core.type.grammar.Predicate"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar.Predicate</span></code></a></p>
+<dl class="method">
+<dt id="qiime.core.type.primitive.Range.iter_boundaries">
+<code class="descname">iter_boundaries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.primitive.Range.iter_boundaries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.primitive.Range.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.primitive.Range.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="qiime.core.type.primitive.is_primitive_type">
+<code class="descclassname">qiime.core.type.primitive.</code><code class="descname">is_primitive_type</code><span class="sig-paren">(</span><em>type_</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.primitive.is_primitive_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-qiime.core.type.semantic">
+<span id="qiime-core-type-semantic-module"></span><h2>qiime.core.type.semantic module<a class="headerlink" href="#module-qiime.core.type.semantic" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiime.core.type.semantic.Properties">
+<em class="property">class </em><code class="descclassname">qiime.core.type.semantic.</code><code class="descname">Properties</code><span class="sig-paren">(</span><em>include=()</em>, <em>exclude=()</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.semantic.Properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.grammar.Predicate" title="qiime.core.type.grammar.Predicate"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar.Predicate</span></code></a></p>
+<dl class="method">
+<dt id="qiime.core.type.semantic.Properties.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.semantic.Properties.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.semantic.PropertyMap">
+<em class="property">class </em><code class="descclassname">qiime.core.type.semantic.</code><code class="descname">PropertyMap</code><span class="sig-paren">(</span><em>name</em>, <em>mapping</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.semantic.PropertyMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.semantic.Properties" title="qiime.core.type.semantic.Properties"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.semantic.Properties</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.semantic.SemanticMap">
+<em class="property">class </em><code class="descclassname">qiime.core.type.semantic.</code><code class="descname">SemanticMap</code><a class="headerlink" href="#qiime.core.type.semantic.SemanticMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.grammar.MappingTypeExpression" title="qiime.core.type.grammar.MappingTypeExpression"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar.MappingTypeExpression</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.semantic._SemanticMixin</span></code></p>
+<dl class="method">
+<dt id="qiime.core.type.semantic.SemanticMap.is_variant">
+<code class="descname">is_variant</code><span class="sig-paren">(</span><em>varfield</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.semantic.SemanticMap.is_variant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="qiime.core.type.semantic.SemanticType">
+<code class="descclassname">qiime.core.type.semantic.</code><code class="descname">SemanticType</code><span class="sig-paren">(</span><em>name</em>, <em>field_names=None</em>, <em>field_members=None</em>, <em>variant_of=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.semantic.SemanticType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new semantic type.</p>
+<dl class="docutils">
+<dt>name</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>The name of the semantic type, this should match the variable which it
+is assigned to.</dd>
+<dt>field_names</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str, iterable of str, optional</span><dd>Name(s) of the fields where member types and can be placed. This makes
+the type a composite type, meaning that fields must be provided to be
+a realized semantic type. These names will define an ad-hoc variant
+types accessible as <cite>name</cite>.field[<cite>field_names</cite> member].</dd>
+<dt>field_members</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">mapping, optional</span><dd>A mapping of strings in <cite>field_names</cite> to one or more semantic types
+which are known to be members of the field (the variant type).</dd>
+<dt>variant_of</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">VariantField, iterable of VariantField, optional</span><dd>Define the semantic type to be a member of one or more variant types
+allowing it to be placed in the respective fields defined by those
+variant types.</dd>
+</dl>
+<dl class="docutils">
+<dt>A Semantic Type</dt>
+<dd>There are several (private) types which may be returned, but anything
+returned by this factory will cause <cite>is_semantic_type</cite> to return True.</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.semantic.VariantField">
+<em class="property">class </em><code class="descclassname">qiime.core.type.semantic.</code><code class="descname">VariantField</code><span class="sig-paren">(</span><em>type_name</em>, <em>field_name</em>, <em>field_members</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.semantic.VariantField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="qiime.core.type.semantic.VariantField.is_member">
+<code class="descname">is_member</code><span class="sig-paren">(</span><em>semantic_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.semantic.VariantField.is_member" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="qiime.core.type.semantic.is_semantic_type">
+<code class="descclassname">qiime.core.type.semantic.</code><code class="descname">is_semantic_type</code><span class="sig-paren">(</span><em>type_</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.semantic.is_semantic_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-qiime.core.type.signature">
+<span id="qiime-core-type-signature-module"></span><h2>qiime.core.type.signature module<a class="headerlink" href="#module-qiime.core.type.signature" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiime.core.type.signature.MethodSignature">
+<em class="property">class </em><code class="descclassname">qiime.core.type.signature.</code><code class="descname">MethodSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.MethodSignature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.signature.PipelineSignature" title="qiime.core.type.signature.PipelineSignature"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.signature.PipelineSignature</span></code></a></p>
+<dl class="classmethod">
+<dt id="qiime.core.type.signature.MethodSignature.from_function">
+<em class="property">classmethod </em><code class="descname">from_function</code><span class="sig-paren">(</span><em>function</em>, <em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.MethodSignature.from_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="qiime.core.type.signature.MethodSignature.from_markdown">
+<em class="property">classmethod </em><code class="descname">from_markdown</code><span class="sig-paren">(</span><em>markdown_filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.MethodSignature.from_markdown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.signature.PipelineSignature">
+<em class="property">class </em><code class="descclassname">qiime.core.type.signature.</code><code class="descname">PipelineSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.PipelineSignature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="qiime.core.type.signature.PipelineSignature.check_types">
+<code class="descname">check_types</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.PipelineSignature.check_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.signature.PipelineSignature.decode_parameters">
+<code class="descname">decode_parameters</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.PipelineSignature.decode_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.signature.PipelineSignature.solve_output">
+<code class="descname">solve_output</code><span class="sig-paren">(</span><em>**input_types</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.PipelineSignature.solve_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.signature.VisualizerSignature">
+<em class="property">class </em><code class="descclassname">qiime.core.type.signature.</code><code class="descname">VisualizerSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.VisualizerSignature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.signature.PipelineSignature" title="qiime.core.type.signature.PipelineSignature"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.signature.PipelineSignature</span></code></a></p>
+<dl class="classmethod">
+<dt id="qiime.core.type.signature.VisualizerSignature.from_function">
+<em class="property">classmethod </em><code class="descname">from_function</code><span class="sig-paren">(</span><em>function</em>, <em>inputs</em>, <em>parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.VisualizerSignature.from_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="qiime.core.type.signature.function_to_signature">
+<code class="descclassname">qiime.core.type.signature.</code><code class="descname">function_to_signature</code><span class="sig-paren">(</span><em>cls</em>, <em>function</em>, <em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.function_to_signature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qiime.core.type.signature.get_return_annotation">
+<code class="descclassname">qiime.core.type.signature.</code><code class="descname">get_return_annotation</code><span class="sig-paren">(</span><em>function</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.get_return_annotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-qiime.core.type.visualization">
+<span id="qiime-core-type-visualization-module"></span><h2>qiime.core.type.visualization module<a class="headerlink" href="#module-qiime.core.type.visualization" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qiime.core.type">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qiime.core.type" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qiime.core.type.SemanticType">
+<code class="descclassname">qiime.core.type.</code><code class="descname">SemanticType</code><span class="sig-paren">(</span><em>name</em>, <em>field_names=None</em>, <em>field_members=None</em>, <em>variant_of=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.SemanticType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new semantic type.</p>
+<dl class="docutils">
+<dt>name</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>The name of the semantic type, this should match the variable which it
+is assigned to.</dd>
+<dt>field_names</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str, iterable of str, optional</span><dd>Name(s) of the fields where member types and can be placed. This makes
+the type a composite type, meaning that fields must be provided to be
+a realized semantic type. These names will define an ad-hoc variant
+types accessible as <cite>name</cite>.field[<cite>field_names</cite> member].</dd>
+<dt>field_members</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">mapping, optional</span><dd>A mapping of strings in <cite>field_names</cite> to one or more semantic types
+which are known to be members of the field (the variant type).</dd>
+<dt>variant_of</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">VariantField, iterable of VariantField, optional</span><dd>Define the semantic type to be a member of one or more variant types
+allowing it to be placed in the respective fields defined by those
+variant types.</dd>
+</dl>
+<dl class="docutils">
+<dt>A Semantic Type</dt>
+<dd>There are several (private) types which may be returned, but anything
+returned by this factory will cause <cite>is_semantic_type</cite> to return True.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiime.core.type.is_semantic_type">
+<code class="descclassname">qiime.core.type.</code><code class="descname">is_semantic_type</code><span class="sig-paren">(</span><em>type_</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.is_semantic_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qiime.core.type.is_primitive_type">
+<code class="descclassname">qiime.core.type.</code><code class="descname">is_primitive_type</code><span class="sig-paren">(</span><em>type_</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.is_primitive_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.PipelineSignature">
+<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">PipelineSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.PipelineSignature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="qiime.core.type.PipelineSignature.check_types">
+<code class="descname">check_types</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.PipelineSignature.check_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.PipelineSignature.decode_parameters">
+<code class="descname">decode_parameters</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.PipelineSignature.decode_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.PipelineSignature.solve_output">
+<code class="descname">solve_output</code><span class="sig-paren">(</span><em>**input_types</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.PipelineSignature.solve_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.MethodSignature">
+<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">MethodSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.MethodSignature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.signature.PipelineSignature" title="qiime.core.type.signature.PipelineSignature"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.signature.PipelineSignature</span></code></a></p>
+<dl class="classmethod">
+<dt id="qiime.core.type.MethodSignature.from_function">
+<em class="property">classmethod </em><code class="descname">from_function</code><span class="sig-paren">(</span><em>function</em>, <em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.MethodSignature.from_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="qiime.core.type.MethodSignature.from_markdown">
+<em class="property">classmethod </em><code class="descname">from_markdown</code><span class="sig-paren">(</span><em>markdown_filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.MethodSignature.from_markdown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.VisualizerSignature">
+<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">VisualizerSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.VisualizerSignature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.signature.PipelineSignature" title="qiime.core.type.signature.PipelineSignature"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.signature.PipelineSignature</span></code></a></p>
+<dl class="classmethod">
+<dt id="qiime.core.type.VisualizerSignature.from_function">
+<em class="property">classmethod </em><code class="descname">from_function</code><span class="sig-paren">(</span><em>function</em>, <em>inputs</em>, <em>parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.VisualizerSignature.from_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.Properties">
+<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">Properties</code><span class="sig-paren">(</span><em>include=()</em>, <em>exclude=()</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.Properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.grammar.Predicate" title="qiime.core.type.grammar.Predicate"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar.Predicate</span></code></a></p>
+<dl class="method">
+<dt id="qiime.core.type.Properties.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.Properties.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.Range">
+<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">Range</code><span class="sig-paren">(</span><em>*args</em>, <em>*</em>, <em>inclusive_start=True</em>, <em>inclusive_end=False</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.Range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.grammar.Predicate" title="qiime.core.type.grammar.Predicate"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar.Predicate</span></code></a></p>
+<dl class="method">
+<dt id="qiime.core.type.Range.iter_boundaries">
+<code class="descname">iter_boundaries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.Range.iter_boundaries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.Range.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.Range.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.Choices">
+<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">Choices</code><span class="sig-paren">(</span><em>choices</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.Choices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.grammar.Predicate" title="qiime.core.type.grammar.Predicate"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar.Predicate</span></code></a></p>
+<dl class="method">
+<dt id="qiime.core.type.Choices.iter_boundaries">
+<code class="descname">iter_boundaries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.Choices.iter_boundaries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.Choices.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.Choices.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qiime.core.type.Arguments">
+<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">Arguments</code><span class="sig-paren">(</span><em>parameter</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.Arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qiime.core.type.grammar.Predicate" title="qiime.core.type.grammar.Predicate"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.grammar.Predicate</span></code></a></p>
+<dl class="method">
+<dt id="qiime.core.type.Arguments.iter_boundaries">
+<code class="descname">iter_boundaries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.Arguments.iter_boundaries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.type.Arguments.to_ast">
+<code class="descname">to_ast</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.Arguments.to_ast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">qiime.core.type package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-qiime.core.type.grammar">qiime.core.type.grammar module</a></li>
+<li><a class="reference internal" href="#module-qiime.core.type.primitive">qiime.core.type.primitive module</a></li>
+<li><a class="reference internal" href="#module-qiime.core.type.semantic">qiime.core.type.semantic module</a></li>
+<li><a class="reference internal" href="#module-qiime.core.type.signature">qiime.core.type.signature module</a></li>
+<li><a class="reference internal" href="#module-qiime.core.type.visualization">qiime.core.type.visualization module</a></li>
+<li><a class="reference internal" href="#module-qiime.core.type">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/qiime.core.type.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, QIIME 2 Development Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/qiime.core.type.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
