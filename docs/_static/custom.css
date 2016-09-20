@@ -21,4 +21,17 @@
     div.sphinxsidebar {
         text-align: right;
     }
+
+    .github {
+        position: absolute;
+        width: 149px;
+        height: 149px;
+        top: 0;
+        left: 0;
+        background-image: url('https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png')
+    }
+
+    .github img {
+        display: none;
+    }
 }
