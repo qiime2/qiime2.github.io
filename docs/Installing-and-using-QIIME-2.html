@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installing and Using QIIME 2 &#8212; QIIME 2 2.0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="QIIME 2 2.0.3 documentation" href="index.html" />
+    <link rel="next" title="Plugins" href="Plugins.html" />
+    <link rel="prev" title="Importing Data" href="Importing-data.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p><strong>Disclaimer:</strong> <em>This wiki page is temporary documentation for QIIME 2 while we&#8217;re in our alpha release phase. These are primarily geared toward QIIME developers or users who are interested in experimenting with an alpha version of QIIME 2. Our documentation will move to qiime.org when we transition to our beta release phase, and installation will be much simpler. These instructions currently will not work on Windows.</em></p>
+<div class="section" id="installing-and-using-qiime-2">
+<span id="installing-and-using-qiime-2"></span><h1>Installing and Using QIIME 2<a class="headerlink" href="#installing-and-using-qiime-2" title="Permalink to this headline">¶</a></h1>
+<p>This document describes how to install the QIIME 2 framework and some QIIME 2 interfaces and plugins. It then illustrates how to use the system to do a basic analysis on test data files using <a class="reference external" href="https://github.com/qiime2/q2cli">q2cli</a>, a QIIME 2 command line interface. To run this demo, you&#8217;ll need to install <a class="reference external" href="http://conda.pydata.org/miniconda.html">Miniconda</a> if you don&#8217;t already have it installed.</p>
+<div class="section" id="create-a-working-directory-and-download-example-qiime-2-artifact-files">
+<span id="create-a-working-directory-and-download-example-qiime-2-artifact-files"></span><h2>Create a working directory and download example QIIME 2 artifact files<a class="headerlink" href="#create-a-working-directory-and-download-example-qiime-2-artifact-files" title="Permalink to this headline">¶</a></h2>
+<p>Start by creating a directory to work in and changing to that directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir qiime2-test
+<span class="nb">cd</span> qiime2-test
+</pre></div>
+</div>
+<p>Next, download these demo <code class="docutils literal"><span class="pre">.qza</span></code> (QIIME zipped artifact) files to that directory:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://dl.dropboxusercontent.com/u/2868868/data/qiime2/feature-table-frequency.qza"><code class="docutils literal"><span class="pre">feature-table-frequency.qza</span></code></a></li>
+<li><a class="reference external" href="https://dl.dropboxusercontent.com/u/2868868/data/qiime2/phylogeny.qza"><code class="docutils literal"><span class="pre">phylogeny.qza</span></code></a></li>
+<li><a class="reference external" href="https://dl.dropboxusercontent.com/u/2868868/q2-demo-sample-md.tsv"><code class="docutils literal"><span class="pre">q2-demo-sample-md.tsv</span></code></a></li>
+</ul>
+<p>(with <code class="docutils literal"><span class="pre">curl</span></code>):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -sO https://dl.dropboxusercontent.com/u/2868868/data/qiime2/feature-table-frequency.qza
+curl -sO https://dl.dropboxusercontent.com/u/2868868/data/qiime2/phylogeny.qza
+curl -sO https://dl.dropboxusercontent.com/u/2868868/q2-demo-sample-md.tsv
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-qiime-2-framework-and-command-line-interface">
+<span id="install-qiime-2-framework-and-command-line-interface"></span><h2>Install QIIME 2 framework and command line interface<a class="headerlink" href="#install-qiime-2-framework-and-command-line-interface" title="Permalink to this headline">¶</a></h2>
+<p>First we&#8217;ll install <code class="docutils literal"><span class="pre">qiime</span></code>, which is the QIIME 2 framework, and <code class="docutils literal"><span class="pre">q2cli</span></code>, which is a QIIME 2 command line interface, in a new Python 3 conda environment.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda create -n q2test -c qiime2 <span class="nv">python</span><span class="o">=</span>3.5 qiime q2cli
+<span class="nb">source</span> activate q2test
+</pre></div>
+</div>
+<p>You can now run <code class="docutils literal"><span class="pre">qiime</span> <span class="pre">--help</span></code> to see the available commands. You can discover what plugins you currently have installed (there aren&#8217;t any installed yet), as well as other information about your QIIME installation, by running <code class="docutils literal"><span class="pre">qiime</span> <span class="pre">info</span></code>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime --help
+qiime info
+</pre></div>
+</div>
+<p>There&#8217;s not much to do without some plugins, so install the <code class="docutils literal"><span class="pre">q2-types</span></code> and <code class="docutils literal"><span class="pre">q2-feature-table</span></code> plugins and execute the <code class="docutils literal"><span class="pre">qiime</span> <span class="pre">info</span></code> command again.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda install -c qiime2 -c biocore q2-types q2-feature-table
+qiime info
+</pre></div>
+</div>
+<p>All installed plugins will be listed here, so you should now see that you have two plugins installed.</p>
+<p>If you call <code class="docutils literal"><span class="pre">qiime</span> <span class="pre">--help</span></code> again, you&#8217;ll see that you now have a new command available, corresponding to the <code class="docutils literal"><span class="pre">q2-feature-table</span></code> plugin (the <code class="docutils literal"><span class="pre">q2-types</span></code> plugin does not have any actions to perform so it is not listed as a subcommand). To see what subcommands the <code class="docutils literal"><span class="pre">q2-feature-table</span></code> plugin defines, call it with <code class="docutils literal"><span class="pre">--help</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime feature-table --help
+</pre></div>
+</div>
+<p>You also see some other information about the plugin here, including its website, how it should be cited, and how users can get technical support with the plugin.</p>
+<p>Install the <code class="docutils literal"><span class="pre">q2-diversity</span></code> plugin as well. You&#8217;ll then have three plugins installed.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda install -c qiime2 q2-diversity
+qiime info
+qiime diversity --help
+</pre></div>
+</div>
+<p>Now you&#8217;re ready to run a command that performs an analysis. The <code class="docutils literal"><span class="pre">qiime</span> <span class="pre">diversity</span> <span class="pre">core-metrics</span></code> <em>method</em> is a good one for this. This takes a feature table (a BIOM table, in QIIME 1 terminology), a phylogenetic tree, and a rarefaction depth as input. It will rarefy the feature table to the requested rarefaction depth, then compute two alpha diversity metrics (Faith&#8217;s PD and observed OTUs), four beta diversity metrics (Jaccard, Bray-Curtis, unweighted UniFrac, and weighted UniFrac), and then run principal coordinate analysis (PCoA) on the resulting beta diversity distance matrices.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime diversity core-metrics --i-table feature-table-frequency.qza --i-phylogeny phylogeny.qza --p-counts-per-sample <span class="m">100</span> --o-faith-pd-vector pd --o-unweighted-unifrac-pcoa-results uu-pc.qza --output-dir cm-output
+</pre></div>
+</div>
+<p>At this stage you will have generated data as QIIME Zipped Artifact (<code class="docutils literal"><span class="pre">.qza</span></code>) files. The <code class="docutils literal"><span class="pre">pd.qza</span></code> and <code class="docutils literal"><span class="pre">uu-pc.qza</span></code> files, which we explicitly specified the names for, will be written to your current working directory, and the eight remaining output files will be placed in your <code class="docutils literal"><span class="pre">cm-output</span></code> directory that was created by using <code class="docutils literal"><span class="pre">q2cli</span></code>&#8216;s optional <code class="docutils literal"><span class="pre">--output-dir</span></code> option. File paths for all output artifacts and visualizations (i.e., parameters beginning with <code class="docutils literal"><span class="pre">--o-</span></code>) are optional: you can specify them if you&#8217;d like explicit control over the path they will be written to, or you can not specify them and they will be written to the directory specified by <code class="docutils literal"><span class="pre">--output-dir</span></code> with a default name. We had <code class="docutils literal"><span class="pre">pd.qza</span></code> and <code class="docutils literal"><span class="pre">uu-pc.qza</span></code> be written in the current directory, for convenience of use later in this tutorial.</p>
+<p>QIIME plugins also provide <em>visualizers</em> to help with interpretation of these data. We&#8217;ll apply two visualizers here, and then learn how to interact with them directly. First, we&#8217;ll install the <a class="reference external" href="http://biocore.github.io/emperor/">Emperor</a> QIIME plugin:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda install -c qiime2 -c biocore q2-emperor
+</pre></div>
+</div>
+<p>You can call the Emperor plugin with its <code class="docutils literal"><span class="pre">--help</span></code> option to see what actions it can perform (i.e., what its subcommands are). Note that the help also includes the reference that users should cite if they use this plugin.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime emperor --help
+</pre></div>
+</div>
+<p>We&#8217;ll next generate one alpha diversity visualization, and one beta diversity ordination visualization:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime diversity alpha-compare --i-alpha-diversity pd.qza --m-metadata-file q2-demo-sample-md.tsv --m-metadata-category SampleType --o-visualization pd-compare
+qiime emperor plot --i-pcoa uu-pc.qza --m-sample-metadata-file q2-demo-sample-md.tsv --o-visualization uu-emperor
+</pre></div>
+</div>
+<p>Each of these will create a QIIME Zipped Visualization (<code class="docutils literal"><span class="pre">.qzv</span></code>) file. Different interfaces will provide support for interacting with these in their own ways, but on their own, these are simply zip files. They can be unzipped with graphical or command line zip tools (e.g., <code class="docutils literal"><span class="pre">unzip</span></code>). You can view these using the command line interface as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime tools view uu-emperor.qzv
+qiime tools view pd-compare.qzv
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-other-qiime-2-interfaces">
+<span id="working-with-other-qiime-2-interfaces"></span><h2>Working with other QIIME 2 interfaces<a class="headerlink" href="#working-with-other-qiime-2-interfaces" title="Permalink to this headline">¶</a></h2>
+<p>As a next step in exploring QIIME 2, you should work with other interfaces. In the same way that QIIME 2 plugins can be added or removed to change the functionality of QIIME, you can also change interfaces. In this tutorial we explored the command line interface, but unlike QIIME 1, the command line is only one possible interface for QIIME 2. You can next explore [[QIIME-Studio]], the first graphical user interface for QIIME 2, and the [[Artifact-API]], an <em>Application Programmer Interface</em> that is optimized for users working in <a class="reference external" href="http://jupyter.org">Jupyter Notebooks</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installing and Using QIIME 2</a><ul>
+<li><a class="reference internal" href="#create-a-working-directory-and-download-example-qiime-2-artifact-files">Create a working directory and download example QIIME 2 artifact files</a></li>
+<li><a class="reference internal" href="#install-qiime-2-framework-and-command-line-interface">Install QIIME 2 framework and command line interface</a></li>
+<li><a class="reference internal" href="#working-with-other-qiime-2-interfaces">Working with other QIIME 2 interfaces</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Importing-data.html" title="previous chapter">Importing Data</a></li>
+      <li>Next: <a href="Plugins.html" title="next chapter">Plugins</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Installing-and-using-QIIME-2.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, QIIME 2 Development Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/Installing-and-using-QIIME-2.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/qiime2/qiime2" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

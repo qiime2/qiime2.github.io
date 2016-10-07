@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>General Information &#8212; QIIME 2 2.0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="QIIME 2 2.0.3 documentation" href="index.html" />
+    <link rel="next" title="Artifact API" href="Artifact-API.html" />
+    <link rel="prev" title="Welcome to QIIME 2’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="general-information">
+<span id="general-information"></span><h1>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h1>
+<p><strong>Disclaimer:</strong> <em>These wiki pages serve as temporary documentation for QIIME<p>™</p>
+ 2 while we&#8217;re in our alpha release phase. They are primarily geared toward QIIME developers or users who are interested in experimenting with an alpha version of QIIME 2. Our documentation will move to www.qiime.org when we transition to our beta release phase. The wiki instructions will currently will not work on Windows.</em></p>
+<p>See the <a class="reference external" href="https://github.com/qiime2/qiime2/releases/tag/2.0.1">release notes</a> for details about the QIIME 2 alpha release.</p>
+<div class="section" id="using-qiime-2">
+<span id="using-qiime-2"></span><h2>Using QIIME 2<a class="headerlink" href="#using-qiime-2" title="Permalink to this headline">¶</a></h2>
+<p>QIIME 2 is ready for experimental use while it&#8217;s in its alpha release stage. <strong>It currently has limited microbiome analysis functionality</strong> as we have focused our initial efforts on building the underlying framework. New functionality will regularly become available through QIIME 2 plugins. You can view a list of plugins, including those that are currently available, in development, or being planned on the QIIME 2 [[Plugins]] page. Until the QIIME 2 microbiome analysis functionality has expanded, we recommend that you continue to use <a class="reference external" href="http://www.qiime.org">QIIME 1</a> and <a class="reference external" href="http://qiita.microbio.me">Qiita</a> for your microbiome analyses, as these will provide you with complete analysis solutions.</p>
+<p><strong>Quickstart</strong>: If you&#8217;d like to begin experimenting with QIIME 2, you should read [[Installing and using QIIME 2]] which will show you how to install QIIME 2 and some plugins, and use it with q2cli (a command line interface). You should then read [[QIIME Studio]], which will show you how to use QIIME 2 through a graphical user interface.</p>
+<p>If there is specific functionality you&#8217;d like to see in QIIME 2, please post to the <a class="reference external" href="https://github.com/qiime2/qiime2/issues">QIIME 2 issue tracker</a>.</p>
+</div>
+<div class="section" id="programming-with-qiime-2">
+<span id="programming-with-qiime-2"></span><h2>Programming with QIIME 2<a class="headerlink" href="#programming-with-qiime-2" title="Permalink to this headline">¶</a></h2>
+<p>A key design goal of QIIME 2 is to enable third-party developers to create new plugins and new interfaces for QIIME.</p>
+<p>Plugins provide a way for microbiome bioinformatics developers to make their tools accessible to end users in their QIIME environment. A plugin will enable access to its functionality through any of QIIME&#8217;s interfaces, including QIIME Studio. If you&#8217;re interested in developing a QIIME 2 plugin, you should begin with [[Creating a QIIME 2 plugin]]. You should also refer to the QIIME 2 [[Plugins]] page to see what plugins already exist or are being planned.</p>
+<p>Interfaces provide a way for software engineers to build custom interfaces around QIIME, which can include embedding QIIME as a component in other systems (e.g., cloud-based bioinformatics platforms). We have not yet developed our interface developer documentation, but two examples are currently available: <a class="reference external" href="https://github.com/qiime2/q2cli">q2cli</a> and <a class="reference external" href="https://github.com/qiime2/qiime-studio">QIIME Studio</a>. q2cli is a simpler starting point. We will have detailed interface developer documentation available soon.</p>
+<p><strong>While QIIME 2 is in its alpha release stage, backward incompatible interface changes that impact plugins and interfaces can and will occur.</strong> We will make every effort to minimize these, and we will always document these in the <a class="reference external" href="https://github.com/qiime2/qiime2/blob/master/CHANGELOG.md">QIIME 2 ChangeLog</a>.</p>
+<p><strong>The QIIME 2 developers use Slack for instant message discussion of development topics.</strong> If you&#8217;re working on plugin or interface development and need help, you should <a class="reference external" href="http://qiime2-slackin.qiime.org">join our Slack team</a> and then get in touch on the <code class="docutils literal"><span class="pre">#developers</span></code> channel at https://qiime2.slack.com. This will be more reliable than emailing one of the developers directly.</p>
+</div>
+<div class="section" id="getting-updates">
+<span id="getting-updates"></span><h2>Getting updates<a class="headerlink" href="#getting-updates" title="Permalink to this headline">¶</a></h2>
+<p>For updates on QIIME 2, you should <a class="reference external" href="https://twitter.com/qiime_">follow &#64;qiime_ on twitter</a>.</p>
+<p>To learn about where we&#8217;re going with QIIME 2, see &#64;gregcaporaso&#8217;s blog post, <a class="reference external" href="http://americangut.org/qiime-2-will-revolutionize-microbiome-bioinformatics/"><em>QIIME 2 will revolutionize microbiome bioinformatics</em></a> (15 April 2016), and <a class="reference external" href="https://www.youtube.com/watch?v=tLtGg21Yu9Q">SciPy 2016 presentation</a> (15 July 2016).</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">General Information</a><ul>
+<li><a class="reference internal" href="#using-qiime-2">Using QIIME 2</a></li>
+<li><a class="reference internal" href="#programming-with-qiime-2">Programming with QIIME 2</a></li>
+<li><a class="reference internal" href="#getting-updates">Getting updates</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to QIIME 2&#8217;s documentation!</a></li>
+      <li>Next: <a href="Artifact-API.html" title="next chapter">Artifact API</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Home.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, QIIME 2 Development Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/Home.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/qiime2/qiime2" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
