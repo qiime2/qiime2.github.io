@@ -94,9 +94,19 @@
 <dt id="qiime.sdk.plugin_manager.PluginManager">
 <em class="property">class </em><code class="descclassname">qiime.sdk.plugin_manager.</code><code class="descname">PluginManager</code><a class="headerlink" href="#qiime.sdk.plugin_manager.PluginManager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="qiime.sdk.plugin_manager.PluginManager.entry_point_group">
+<code class="descname">entry_point_group</code><em class="property"> = 'qiime.plugins'</em><a class="headerlink" href="#qiime.sdk.plugin_manager.PluginManager.entry_point_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="qiime.sdk.plugin_manager.PluginManager.get_directory_format">
 <code class="descname">get_directory_format</code><span class="sig-paren">(</span><em>semantic_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.plugin_manager.PluginManager.get_directory_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="qiime.sdk.plugin_manager.PluginManager.iter_entry_points">
+<em class="property">classmethod </em><code class="descname">iter_entry_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.plugin_manager.PluginManager.iter_entry_points" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -148,11 +158,6 @@
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="qiime.sdk.result.Artifact.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Artifact.save" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="qiime.sdk.result.Artifact.view">
 <code class="descname">view</code><span class="sig-paren">(</span><em>view_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Artifact.view" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -168,6 +173,11 @@
 factory and namespace for interacting with Artifacts and Visualizations in
 a generic way. It also acts as a base class for code reuse and provides an
 API shared by Artifact and Visualization.</p>
+<dl class="attribute">
+<dt id="qiime.sdk.result.Result.extension">
+<code class="descname">extension</code><em class="property"> = None</em><a class="headerlink" href="#qiime.sdk.result.Result.extension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="classmethod">
 <dt id="qiime.sdk.result.Result.extract">
 <em class="property">classmethod </em><code class="descname">extract</code><span class="sig-paren">(</span><em>filepath</em>, <em>output_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Result.extract" title="Permalink to this definition">¶</a></dt>
@@ -255,11 +265,44 @@ API shared by Artifact and Visualization.</p>
 <code class="descname">get_index_paths</code><span class="sig-paren">(</span><em>relative=True</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Visualization.get_index_paths" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="qiime.sdk.result.Visualization.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.result.Visualization.save" title="Permalink to this definition">¶</a></dt>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiime.sdk.util">
+<span id="qiime-sdk-util-module"></span><h2>qiime.sdk.util module<a class="headerlink" href="#module-qiime.sdk.util" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="qiime.sdk.util.UnknownTypeError">
+<em class="property">exception </em><code class="descclassname">qiime.sdk.util.</code><code class="descname">UnknownTypeError</code><a class="headerlink" href="#qiime.sdk.util.UnknownTypeError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">TypeError</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qiime.sdk.util.parse_format">
+<code class="descclassname">qiime.sdk.util.</code><code class="descname">parse_format</code><span class="sig-paren">(</span><em>format_str</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.util.parse_format" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="function">
+<dt id="qiime.sdk.util.parse_type">
+<code class="descclassname">qiime.sdk.util.</code><code class="descname">parse_type</code><span class="sig-paren">(</span><em>string</em>, <em>expect=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.util.parse_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a string into a TypeExpression</p>
+<dl class="docutils">
+<dt>string</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>The string type expression to convert into a TypeExpression</dd>
+<dt>expect</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">{&#8216;semantic&#8217;, &#8216;primitive&#8217;, &#8216;visualization&#8217;}, optional</span><dd>Will raise a TypeError if the resulting TypeExpression is not a member
+of <cite>expect</cite>.</dd>
+</dl>
+<p>TypeExpression</p>
+<dl class="docutils">
+<dt>ValueError</dt>
+<dd>Raised when <cite>expect</cite> has an invalid value</dd>
+<dt>TypeError</dt>
+<dd>Raised when the expression contains invalid characters</dd>
+<dt>TypeError</dt>
+<dd>Raised when the expression does not result in a member of <cite>expect</cite></dd>
+<dt>UnknownTypeError</dt>
+<dd>Raised when unkown types are present in the expression.</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -274,6 +317,11 @@ API shared by Artifact and Visualization.</p>
 factory and namespace for interacting with Artifacts and Visualizations in
 a generic way. It also acts as a base class for code reuse and provides an
 API shared by Artifact and Visualization.</p>
+<dl class="attribute">
+<dt id="qiime.sdk.Result.extension">
+<code class="descname">extension</code><em class="property"> = None</em><a class="headerlink" href="#qiime.sdk.Result.extension" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="classmethod">
 <dt id="qiime.sdk.Result.extract">
 <em class="property">classmethod </em><code class="descname">extract</code><span class="sig-paren">(</span><em>filepath</em>, <em>output_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Result.extract" title="Permalink to this definition">¶</a></dt>
@@ -332,11 +380,6 @@ API shared by Artifact and Visualization.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="qiime.sdk.Artifact.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Artifact.save" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="qiime.sdk.Artifact.view">
 <code class="descname">view</code><span class="sig-paren">(</span><em>view_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Artifact.view" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -355,11 +398,6 @@ API shared by Artifact and Visualization.</p>
 <dl class="method">
 <dt id="qiime.sdk.Visualization.get_index_paths">
 <code class="descname">get_index_paths</code><span class="sig-paren">(</span><em>relative=True</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Visualization.get_index_paths" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="qiime.sdk.Visualization.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.Visualization.save" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -389,9 +427,19 @@ API shared by Artifact and Visualization.</p>
 <dt id="qiime.sdk.PluginManager">
 <em class="property">class </em><code class="descclassname">qiime.sdk.</code><code class="descname">PluginManager</code><a class="headerlink" href="#qiime.sdk.PluginManager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="qiime.sdk.PluginManager.entry_point_group">
+<code class="descname">entry_point_group</code><em class="property"> = 'qiime.plugins'</em><a class="headerlink" href="#qiime.sdk.PluginManager.entry_point_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="qiime.sdk.PluginManager.get_directory_format">
 <code class="descname">get_directory_format</code><span class="sig-paren">(</span><em>semantic_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.PluginManager.get_directory_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="qiime.sdk.PluginManager.iter_entry_points">
+<em class="property">classmethod </em><code class="descname">iter_entry_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.PluginManager.iter_entry_points" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -446,6 +494,17 @@ of <cite>expect</cite>.</dd>
 </dl>
 </dd></dl>
 
+<dl class="function">
+<dt id="qiime.sdk.parse_format">
+<code class="descclassname">qiime.sdk.</code><code class="descname">parse_format</code><span class="sig-paren">(</span><em>format_str</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.parse_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="qiime.sdk.UnknownTypeError">
+<em class="property">exception </em><code class="descclassname">qiime.sdk.</code><code class="descname">UnknownTypeError</code><a class="headerlink" href="#qiime.sdk.UnknownTypeError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">TypeError</span></code></p>
+</dd></dl>
+
 </div>
 </div>
 
@@ -467,6 +526,7 @@ of <cite>expect</cite>.</dd>
 <li><a class="reference internal" href="#module-qiime.sdk.plugin_manager">qiime.sdk.plugin_manager module</a></li>
 <li><a class="reference internal" href="#module-qiime.sdk.provenance">qiime.sdk.provenance module</a></li>
 <li><a class="reference internal" href="#module-qiime.sdk.result">qiime.sdk.result module</a></li>
+<li><a class="reference internal" href="#module-qiime.sdk.util">qiime.sdk.util module</a></li>
 <li><a class="reference internal" href="#module-qiime.sdk">Module contents</a></li>
 </ul>
 </li>

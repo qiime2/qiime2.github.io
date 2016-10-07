@@ -136,8 +136,8 @@ disallowed.</p>
 <dd></dd></dl>
 
 </div>
-<div class="section" id="qiime-core-testing-plugin-module">
-<h2>qiime.core.testing.plugin module<a class="headerlink" href="#qiime-core-testing-plugin-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-qiime.core.testing.plugin">
+<span id="qiime-core-testing-plugin-module"></span><h2>qiime.core.testing.plugin module<a class="headerlink" href="#module-qiime.core.testing.plugin" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-qiime.core.testing.transformer">
 <span id="qiime-core-testing-transformer-module"></span><h2>qiime.core.testing.transformer module<a class="headerlink" href="#module-qiime.core.testing.transformer" title="Permalink to this headline">¶</a></h2>
@@ -147,6 +147,50 @@ disallowed.</p>
 </div>
 <div class="section" id="module-qiime.core.testing.util">
 <span id="qiime-core-testing-util-module"></span><h2>qiime.core.testing.util module<a class="headerlink" href="#module-qiime.core.testing.util" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiime.core.testing.util.ArchiveTestingMixin">
+<em class="property">class </em><code class="descclassname">qiime.core.testing.util.</code><code class="descname">ArchiveTestingMixin</code><a class="headerlink" href="#qiime.core.testing.util.ArchiveTestingMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Mixin for testing properties of archives created by Archiver.</p>
+<dl class="method">
+<dt id="qiime.core.testing.util.ArchiveTestingMixin.assertArchiveMembers">
+<code class="descname">assertArchiveMembers</code><span class="sig-paren">(</span><em>archive_filepath</em>, <em>root_dir</em>, <em>expected</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.util.ArchiveTestingMixin.assertArchiveMembers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assert members are in an archive.</p>
+<dl class="docutils">
+<dt>archive_filepath</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>Filepath to archive whose members will be verified against the
+<cite>expected</cite> members.</dd>
+<dt>root_dir</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>Root directory of the archive. Will be prepended to the member
+paths in <cite>expected</cite>. This is useful when the archive&#8217;s root
+directory is not known ahead of time (e.g. when it is a random
+UUID) and the caller is determining the root directory dynamically.</dd>
+<dt>expected</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">set of str</span><dd>Set of expected archive members stored as paths relative to
+<cite>root_dir</cite>.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.testing.util.ArchiveTestingMixin.assertExtractedArchiveMembers">
+<code class="descname">assertExtractedArchiveMembers</code><span class="sig-paren">(</span><em>extract_dir</em>, <em>root_dir</em>, <em>expected</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.util.ArchiveTestingMixin.assertExtractedArchiveMembers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assert an archive&#8217;s members are extracted to a directory.</p>
+<dl class="docutils">
+<dt>extract_dir</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>Path to directory the archive was extracted to.</dd>
+<dt>root_dir</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>Root directory of the archive that was extracted to <cite>extract_dir</cite>.
+This is useful when the archive&#8217;s root directory is not known ahead
+of time (e.g. when it is a random UUID) and the caller is
+determining the root directory dynamically.</dd>
+<dt>expected</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">set of str</span><dd>Set of expected archive members extracted to <cite>extract_dir</cite>. Stored
+as paths relative to <cite>root_dir</cite>.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="function">
 <dt id="qiime.core.testing.util.get_dummy_plugin">
 <code class="descclassname">qiime.core.testing.util.</code><code class="descname">get_dummy_plugin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.testing.util.get_dummy_plugin" title="Permalink to this definition">¶</a></dt>
@@ -191,7 +235,7 @@ disallowed.</p>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-qiime.core.testing.format">qiime.core.testing.format module</a></li>
 <li><a class="reference internal" href="#module-qiime.core.testing.method">qiime.core.testing.method module</a></li>
-<li><a class="reference internal" href="#qiime-core-testing-plugin-module">qiime.core.testing.plugin module</a></li>
+<li><a class="reference internal" href="#module-qiime.core.testing.plugin">qiime.core.testing.plugin module</a></li>
 <li><a class="reference internal" href="#module-qiime.core.testing.transformer">qiime.core.testing.transformer module</a></li>
 <li><a class="reference internal" href="#module-qiime.core.testing.type">qiime.core.testing.type module</a></li>
 <li><a class="reference internal" href="#module-qiime.core.testing.util">qiime.core.testing.util module</a></li>

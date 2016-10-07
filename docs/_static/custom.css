@@ -22,6 +22,16 @@
         text-align: right;
     }
 
+    div.sphinxsidebar ul li {
+        list-style-type: none;
+    }
+
+    /* Remove the black colored banner to match qiime.org */
+    .github img {
+        display: none;
+    }
+
+    /* Move the banner to the left side and set it as the green banner */
     .github {
         position: absolute;
         width: 149px;
@@ -29,9 +39,5 @@
         top: 0;
         left: 0;
         background-image: url('https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png')
-    }
-
-    .github img {
-        display: none;
     }
 }

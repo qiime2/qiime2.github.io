@@ -72,6 +72,24 @@
 <div class="section" id="module-qiime.plugin.plugin">
 <span id="qiime-plugin-plugin-module"></span><h2>qiime.plugin.plugin module<a class="headerlink" href="#module-qiime.plugin.plugin" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
+<dt id="qiime.plugin.plugin.FormatRecord">
+<em class="property">class </em><code class="descclassname">qiime.plugin.plugin.</code><code class="descname">FormatRecord</code><span class="sig-paren">(</span><em>format</em>, <em>plugin</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.plugin.FormatRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tuple</span></code></p>
+<dl class="attribute">
+<dt id="qiime.plugin.plugin.FormatRecord.format">
+<code class="descname">format</code><a class="headerlink" href="#qiime.plugin.plugin.FormatRecord.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.plugin.plugin.FormatRecord.plugin">
+<code class="descname">plugin</code><a class="headerlink" href="#qiime.plugin.plugin.FormatRecord.plugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="qiime.plugin.plugin.Plugin">
 <em class="property">class </em><code class="descclassname">qiime.plugin.plugin.</code><code class="descname">Plugin</code><span class="sig-paren">(</span><em>name</em>, <em>version</em>, <em>website</em>, <em>package</em>, <em>citation_text=None</em>, <em>user_support_text=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.plugin.Plugin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
@@ -81,13 +99,18 @@
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="qiime.plugin.plugin.Plugin.register_semantic_type">
-<code class="descname">register_semantic_type</code><span class="sig-paren">(</span><em>semantic_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.plugin.Plugin.register_semantic_type" title="Permalink to this definition">¶</a></dt>
+<dt id="qiime.plugin.plugin.Plugin.register_formats">
+<code class="descname">register_formats</code><span class="sig-paren">(</span><em>*formats</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.plugin.Plugin.register_formats" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="qiime.plugin.plugin.Plugin.register_semantic_type_to_format">
 <code class="descname">register_semantic_type_to_format</code><span class="sig-paren">(</span><em>semantic_type</em>, <em>artifact_format</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.plugin.Plugin.register_semantic_type_to_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.plugin.plugin.Plugin.register_semantic_types">
+<code class="descname">register_semantic_types</code><span class="sig-paren">(</span><em>*semantic_types</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.plugin.Plugin.register_semantic_types" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -219,6 +242,63 @@
 </dd></dl>
 
 </div>
+<div class="section" id="module-qiime.plugin.testing">
+<span id="qiime-plugin-testing-module"></span><h2>qiime.plugin.testing module<a class="headerlink" href="#module-qiime.plugin.testing" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qiime.plugin.testing.TestPluginBase">
+<em class="property">class </em><code class="descclassname">qiime.plugin.testing.</code><code class="descname">TestPluginBase</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.testing.TestPluginBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="qiime.plugin.testing.TestPluginBase.assertRegisteredSemanticType">
+<code class="descname">assertRegisteredSemanticType</code><span class="sig-paren">(</span><em>semantic_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.testing.TestPluginBase.assertRegisteredSemanticType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.plugin.testing.TestPluginBase.assertSemanticTypeRegisteredToFormat">
+<code class="descname">assertSemanticTypeRegisteredToFormat</code><span class="sig-paren">(</span><em>semantic_type</em>, <em>exp_format</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.testing.TestPluginBase.assertSemanticTypeRegisteredToFormat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.plugin.testing.TestPluginBase.get_data_path">
+<code class="descname">get_data_path</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.testing.TestPluginBase.get_data_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.plugin.testing.TestPluginBase.get_transformer">
+<code class="descname">get_transformer</code><span class="sig-paren">(</span><em>from_type</em>, <em>to_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.testing.TestPluginBase.get_transformer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.plugin.testing.TestPluginBase.package">
+<code class="descname">package</code><em class="property"> = None</em><a class="headerlink" href="#qiime.plugin.testing.TestPluginBase.package" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.plugin.testing.TestPluginBase.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.testing.TestPluginBase.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.plugin.testing.TestPluginBase.tearDown">
+<code class="descname">tearDown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.testing.TestPluginBase.tearDown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qiime.plugin.testing.TestPluginBase.test_dir_prefix">
+<code class="descname">test_dir_prefix</code><em class="property"> = 'qiime2-plugin'</em><a class="headerlink" href="#qiime.plugin.testing.TestPluginBase.test_dir_prefix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qiime.plugin.util">
+<span id="qiime-plugin-util-module"></span><h2>qiime.plugin.util module<a class="headerlink" href="#module-qiime.plugin.util" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qiime.plugin.util.transform">
+<code class="descclassname">qiime.plugin.util.</code><code class="descname">transform</code><span class="sig-paren">(</span><em>data</em>, <em>*</em>, <em>from_type=None</em>, <em>to_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.util.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
 <div class="section" id="module-qiime.plugin">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qiime.plugin" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
@@ -264,13 +344,18 @@
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="qiime.plugin.Plugin.register_semantic_type">
-<code class="descname">register_semantic_type</code><span class="sig-paren">(</span><em>semantic_type</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.Plugin.register_semantic_type" title="Permalink to this definition">¶</a></dt>
+<dt id="qiime.plugin.Plugin.register_formats">
+<code class="descname">register_formats</code><span class="sig-paren">(</span><em>*formats</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.Plugin.register_formats" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="qiime.plugin.Plugin.register_semantic_type_to_format">
 <code class="descname">register_semantic_type_to_format</code><span class="sig-paren">(</span><em>semantic_type</em>, <em>artifact_format</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.Plugin.register_semantic_type_to_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.plugin.Plugin.register_semantic_types">
+<code class="descname">register_semantic_types</code><span class="sig-paren">(</span><em>*semantic_types</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.plugin.Plugin.register_semantic_types" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -405,6 +490,8 @@ returned by this factory will cause <cite>is_semantic_type</cite> to return True
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-qiime.plugin.plugin">qiime.plugin.plugin module</a></li>
 <li><a class="reference internal" href="#module-qiime.plugin.template">qiime.plugin.template module</a></li>
+<li><a class="reference internal" href="#module-qiime.plugin.testing">qiime.plugin.testing module</a></li>
+<li><a class="reference internal" href="#module-qiime.plugin.util">qiime.plugin.util module</a></li>
 <li><a class="reference internal" href="#module-qiime.plugin">Module contents</a></li>
 </ul>
 </li>

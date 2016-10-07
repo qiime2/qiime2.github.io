@@ -52,7 +52,7 @@
 <li class="toctree-l4"><a class="reference internal" href="qiime.core.testing.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiime.core.testing.html#module-qiime.core.testing.format">qiime.core.testing.format module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiime.core.testing.html#module-qiime.core.testing.method">qiime.core.testing.method module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="qiime.core.testing.html#qiime-core-testing-plugin-module">qiime.core.testing.plugin module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qiime.core.testing.html#module-qiime.core.testing.plugin">qiime.core.testing.plugin module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiime.core.testing.html#module-qiime.core.testing.transformer">qiime.core.testing.transformer module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiime.core.testing.html#module-qiime.core.testing.type">qiime.core.testing.type module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="qiime.core.testing.html#module-qiime.core.testing.util">qiime.core.testing.util module</a></li>
@@ -126,6 +126,8 @@
 <li class="toctree-l2"><a class="reference internal" href="qiime.plugin.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qiime.plugin.html#module-qiime.plugin.plugin">qiime.plugin.plugin module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qiime.plugin.html#module-qiime.plugin.template">qiime.plugin.template module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.plugin.html#module-qiime.plugin.testing">qiime.plugin.testing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.plugin.html#module-qiime.plugin.util">qiime.plugin.util module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qiime.plugin.html#module-qiime.plugin">Module contents</a></li>
 </ul>
 </li>
@@ -150,6 +152,7 @@
 <li class="toctree-l2"><a class="reference internal" href="qiime.sdk.html#module-qiime.sdk.plugin_manager">qiime.sdk.plugin_manager module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qiime.sdk.html#module-qiime.sdk.provenance">qiime.sdk.provenance module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qiime.sdk.html#module-qiime.sdk.result">qiime.sdk.result module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.sdk.html#module-qiime.sdk.util">qiime.sdk.util module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qiime.sdk.html#module-qiime.sdk">Module contents</a></li>
 </ul>
 </li>
@@ -214,6 +217,14 @@
 <dd></dd></dl>
 
 </div>
+<div class="section" id="module-qiime.util">
+<span id="qiime-util-module"></span><h2>qiime.util module<a class="headerlink" href="#module-qiime.util" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qiime.util.redirected_stdio">
+<code class="descclassname">qiime.util.</code><code class="descname">redirected_stdio</code><span class="sig-paren">(</span><em>stdout=None</em>, <em>stderr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.util.redirected_stdio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
 <div class="section" id="module-qiime">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qiime" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
@@ -267,11 +278,6 @@
 <code class="descname">get_index_paths</code><span class="sig-paren">(</span><em>relative=True</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.Visualization.get_index_paths" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="qiime.Visualization.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.Visualization.save" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="class">
@@ -286,11 +292,6 @@
 <dl class="classmethod">
 <dt id="qiime.Artifact.import_data">
 <em class="property">classmethod </em><code class="descname">import_data</code><span class="sig-paren">(</span><em>type</em>, <em>view</em>, <em>view_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.Artifact.import_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="qiime.Artifact.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.Artifact.save" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -319,6 +320,7 @@
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-qiime.metadata">qiime.metadata module</a></li>
 <li><a class="reference internal" href="#module-qiime.plugins">qiime.plugins module</a></li>
+<li><a class="reference internal" href="#module-qiime.util">qiime.util module</a></li>
 <li><a class="reference internal" href="#module-qiime">Module contents</a></li>
 </ul>
 </li>

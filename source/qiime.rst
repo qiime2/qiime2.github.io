@@ -30,6 +30,14 @@ qiime.plugins module
     :undoc-members:
     :show-inheritance:
 
+qiime.util module
+-----------------
+
+.. automodule:: qiime.util
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Importing Data &#8212; QIIME 2 2.0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="QIIME 2 2.0.3 documentation" href="index.html" />
+    <link rel="next" title="Installing and Using QIIME 2" href="Installing-and-using-QIIME-2.html" />
+    <link rel="prev" title="Glossary" href="Glossary.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p><em>This page assumes that you have already run through the <a class="reference external" href="Installing-and-using-QIIME-2.html">Installing and using QIIME 2</a> documentation.</em></p>
+<div class="section" id="importing-data">
+<span id="importing-data"></span><h1>Importing Data<a class="headerlink" href="#importing-data" title="Permalink to this headline">¶</a></h1>
+<p>In order to use QIIME 2, we require input data to be wrapped in <code class="docutils literal"><span class="pre">Artifacts</span></code>. This is what enables distributed, automatic, provenance tracking, and semantic type validation. Because your initial data will not start out as an Artifact we need to <em>import</em> the data into something the QIIME 2 framework can understand.</p>
+<p>This is simple with <code class="docutils literal"><span class="pre">q2cli</span></code>, first let&#8217;s download an example <code class="docutils literal"><span class="pre">biom</span></code> table:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -sO https://dl.dropboxusercontent.com/u/2868868/data/qiime2/feature-table.biom
+</pre></div>
+</div>
+<p>Next we will use the import command from <code class="docutils literal"><span class="pre">qiime</span> <span class="pre">tools</span></code>, it requires a type, input-path, and output-path:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime tools import --help
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">qiime</span> <span class="n">tools</span> <span class="kn">import</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span>
+
+  <span class="n">Import</span> <span class="n">data</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">QIIME</span> <span class="n">Artifact</span><span class="o">.</span> <span class="n">See</span>
+  <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">2.</span><span class="n">qiime</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">Importing</span><span class="o">-</span><span class="n">data</span> <span class="k">for</span> <span class="n">usage</span> <span class="n">examples</span> <span class="ow">and</span> <span class="n">details</span> <span class="n">on</span> <span class="n">the</span>
+  <span class="n">file</span> <span class="n">types</span> <span class="ow">and</span> <span class="n">associated</span> <span class="n">semantic</span> <span class="n">types</span> <span class="n">that</span> <span class="n">can</span> <span class="n">be</span> <span class="n">imported</span><span class="o">.</span>
+
+<span class="n">Options</span><span class="p">:</span>
+  <span class="o">--</span><span class="nb">type</span> <span class="n">TEXT</span>         <span class="n">The</span> <span class="n">semantic</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">the</span> <span class="n">new</span> <span class="n">artifact</span><span class="o">.</span>  <span class="p">[</span><span class="n">required</span><span class="p">]</span>
+  <span class="o">--</span><span class="nb">input</span><span class="o">-</span><span class="n">path</span> <span class="n">PATH</span>   <span class="n">Path</span> <span class="n">to</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span> <span class="n">that</span> <span class="n">should</span> <span class="n">be</span> <span class="n">imported</span><span class="o">.</span>
+                      <span class="p">[</span><span class="n">required</span><span class="p">]</span>
+  <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">path</span> <span class="n">PATH</span>  <span class="n">Path</span> <span class="n">where</span> <span class="n">output</span> <span class="n">artifact</span> <span class="n">should</span> <span class="n">be</span> <span class="n">written</span><span class="o">.</span>
+                      <span class="p">[</span><span class="n">required</span><span class="p">]</span>
+  <span class="o">--</span><span class="n">help</span>              <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Providing the following arguments will import a <code class="docutils literal"><span class="pre">FeatureTable[Frequency]</span></code> Artifact:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime tools import --type <span class="s2">&quot;FeatureTable[Frequency]&quot;</span> --input-path feature-table.biom --output-path ft-freqs
+</pre></div>
+</div>
+<p>Because we were dealing with a <code class="docutils literal"><span class="pre">biom</span></code> table of counts, we chose the semantic type of <code class="docutils literal"><span class="pre">FeatureTable[Frequency]</span></code>.
+Now we have a QIIME 2 Artifact called <code class="docutils literal"><span class="pre">ft-freqs.qza</span></code> that we can start using!</p>
+<p>We can view a summary of that table as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime feature-table summarize --i-table ft-freqs.qza --o-visualization ft-freqs-summary
+qiime tools view ft-freqs-summary.qzv
+
+To see what semantic types are available in QIIME <span class="m">2</span> and to learn more about them, see the <span class="o">[</span>Semantic Types<span class="o">](</span>Semantic-types.html<span class="o">)</span> section of our documentation.
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Glossary.html" title="previous chapter">Glossary</a></li>
+      <li>Next: <a href="Installing-and-using-QIIME-2.html" title="next chapter">Installing and Using QIIME 2</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Importing-data.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, QIIME 2 Development Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/Importing-data.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/qiime2/qiime2" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

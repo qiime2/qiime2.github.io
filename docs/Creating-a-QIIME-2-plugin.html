@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Creating a QIIME 2 Plugin &#8212; QIIME 2 2.0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="QIIME 2 2.0.3 documentation" href="index.html" />
+    <link rel="next" title="Glossary" href="Glossary.html" />
+    <link rel="prev" title="Artifact API" href="Artifact-API.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p><em>This document is a work in progress, and serves as basic instructions for creating a QIIME 2 plugin. The draft will be completed during our alpha release phase.</em></p>
+<div class="section" id="creating-a-qiime-2-plugin">
+<span id="creating-a-qiime-2-plugin"></span><h1>Creating a QIIME 2 Plugin<a class="headerlink" href="#creating-a-qiime-2-plugin" title="Permalink to this headline">¶</a></h1>
+<p>Creating a QIIME 2 plugin allows you to provide microbiome analysis functionality to QIIME 2 users. A plugin can be a standalone software project, or you can make a few small additions to your existing software project to make it a QIIME 2 plugin. Creating a single QIIME 2 plugin will make your functionality accessible through any QIIME 2 interface, including <a class="reference external" href="https://github.com/qiime2/qiime-studio">QIIME Studio</a> (a graphical user interface), <a class="reference external" href="https://github.com/qiime2/q2cli">q2cli</a> (a QIIME 2 command line interface), and the <a class="reference external" href="'Artifact-API.html'">Artifact API</a> (ideal for interactive use, for example in <a class="reference external" href="http://jupyter.org">Jupyter Notebooks</a>).</p>
+<div class="section" id="overview">
+<span id="overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>There are several high-level steps to creating a QIIME 2 plugin:</p>
+<ol class="simple">
+<li>A QIIME 2 plugin must define one or more Python 3 functions that will be accessible through QIIME. The plugin must be a Python 3 package that can be installed with <code class="docutils literal"><span class="pre">setuptools</span></code>.</li>
+<li>The plugin must then instantiate a <code class="docutils literal"><span class="pre">qiime.plugin.Plugin</span></code> object and define some information including the name of the plugin and its URL. In the plugin package&#8217;s <code class="docutils literal"><span class="pre">setup.py</span></code> file, this instance will be defined as an entry point.</li>
+<li>The plugin must then register its functions as QIIME 2 <code class="docutils literal"><span class="pre">Actions</span></code>, which will be accessible to users through any of the QIIME 2 interfaces.</li>
+<li>Optionally, the plugin should be distributed through <a class="reference external" href="https://anaconda.org/">Anaconda</a>, as that will simplify its installation for QIIME 2 users (since that is the supported mechanism for installing QIIME 2).</li>
+</ol>
+<p>These steps are covered in detail in this document.</p>
+<p>Writing a simple QIIME 2 plugin should be a very straightforward process. For example, the <a class="reference external" href="https://github.com/qiime2/q2-emperor"><code class="docutils literal"><span class="pre">q2-emperor</span></code></a> plugin, which connects <a class="reference external" href="https://github.com/biocore/emperor">Emperor</a> to QIIME 2, is written in only around 100 lines of code. It is a standalone plugin that defines how and which functionality in Emperor should be accessible through QIIME 2. Plugins will vary in their complexity. For example, a plugin that defines a lot of new functionality would likely be quite a bit bigger. <a class="reference external" href="https://github.com/qiime2/q2-diversity"><code class="docutils literal"><span class="pre">q2-diversity</span></code></a> is a good example of this. Unlike <code class="docutils literal"><span class="pre">q2-emperor</span></code>, there is some specific functionality (and associated unit tests) defined in this project, and it depends on several other Python 3 compatible libraries.</p>
+<p>Before starting to write a plugin, you should <a class="reference external" href="Installing-and-using-QIIME-2.html">install QIIME 2 and some plugins</a> to familiarize yourself with the system and to provide a means for testing your plugin.</p>
+</div>
+<div class="section" id="initializing-a-plugin-package">
+<span id="initializing-a-plugin-package"></span><h2>Initializing a plugin package<a class="headerlink" href="#initializing-a-plugin-package" title="Permalink to this headline">¶</a></h2>
+<p>For convenience, tools are provided to help developers initialize a QIIME 2 plugin package. An initialized plugin includes examples of functionality that can be executed out of the box (no changes to the plugin&#8217;s code are required!). Once you are familiar with the example functionality provided in the plugin, you can update relevant sections of the plugin to support your own functionality. There are comments in the generated plugin code indicating relevant sections to remove or update, and this document describes each plugin component in detail below.</p>
+<p><strong>Note:</strong> QIIME 2 does not place restrictions on how a plugin package is structured. The plugin initializer tool uses the package structure and conventions present in other QIIME 2 plugins. This package structure is simply a recommendation and a starting point for developing your own plugin; feel free to modify the initialized plugin as necessary or desired.</p>
+<p>The easiest way to initialize a plugin package is via <a class="reference external" href="https://github.com/qiime2/q2cli">q2cli&#8217;s</a> <code class="docutils literal"><span class="pre">qiime</span> <span class="pre">tools</span> <span class="pre">plugin-init</span></code> command. For example, to initialize a plugin package directory in your current working directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime tools plugin-init
+</pre></div>
+</div>
+<p>Use the <code class="docutils literal"><span class="pre">--output-dir</span></code> option to create a plugin directory in a location other than the current working directory.</p>
+<p>After running the above command, you will be prompted to enter several pieces of information about your plugin, including the plugin name, description, author details, etc. <strong>Defaults are provided as examples only</strong>; you must provide the relevant information about your plugin. The prompts only gather basic information about your plugin so a functioning package can be initialized. There are other pieces of the plugin that can be manually configured (detailed below).</p>
+<p>Assuming all default values were used in response to the above command&#8217;s prompts, you should see that a <code class="docutils literal"><span class="pre">q2-my-plugin</span></code> directory was created in your current working directory. This directory contains the initialized plugin package based on the information you provided.</p>
+<p>The plugin includes some example functionality that you can try out (for example, using <code class="docutils literal"><span class="pre">q2cli</span></code>). If you intend to use the plugin&#8217;s example functionality, install <a class="reference external" href="https://github.com/qiime2/q2-dummy-types">q2-dummy-types</a>, which provides the semantic types used by the plugin:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda install -c qiime2 q2-dummy-types
+</pre></div>
+</div>
+<p>Next, navigate to the plugin directory that was created and install the plugin in development mode:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> q2-my-plugin
+pip install -e .
+</pre></div>
+</div>
+<p>To see that the plugin is discoverable by QIIME, run:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime
+</pre></div>
+</div>
+<p>You should see <code class="docutils literal"><span class="pre">my-plugin</span></code> listed as one of the available commands. To see the available plugin commands:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime my-plugin --help
+</pre></div>
+</div>
+<p>Once you are done exploring the plugin&#8217;s example functionality, you are now ready to remove the example functionality from the plugin and update it with your own functionality. The relevant sections of the code that need to change are commented.</p>
+<p>The following sections describe various plugin components, configuration, and how to define your own functionality. As you read through the following sections, it may be useful to refer back to the example functionality defined in the plugin to see how it is implemented.</p>
+<p><strong>Note:</strong> The initialized plugin also includes some basic continuous integration configuration for <a class="reference external" href="https://travis-ci.org/">Travis CI</a>, including flake8 linting/style-checking and a nose command for running unit tests (you&#8217;ll need to enable Travis CI on your repository for your tests to be run). There aren&#8217;t any unit tests included in the initialized plugin; plugin developers are encouraged to add unit tests for their plugin&#8217;s functionality. The initialized plugin&#8217;s code is flake8-compliant.</p>
+</div>
+<div class="section" id="plugin-components">
+<span id="plugin-components"></span><h2>Plugin components<a class="headerlink" href="#plugin-components" title="Permalink to this headline">¶</a></h2>
+<p>The following discussion will refer to the <a class="reference external" href="https://github.com/qiime2/q2-diversity"><code class="docutils literal"><span class="pre">q2-diversity</span></code></a> plugin as an example. This plugin will serve as a reference as you define your own QIIME 2 plugins, in addition to the initialized plugin you created above. See the instructions <a class="reference external" href="Home.html#programming-with-qiime-2">here</a> if you have questions related to plugin development.</p>
+<div class="section" id="define-functionality">
+<span id="define-functionality"></span><h3>Define functionality<a class="headerlink" href="#define-functionality" title="Permalink to this headline">¶</a></h3>
+<p>QIIME 2 users will access your functionality as QIIME 2 <code class="docutils literal"><span class="pre">Actions</span></code>. These <code class="docutils literal"><span class="pre">Actions</span></code> can be either <code class="docutils literal"><span class="pre">Methods</span></code> and/or <code class="docutils literal"><span class="pre">Visualizers</span></code>. A <code class="docutils literal"><span class="pre">Method</span></code> is an operation that takes some combination of <code class="docutils literal"><span class="pre">Artifacts</span></code> and <code class="docutils literal"><span class="pre">Parameters</span></code> as input, and produces one or more <code class="docutils literal"><span class="pre">Artifacts</span></code> as output. These output <code class="docutils literal"><span class="pre">Artifacts</span></code> could subsequently be used as input to other QIIME 2 <code class="docutils literal"><span class="pre">Methods</span></code> or <code class="docutils literal"><span class="pre">Visualizers</span></code>. A <code class="docutils literal"><span class="pre">Visualizer</span></code> is an operation that takes some combination of <code class="docutils literal"><span class="pre">Artifacts</span></code> and <code class="docutils literal"><span class="pre">Parameters</span></code> as input, and produces exactly one <code class="docutils literal"><span class="pre">Visualization</span></code> as output. Output <code class="docutils literal"><span class="pre">Visualizations</span></code>, by definition, cannot be used as input to other QIIME 2 <code class="docutils literal"><span class="pre">Methods</span></code> or <code class="docutils literal"><span class="pre">Visualizers</span></code>. <code class="docutils literal"><span class="pre">Methods</span></code> therefore can produce intermediate or terminal output in a QIIME analysis, while <code class="docutils literal"><span class="pre">Visualizers</span></code> can only create terminal output.</p>
+<p>This section will describe how to define Python 3 functions that can be converted to QIIME 2 <code class="docutils literal"><span class="pre">Methods</span></code> or <code class="docutils literal"><span class="pre">Visualizers</span></code>. These functions can be defined anywhere in your project (QIIME doesn&#8217;t put restrictions on how your plugin package is structured).</p>
+<div class="section" id="create-a-function-that-will-be-registered-as-a-method">
+<span id="create-a-function-that-will-be-registered-as-a-method"></span><h4>Create a function that will be registered as a <code class="docutils literal"><span class="pre">Method</span></code><a class="headerlink" href="#create-a-function-that-will-be-registered-as-a-method" title="Permalink to this headline">¶</a></h4>
+<p>A function that can be registered as a <code class="docutils literal"><span class="pre">Method</span></code> will have a Python 3 API, and the inputs and outputs for that function will be annotated with their data types using <a class="reference external" href="http://mypy-lang.org/">mypy syntax</a> (mypy annotation does not impact functionality though the syntax is new to Python 3, so these can be added to existing functions in your Python 3 software project). An example is <a class="reference external" href="https://github.com/qiime2/q2-diversity/blob/0.0.2/q2_diversity/_beta.py#L28"><code class="docutils literal"><span class="pre">q2_diversity.beta_phylogenetic</span></code></a>, which takes a <code class="docutils literal"><span class="pre">biom.Table</span></code>, an <code class="docutils literal"><span class="pre">skbio.TreeNode</span></code> and a <code class="docutils literal"><span class="pre">str</span></code> as input, and produces an <code class="docutils literal"><span class="pre">skbio.DistanceMatrix</span></code> as output. The signature for this function is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">beta_phylogenetic</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">biom</span><span class="o">.</span><span class="n">Table</span><span class="p">,</span> <span class="n">phylogeny</span><span class="p">:</span> <span class="n">skbio</span><span class="o">.</span><span class="n">TreeNode</span><span class="p">,</span>
+                      <span class="n">metric</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">skbio</span><span class="o">.</span><span class="n">DistanceMatrix</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>As far as QIIME is concerned, it doesn&#8217;t matter what happens inside this function (as long as it adheres to the contract defined by the signature regarding the input and output types). For example, <a class="reference external" href="https://github.com/qiime2/q2-diversity/blob/0.0.2/q2_diversity/_beta.py#L28"><code class="docutils literal"><span class="pre">q2_diversity.beta_phylogenetic</span></code></a> is making some calls to the <code class="docutils literal"><span class="pre">skbio</span></code> and <code class="docutils literal"><span class="pre">biom</span></code> APIs, but it could be doing anything, including making system calls (if your plugin is wrapping a command line application), calling an R library, etc.</p>
+</div>
+<div class="section" id="create-a-function-that-will-be-registered-as-a-visualizer">
+<span id="create-a-function-that-will-be-registered-as-a-visualizer"></span><h4>Create a function that will be registered as a <code class="docutils literal"><span class="pre">Visualizer</span></code><a class="headerlink" href="#create-a-function-that-will-be-registered-as-a-visualizer" title="Permalink to this headline">¶</a></h4>
+<p>Defining a function that can be registered as a <code class="docutils literal"><span class="pre">Visualizer</span></code> is very similar to defining one that can be registered as a <code class="docutils literal"><span class="pre">Method</span></code> with a few additional requirements.</p>
+<p>First, the first parameter to this function must be <code class="docutils literal"><span class="pre">output_dir</span></code>. This parameter should be annotated with type <code class="docutils literal"><span class="pre">str</span></code>.</p>
+<p>Next, at least one <code class="docutils literal"><span class="pre">index.*</span></code> file must be written to <code class="docutils literal"><span class="pre">output_dir</span></code> by the function. This index file will provide the starting point for your users to explore the <code class="docutils literal"><span class="pre">Visualization</span></code> object that is generated by the <code class="docutils literal"><span class="pre">Visualizer</span></code>. Index files with different extensions can be created by the function (e.g., <code class="docutils literal"><span class="pre">index.html</span></code>, <code class="docutils literal"><span class="pre">index.tsv</span></code>, <code class="docutils literal"><span class="pre">index.png</span></code>), but at least one must be created. You can write whatever files you want to <code class="docutils literal"><span class="pre">output_dir</span></code>, including tables, graphics, and textual descriptions of the results, but you should expect that your users will want to find those files through your index file(s). If your function does create many different files, an <code class="docutils literal"><span class="pre">index.html</span></code> containing links to those files is likely to be helpful.</p>
+<p>Finally, the function cannot return anything, and its return type should be annotated as <code class="docutils literal"><span class="pre">None</span></code>.</p>
+<p><a class="reference external" href="https://github.com/qiime2/q2-diversity/blob/0.0.2/q2_diversity/_alpha.py#L69"><code class="docutils literal"><span class="pre">q2_diversity.alpha_compare</span></code></a> is an example of a function that can be registered as a <code class="docutils literal"><span class="pre">Visualizer</span></code>. In addition to its <code class="docutils literal"><span class="pre">output_dir</span></code>, it takes alpha diversity results in a <code class="docutils literal"><span class="pre">pandas.Series</span></code> and sample metadata in a <code class="docutils literal"><span class="pre">qiime.MetadataCategory</span></code> and creates several different files (figures and tables) that are linked and/or presented in an <code class="docutils literal"><span class="pre">index.html</span></code> file. The signature of this function is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">alpha_compare</span><span class="p">(</span><span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">alpha_diversity</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span>
+                  <span class="n">metadata</span><span class="p">:</span> <span class="n">qiime</span><span class="o">.</span><span class="n">MetadataCategory</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="instantiating-a-plugin">
+<span id="instantiating-a-plugin"></span><h3>Instantiating a plugin<a class="headerlink" href="#instantiating-a-plugin" title="Permalink to this headline">¶</a></h3>
+<p>The next step is to instantiate a QIIME 2 <code class="docutils literal"><span class="pre">Plugin</span></code> object. This might look like the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiime.plugin</span> <span class="kn">import</span> <span class="n">Plugin</span>
+<span class="kn">import</span> <span class="nn">q2_diversity</span>
+
+<span class="n">plugin</span> <span class="o">=</span> <span class="n">Plugin</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;diversity&#39;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="n">q2_diversity</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
+    <span class="n">website</span><span class="o">=</span><span class="s1">&#39;https://github.com/qiime2/q2-diversity&#39;</span><span class="p">,</span>
+    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;q2_diversity&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This will provide QIIME with essential information about your <code class="docutils literal"><span class="pre">Plugin</span></code>.</p>
+<p>The <code class="docutils literal"><span class="pre">name</span></code> parameter is the name that users will use to access your plugin from within different QIIME 2 interfaces. It should be a &#8220;command line friendly&#8221; name, so should not contain spaces or punctuation. (Avoiding uppercase characters and using dashes (<code class="docutils literal"><span class="pre">-</span></code>) instead of underscores (<code class="docutils literal"><span class="pre">_</span></code>) are preferable in the plugin <code class="docutils literal"><span class="pre">name</span></code>, but not required).</p>
+<p><code class="docutils literal"><span class="pre">version</span></code> should be the version number of your package (the same that is used in its <code class="docutils literal"><span class="pre">setup.py</span></code>).</p>
+<p><code class="docutils literal"><span class="pre">website</span></code> should be the page where you&#8217;d like end users to refer for more information about your package.</p>
+<p><code class="docutils literal"><span class="pre">package</span></code> should be the Python package name for your plugin.</p>
+<p>While not shown in the previous example, plugin developers can optionally provide the following parameters to <code class="docutils literal"><span class="pre">qiime.plugin.Plugin</span></code>:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">citation_text</span></code>: free text describing how users should cite the plugin and/or the underlying tools it wraps. If not provided, users are told to cite the <code class="docutils literal"><span class="pre">website</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">user_support_text</span></code>: free text describing how users should get help with the plugin (e.g. issue tracker, StackOverflow tag, mailing list, etc.). If not provided, users are referred to the <code class="docutils literal"><span class="pre">website</span></code> for support.</li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">Plugin</span></code> object can live anywhere in your project, but by convention it will be in a file called <code class="docutils literal"><span class="pre">plugin_setup.py</span></code>. For an example, see <a class="reference external" href="https://github.com/qiime2/q2-diversity/blob/0.0.2/q2_diversity/plugin_setup.py"><code class="docutils literal"><span class="pre">q2_diversity/plugin_setup.py</span></code></a>.</p>
+</div>
+<div class="section" id="registering-an-action">
+<span id="registering-an-action"></span><h3>Registering an <code class="docutils literal"><span class="pre">Action</span></code><a class="headerlink" href="#registering-an-action" title="Permalink to this headline">¶</a></h3>
+<p>Once you have functions that you&#8217;d like to register as <code class="docutils literal"><span class="pre">Actions</span></code> (i.e., either <code class="docutils literal"><span class="pre">Methods</span></code> or <code class="docutils literal"><span class="pre">Visualizers</span></code>), and you&#8217;ve instantiated your <code class="docutils literal"><span class="pre">Plugin</span></code> object, you are ready to register those functions. This will likely be done in the file where the <code class="docutils literal"><span class="pre">Plugin</span></code> object was instantiated, as it will use that instance (which will be referred to as <code class="docutils literal"><span class="pre">plugin</span></code> in the following examples).</p>
+<div class="section" id="registering-a-method">
+<span id="registering-a-method"></span><h4>Registering a <code class="docutils literal"><span class="pre">Method</span></code><a class="headerlink" href="#registering-a-method" title="Permalink to this headline">¶</a></h4>
+<p>First we&#8217;ll register a <code class="docutils literal"><span class="pre">Method</span></code> by calling <code class="docutils literal"><span class="pre">plugin.methods.register_function</span></code> as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">q2_types</span> <span class="kn">import</span> <span class="p">(</span><span class="n">FeatureTable</span><span class="p">,</span> <span class="n">Frequency</span><span class="p">,</span> <span class="n">Phylogeny</span><span class="p">,</span>
+                      <span class="n">DistanceMatrix</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">qiime.plugin</span> <span class="kn">import</span> <span class="n">Str</span><span class="p">,</span> <span class="n">Properties</span><span class="p">,</span> <span class="n">MetadataCategory</span>
+
+<span class="kn">import</span> <span class="nn">q2_diversity</span>
+<span class="kn">import</span> <span class="nn">q2_diversity._beta</span> <span class="kn">as</span> <span class="nn">beta</span>
+
+<span class="n">plugin</span><span class="o">.</span><span class="n">methods</span><span class="o">.</span><span class="n">register_function</span><span class="p">(</span>
+    <span class="n">function</span><span class="o">=</span><span class="n">q2_diversity</span><span class="o">.</span><span class="n">beta_phylogenetic</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;table&#39;</span><span class="p">:</span> <span class="n">FeatureTable</span><span class="p">[</span><span class="n">Frequency</span><span class="p">],</span>
+            <span class="s1">&#39;phylogeny&#39;</span><span class="p">:</span> <span class="n">Phylogeny</span><span class="p">},</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">Str</span> <span class="o">%</span> <span class="n">Choices</span><span class="p">(</span><span class="n">beta</span><span class="o">.</span><span class="n">phylogenetic_metrics</span><span class="p">())},</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;distance_matrix&#39;</span><span class="p">,</span> <span class="n">DistanceMatrix</span> <span class="o">%</span> <span class="n">Properties</span><span class="p">(</span><span class="s1">&#39;phylogenetic&#39;</span><span class="p">))],</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Beta diversity (phylogenetic)&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Computes a user-specified phylogenetic beta diversity metric&quot;</span>
+                 <span class="s2">&quot; for all pairs of samples in a feature table.&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The values being provided are:</p>
+<p><code class="docutils literal"><span class="pre">function</span></code>: The function to be registered as a method.</p>
+<p><code class="docutils literal"><span class="pre">inputs</span></code>: A dictionary indicating the parameter name and its <em>semantic type</em>, for each input <code class="docutils literal"><span class="pre">Artifact</span></code>. These semantic types differ from the data types that you provided in your <code class="docutils literal"><span class="pre">mypy</span></code> annotation of the input, as semantic types describe the data, where the data types indicate the structure of the data. The currently available semantic types are listed in <a class="reference external" href="Semantic-types.html">Semantic types</a>, along with a discussion of the motivation for defining semantic types. In the example above we&#8217;re indicating that the <code class="docutils literal"><span class="pre">table</span></code> parameter must be a <code class="docutils literal"><span class="pre">FeatureTable</span></code> of <code class="docutils literal"><span class="pre">Frequency</span></code> (i.e. counts), and that the <code class="docutils literal"><span class="pre">phylogeny</span></code> parameter must be a <code class="docutils literal"><span class="pre">Phylogeny</span></code>.  Notice that the keys in <code class="docutils literal"><span class="pre">inputs</span></code> map directly to the parameter names in <code class="docutils literal"><span class="pre">q2_diversity.beta_phylogenetic</span></code>.</p>
+<p><code class="docutils literal"><span class="pre">parameters</span></code>: A dictionary indicating the parameter name and its <em>semantic type</em>, for each input <code class="docutils literal"><span class="pre">Parameter</span></code>. These parameters are primitive values (i.e., non-<code class="docutils literal"><span class="pre">Artifacts</span></code>). In the example above, we&#8217;re indicating that the <code class="docutils literal"><span class="pre">metric</span></code> should be a string from a specific set (in this case, the set of known phylogenetic beta diversity metrics).</p>
+<p><code class="docutils literal"><span class="pre">outputs</span></code>: A list of tuples indicating each output name and its semantic type.</p>
+<p><code class="docutils literal"><span class="pre">name</span></code>: A human-readable name for the <code class="docutils literal"><span class="pre">Method</span></code>. This may be presented to users in interfaces.</p>
+<p><code class="docutils literal"><span class="pre">description</span></code>: A human-readable description of the <code class="docutils literal"><span class="pre">Method</span></code>. This may be presented to users in interfaces.</p>
+</div>
+<div class="section" id="registering-a-visualizer">
+<span id="registering-a-visualizer"></span><h4>Registering a <code class="docutils literal"><span class="pre">Visualizer</span></code><a class="headerlink" href="#registering-a-visualizer" title="Permalink to this headline">¶</a></h4>
+<p>Registering <code class="docutils literal"><span class="pre">Visualizers</span></code> is the same as registering <code class="docutils literal"><span class="pre">Methods</span></code>, with two exceptions.</p>
+<p>First, you call <code class="docutils literal"><span class="pre">plugin.visualizers.register_function</span></code> to register a <code class="docutils literal"><span class="pre">Visualizer</span></code>.</p>
+<p>Next, you do not provide <code class="docutils literal"><span class="pre">outputs</span></code> when making this call, as <code class="docutils literal"><span class="pre">Visualizers</span></code>, by definition, do not return anything (they only write to <code class="docutils literal"><span class="pre">output_dir</span></code>). Since <code class="docutils literal"><span class="pre">output_dir</span></code> is a required parameter, you do not include this in the <code class="docutils literal"><span class="pre">parameters</span></code> list (it would be the same for every <code class="docutils literal"><span class="pre">Visualizer</span></code> that was ever registered, so it is added automatically).</p>
+<p>Registering <code class="docutils literal"><span class="pre">q2_diversity.alpha_compare</span></code> as a <code class="docutils literal"><span class="pre">Visualizer</span></code> looks like the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plugin</span><span class="o">.</span><span class="n">visualizers</span><span class="o">.</span><span class="n">register_function</span><span class="p">(</span>
+    <span class="n">function</span><span class="o">=</span><span class="n">q2_diversity</span><span class="o">.</span><span class="n">alpha_compare</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;alpha_diversity&#39;</span><span class="p">:</span> <span class="n">SampleData</span><span class="p">[</span><span class="n">AlphaDiversity</span><span class="p">]},</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;metadata&#39;</span><span class="p">:</span> <span class="n">MetadataCategory</span><span class="p">},</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Alpha diversity comparisons&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Visually and statistically compare groups of alpha diversity&quot;</span>
+                 <span class="s2">&quot; values.&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="defining-your-plugin-object-as-an-entry-point">
+<span id="defining-your-plugin-object-as-an-entry-point"></span><h3>Defining your plugin object as an entry point<a class="headerlink" href="#defining-your-plugin-object-as-an-entry-point" title="Permalink to this headline">¶</a></h3>
+<p>Finally, you need to tell QIIME where to find your instantiated <code class="docutils literal"><span class="pre">Plugin</span></code> object. This is done by defining it as an <code class="docutils literal"><span class="pre">entry_point</span></code> in your project&#8217;s <code class="docutils literal"><span class="pre">setup.py</span></code> file. In <code class="docutils literal"><span class="pre">q2-diversity</span></code>, this is done as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">setup</span><span class="p">(</span>
+    <span class="o">...</span>
+    <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;qiime.plugins&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;q2-diversity=q2_diversity.plugin_setup:plugin&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The relevant key in the <code class="docutils literal"><span class="pre">entry_points</span></code> dictionary will be <code class="docutils literal"><span class="pre">'qiime.plugins'</span></code>, and the value will be a single element list containing a string formatted as <code class="docutils literal"><span class="pre">&lt;distribution-name&gt;=&lt;import-path&gt;:&lt;instance-name&gt;</span></code>. <code class="docutils literal"><span class="pre">&lt;distribution-name&gt;</span></code> is the name of the Python package distribution (matching the value passed for <code class="docutils literal"><span class="pre">name</span></code> in this call to <code class="docutils literal"><span class="pre">setup</span></code>); <code class="docutils literal"><span class="pre">&lt;import-path&gt;</span></code> is the import path for the <code class="docutils literal"><span class="pre">Plugin</span></code> instance you created above; and <code class="docutils literal"><span class="pre">&lt;instance-name&gt;</span></code> is the name for the <code class="docutils literal"><span class="pre">Plugin</span></code> instance you created above.</p>
+</div>
+</div>
+<div class="section" id="advanced-plugin-development">
+<span id="advanced-plugin-development"></span><h2>Advanced plugin development<a class="headerlink" href="#advanced-plugin-development" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="defining-semantic-types-data-layouts-and-view-readers-writers">
+<span id="defining-semantic-types-data-layouts-and-view-readers-writers"></span><h3>Defining semantic types, data layouts, and view readers/writers<a class="headerlink" href="#defining-semantic-types-data-layouts-and-view-readers-writers" title="Permalink to this headline">¶</a></h3>
+<p>This section is currently stubbed and will be completed during the alpha release phase. For examples of plugins that define semantic types, data layouts, and view readers/writers, see <a class="reference external" href="https://github.com/qiime2/q2-dummy-types">q2-dummy-types</a> and <a class="reference external" href="https://github.com/qiime2/q2-types">q2-types</a>. <code class="docutils literal"><span class="pre">q2-dummy-types</span></code> provides simple examples with heavily-commented code, and <code class="docutils literal"><span class="pre">q2-types</span></code> provides more complex types for bioinformatics/microbiome analyses.</p>
+</div>
+</div>
+<div class="section" id="example-plugins">
+<span id="example-plugins"></span><h2>Example plugins<a class="headerlink" href="#example-plugins" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/qiime2/q2-emperor">q2-emperor</a>: This is a simple plugin that is defined as a stand-alone package. It provides QIIME 2 access to functionality defined in <a class="reference external" href="https://github.com/biocore/emperor">Emperor</a>.</li>
+<li><a class="reference external" href="https://github.com/qiime2/q2-diversity">q2-diversity</a>: This is a more complex plugin, where the plugin is defined in the same package as the functionality that it&#8217;s providing access to.</li>
+<li><a class="reference external" href="https://github.com/qiime2/q2-dummy-types">q2-dummy-types</a>: This is a simple plugin defining dummy QIIME 2 types to serve as examples for plugin developers creating their own semantic types.</li>
+<li><a class="reference external" href="https://github.com/qiime2/q2-types">q2-types</a>: This is a more complex plugin defining real-world QIIME 2 types for bioinformatics/microbiome analyses.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Creating a QIIME 2 Plugin</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#initializing-a-plugin-package">Initializing a plugin package</a></li>
+<li><a class="reference internal" href="#plugin-components">Plugin components</a><ul>
+<li><a class="reference internal" href="#define-functionality">Define functionality</a><ul>
+<li><a class="reference internal" href="#create-a-function-that-will-be-registered-as-a-method">Create a function that will be registered as a <code class="docutils literal"><span class="pre">Method</span></code></a></li>
+<li><a class="reference internal" href="#create-a-function-that-will-be-registered-as-a-visualizer">Create a function that will be registered as a <code class="docutils literal"><span class="pre">Visualizer</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#instantiating-a-plugin">Instantiating a plugin</a></li>
+<li><a class="reference internal" href="#registering-an-action">Registering an <code class="docutils literal"><span class="pre">Action</span></code></a><ul>
+<li><a class="reference internal" href="#registering-a-method">Registering a <code class="docutils literal"><span class="pre">Method</span></code></a></li>
+<li><a class="reference internal" href="#registering-a-visualizer">Registering a <code class="docutils literal"><span class="pre">Visualizer</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defining-your-plugin-object-as-an-entry-point">Defining your plugin object as an entry point</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-plugin-development">Advanced plugin development</a><ul>
+<li><a class="reference internal" href="#defining-semantic-types-data-layouts-and-view-readers-writers">Defining semantic types, data layouts, and view readers/writers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-plugins">Example plugins</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Artifact-API.html" title="previous chapter">Artifact API</a></li>
+      <li>Next: <a href="Glossary.html" title="next chapter">Glossary</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Creating-a-QIIME-2-plugin.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, QIIME 2 Development Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/Creating-a-QIIME-2-plugin.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/qiime2/qiime2" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

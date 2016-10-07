@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Artifact API &#8212; QIIME 2 2.0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="QIIME 2 2.0.3 documentation" href="index.html" />
+    <link rel="next" title="Creating a QIIME 2 Plugin" href="Creating-a-QIIME-2-plugin.html" />
+    <link rel="prev" title="General Information" href="Home.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="artifact-api">
+<span id="artifact-api"></span><h1>Artifact API<a class="headerlink" href="#artifact-api" title="Permalink to this headline">¶</a></h1>
+<p>The Artifact API is an application programmer interface for QIIME 2. This is useful for interactive use of QIIME 2, including in Jupyter Notebooks which is currently our primary target for use of this interface. This document will show you how use the Artifact API, and is intended to be run after you&#8217;ve run <a class="reference external" href="Installing-and-using-QIIME-2.html">Installing-and-using-QIIME-2</a>. The examples presented here assume that you already have QIIME and some plugins installed, and rely on the QIIME Artifacts you downloaded and generated in that tutorial.</p>
+<p>The Artifact API is a part of the QIIME 2 framework, so does not need to be installed separately. This API is automatically generated, depending on which plugins are currently installed. To see this in action, begin by uninstalling the <code class="docutils literal"><span class="pre">q2-feature-table</span></code> plugin.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda uninstall q2-feature-table
+</pre></div>
+</div>
+<p>Then, open a Python interpreter such as IPython and enter the following command. You should get an error telling you that the plugin you&#8217;re trying to access is not available. Leave the interpreter by typing <code class="docutils literal"><span class="pre">exit</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">qiime.plugins</span> <span class="kn">import</span> <span class="n">feature_table</span>
+<span class="go">ImportError: cannot import name &#39;feature_table&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">exit</span>
+</pre></div>
+</div>
+<p>Then, reinstall the <code class="docutils literal"><span class="pre">q2-feature-table</span></code> and <code class="docutils literal"><span class="pre">q2-diversity</span></code> plugins (<code class="docutils literal"><span class="pre">q2-diversity</span></code> was uninstalled automatically when we uninstalled <code class="docutils literal"><span class="pre">q2-feature-table</span></code> above because it depends on <code class="docutils literal"><span class="pre">q2-feature-table</span></code>).</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda install -c qiime2 q2-feature-table q2-diversity
+</pre></div>
+</div>
+<p>Open your interpreter, and you should now be able to import this plugin:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">qiime.plugins</span> <span class="kn">import</span> <span class="n">feature_table</span>
+</pre></div>
+</div>
+<p>We&#8217;ll now explore some of the same methods and visualizers, but this time in the interpreter. First, we&#8217;ll load a QIIME 2 <code class="docutils literal"><span class="pre">Artifact</span></code>, in this case a feature table. We&#8217;ll then pass that to the <code class="docutils literal"><span class="pre">q2-feature-table</span></code> plugin&#8217;s <code class="docutils literal"><span class="pre">rarefy</span></code> method, which will return a new Artifact.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">qiime</span> <span class="kn">import</span> <span class="n">Artifact</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rarefied_table</span> <span class="o">=</span> <span class="n">feature_table</span><span class="o">.</span><span class="n">methods</span><span class="o">.</span><span class="n">rarefy</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">Artifact</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;feature-table-frequency.qza&#39;</span><span class="p">),</span> <span class="n">counts_per_sample</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>While we recommend working with QIIME 2 <code class="docutils literal"><span class="pre">Artifacts</span></code> directly, it is possible to access the underlying data in one or more compatible <em>views</em> (or Python objects/data structures). For example, you may want to access the rarefied feature table that was just created as a <code class="docutils literal"><span class="pre">biom.Table</span></code> object. You can do this as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">biom</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">biom_table</span> <span class="o">=</span> <span class="n">rarefied_table</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">biom</span><span class="o">.</span><span class="n">Table</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">biom_table</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="go"># Constructed from biom file</span>
+<span class="go">#OTU ID K3.H    K3.Z    M2.Middle.L K3.A    K3.R</span>
+<span class="go">New.CleanUp.ReferenceOTU0   2.0 0.0 0.0 0.0 0.0</span>
+<span class="go">New.CleanUp.ReferenceOTU1   0.0 1.0 1.0 0.0 1.0</span>
+<span class="go">New.CleanUp.ReferenceOTU3   0.0 0.0 0.0 0.0 0.0</span>
+<span class="go">New.CleanUp.ReferenceOTU7   0.0 0.0 0.0 0.0 0.0</span>
+<span class="go">New.CleanUp.ReferenceOTU9   0.0 0.0 0.0 0.0 0.0</span>
+</pre></div>
+</div>
+<p>You can also view the artifact&#8217;s data as a <code class="docutils literal"><span class="pre">pandas.DataFrame</span></code> object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">rarefied_table</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">             New.CleanUp.ReferenceOTU0  New.CleanUp.ReferenceOTU1  \</span>
+<span class="go">K3.H                               2.0                        0.0</span>
+<span class="go">K3.Z                               0.0                        1.0</span>
+<span class="go">M2.Middle.L                        0.0                        1.0</span>
+<span class="go">K3.A                               0.0                        0.0</span>
+<span class="go">K3.R                               0.0                        1.0</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">rarefied_table</span></code> artifact can be passed to methods of other QIIME 2 plugins. Here we&#8217;ll compute the <em>Observed OTUs</em> alpha diversity metric using the <code class="docutils literal"><span class="pre">q2-diversity</span></code> plugin. The resulting <code class="docutils literal"><span class="pre">Artifact</span></code> will be of type <code class="docutils literal"><span class="pre">SampleData[AlphaDiversity]</span></code>, and we can access a <code class="docutils literal"><span class="pre">pd.Series</span></code> as a view of this <code class="docutils literal"><span class="pre">Artifact</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">qiime.plugins</span> <span class="kn">import</span> <span class="n">diversity</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observed_otus</span> <span class="o">=</span> <span class="n">diversity</span><span class="o">.</span><span class="n">methods</span><span class="o">.</span><span class="n">alpha</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">rarefied_table</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;observed_otus&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observed_otus</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
+<span class="go">K3.H           37</span>
+<span class="go">K3.Z           49</span>
+<span class="go">M2.Middle.L    32</span>
+<span class="go">K3.A           35</span>
+<span class="go">K3.R           48</span>
+<span class="go">K3.V           46</span>
+<span class="go">K3.K           36</span>
+<span class="go">K3.B           48</span>
+<span class="gp">...</span>
+<span class="go">Name: observed_otus, dtype: int64</span>
+</pre></div>
+</div>
+<p>Finally, we can save our <code class="docutils literal"><span class="pre">Artifacts</span></code> and exit the interpreter as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rarefied_table</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;rare.qza&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observed_otus</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;oo.qza&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">exit</span>
+</pre></div>
+</div>
+<p>One powerful feature of QIIME 2 is that you can combine interfaces. For example, you could develop a Python script that automatically processes files for you to generate results as we just did, and then perform analysis of those files using the command line interface or <a class="reference external" href="QIIME-Studio.html">QIIME Studio</a>. For example, you could now continue your analysis and view some results on the command line as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>qiime diversity alpha-compare --i-alpha-diversity oo.qza --m-metadata-file q2-demo-sample-md.tsv --m-metadata-category Subject --o-visualization oo-compare
+qiime tools view oo-compare.qzv
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Home.html" title="previous chapter">General Information</a></li>
+      <li>Next: <a href="Creating-a-QIIME-2-plugin.html" title="next chapter">Creating a QIIME 2 Plugin</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Artifact-API.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, QIIME 2 Development Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/Artifact-API.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/qiime2/qiime2" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

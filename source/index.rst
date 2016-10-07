@@ -6,14 +6,18 @@
 Welcome to QIIME 2's documentation!
 ===================================
 
-Contents:
+Wiki:
 
 .. toctree::
    :maxdepth: 2
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   Home
+   Artifact-API
+   Creating-a-QIIME-2-plugin
+   Glossary
+   Importing-data
+   Installing-and-using-QIIME-2
+   Plugins
+   Publishing-a-plugin-on-conda
+   QIIME-Studio
+   Semantic-types
