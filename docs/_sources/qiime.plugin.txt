@@ -28,6 +28,22 @@ qiime.plugin.template module
     :undoc-members:
     :show-inheritance:
 
+qiime.plugin.testing module
+---------------------------
+
+.. automodule:: qiime.plugin.testing
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+qiime.plugin.util module
+------------------------
+
+.. automodule:: qiime.plugin.util
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

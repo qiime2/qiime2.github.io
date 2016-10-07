@@ -286,7 +286,7 @@ returned by this factory will cause <cite>is_semantic_type</cite> to return True
 <span id="qiime-core-type-signature-module"></span><h2>qiime.core.type.signature module<a class="headerlink" href="#module-qiime.core.type.signature" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="qiime.core.type.signature.MethodSignature">
-<em class="property">class </em><code class="descclassname">qiime.core.type.signature.</code><code class="descname">MethodSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.MethodSignature" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">qiime.core.type.signature.</code><code class="descname">MethodSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>defaults</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.MethodSignature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiime.core.type.signature.PipelineSignature" title="qiime.core.type.signature.PipelineSignature"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.signature.PipelineSignature</span></code></a></p>
 <dl class="classmethod">
 <dt id="qiime.core.type.signature.MethodSignature.from_function">
@@ -302,7 +302,7 @@ returned by this factory will cause <cite>is_semantic_type</cite> to return True
 
 <dl class="class">
 <dt id="qiime.core.type.signature.PipelineSignature">
-<em class="property">class </em><code class="descclassname">qiime.core.type.signature.</code><code class="descname">PipelineSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.PipelineSignature" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">qiime.core.type.signature.</code><code class="descname">PipelineSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>defaults</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.PipelineSignature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="qiime.core.type.signature.PipelineSignature.check_types">
@@ -323,7 +323,7 @@ returned by this factory will cause <cite>is_semantic_type</cite> to return True
 
 <dl class="class">
 <dt id="qiime.core.type.signature.VisualizerSignature">
-<em class="property">class </em><code class="descclassname">qiime.core.type.signature.</code><code class="descname">VisualizerSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.VisualizerSignature" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">qiime.core.type.signature.</code><code class="descname">VisualizerSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>defaults</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.signature.VisualizerSignature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiime.core.type.signature.PipelineSignature" title="qiime.core.type.signature.PipelineSignature"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.signature.PipelineSignature</span></code></a></p>
 <dl class="classmethod">
 <dt id="qiime.core.type.signature.VisualizerSignature.from_function">
@@ -388,7 +388,7 @@ returned by this factory will cause <cite>is_semantic_type</cite> to return True
 
 <dl class="class">
 <dt id="qiime.core.type.PipelineSignature">
-<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">PipelineSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.PipelineSignature" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">PipelineSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>defaults</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.PipelineSignature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="qiime.core.type.PipelineSignature.check_types">
@@ -409,7 +409,7 @@ returned by this factory will cause <cite>is_semantic_type</cite> to return True
 
 <dl class="class">
 <dt id="qiime.core.type.MethodSignature">
-<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">MethodSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.MethodSignature" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">MethodSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>defaults</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.MethodSignature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiime.core.type.signature.PipelineSignature" title="qiime.core.type.signature.PipelineSignature"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.signature.PipelineSignature</span></code></a></p>
 <dl class="classmethod">
 <dt id="qiime.core.type.MethodSignature.from_function">
@@ -425,7 +425,7 @@ returned by this factory will cause <cite>is_semantic_type</cite> to return True
 
 <dl class="class">
 <dt id="qiime.core.type.VisualizerSignature">
-<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">VisualizerSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.VisualizerSignature" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">qiime.core.type.</code><code class="descname">VisualizerSignature</code><span class="sig-paren">(</span><em>inputs</em>, <em>parameters</em>, <em>defaults</em>, <em>outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.type.VisualizerSignature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qiime.core.type.signature.PipelineSignature" title="qiime.core.type.signature.PipelineSignature"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.type.signature.PipelineSignature</span></code></a></p>
 <dl class="classmethod">
 <dt id="qiime.core.type.VisualizerSignature.from_function">

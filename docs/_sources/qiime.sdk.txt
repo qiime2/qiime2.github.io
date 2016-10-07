@@ -43,6 +43,14 @@ qiime.sdk.result module
     :undoc-members:
     :show-inheritance:
 
+qiime.sdk.util module
+---------------------
+
+.. automodule:: qiime.sdk.util
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

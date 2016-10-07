@@ -50,7 +50,7 @@
 <li class="toctree-l2"><a class="reference internal" href="qiime.core.testing.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qiime.core.testing.html#module-qiime.core.testing.format">qiime.core.testing.format module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qiime.core.testing.html#module-qiime.core.testing.method">qiime.core.testing.method module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qiime.core.testing.html#qiime-core-testing-plugin-module">qiime.core.testing.plugin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime.core.testing.html#module-qiime.core.testing.plugin">qiime.core.testing.plugin module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qiime.core.testing.html#module-qiime.core.testing.transformer">qiime.core.testing.transformer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qiime.core.testing.html#module-qiime.core.testing.type">qiime.core.testing.type module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qiime.core.testing.html#module-qiime.core.testing.util">qiime.core.testing.util module</a></li>
@@ -99,7 +99,7 @@
 <span id="qiime-core-archiver-module"></span><h2>qiime.core.archiver module<a class="headerlink" href="#module-qiime.core.archiver" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="qiime.core.archiver.Archiver">
-<em class="property">class </em><code class="descclassname">qiime.core.archiver.</code><code class="descname">Archiver</code><span class="sig-paren">(</span><em>uuid</em>, <em>type</em>, <em>format: str</em>, <em>provenance</em>, <em>archive_filepath=None</em>, <em>data_initializer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.archiver.Archiver" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">qiime.core.archiver.</code><code class="descname">Archiver</code><span class="sig-paren">(</span><em>type</em>, <em>format: str</em>, <em>provenance</em>, <em>data_initializer</em>, <em>uuid_=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.archiver.Archiver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <dl class="attribute">
 <dt id="qiime.core.archiver.Archiver.DATA_DIRNAME">
@@ -141,7 +141,7 @@
 <em class="property">classmethod </em><code class="descname">peek</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.archiver.Archiver.peek" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>tuple</dt>
-<dd>Tuple of UUID, type, and provenance.</dd>
+<dd>Tuple of UUID, type, format, and provenance.</dd>
 </dl>
 </dd></dl>
 
@@ -398,45 +398,10 @@ type (e.g. fields are accessible as attributes).</p>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 </dd></dl>
 
-<dl class="exception">
-<dt id="qiime.core.util.UnknownTypeError">
-<em class="property">exception </em><code class="descclassname">qiime.core.util.</code><code class="descname">UnknownTypeError</code><a class="headerlink" href="#qiime.core.util.UnknownTypeError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">TypeError</span></code></p>
-</dd></dl>
-
 <dl class="function">
 <dt id="qiime.core.util.overrides">
 <code class="descclassname">qiime.core.util.</code><code class="descname">overrides</code><span class="sig-paren">(</span><em>cls</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.util.overrides" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="function">
-<dt id="qiime.core.util.parse_format">
-<code class="descclassname">qiime.core.util.</code><code class="descname">parse_format</code><span class="sig-paren">(</span><em>format_str</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.util.parse_format" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="qiime.core.util.parse_type">
-<code class="descclassname">qiime.core.util.</code><code class="descname">parse_type</code><span class="sig-paren">(</span><em>string</em>, <em>expect=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.util.parse_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a string into a TypeExpression</p>
-<dl class="docutils">
-<dt>string</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>The string type expression to convert into a TypeExpression</dd>
-<dt>expect</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">{&#8216;semantic&#8217;, &#8216;primitive&#8217;, &#8216;visualization&#8217;}, optional</span><dd>Will raise a TypeError if the resulting TypeExpression is not a member
-of <cite>expect</cite>.</dd>
-</dl>
-<p>TypeExpression</p>
-<dl class="docutils">
-<dt>ValueError</dt>
-<dd>Raised when <cite>expect</cite> has an invalid value</dd>
-<dt>TypeError</dt>
-<dd>Raised when the expression contains invalid characters</dd>
-<dt>TypeError</dt>
-<dd>Raised when the expression does not result in a member of <cite>expect</cite></dd>
-<dt>UnknownTypeError</dt>
-<dd>Raised when unkown types are present in the expression.</dd>
-</dl>
-</dd></dl>
 
 <dl class="function">
 <dt id="qiime.core.util.tuplize">

@@ -50,7 +50,7 @@
 <dl class="class">
 <dt id="qiime.sdk.tests.test_artifact.TestArtifact">
 <em class="property">class </em><code class="descclassname">qiime.sdk.tests.test_artifact.</code><code class="descname">TestArtifact</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_artifact.TestArtifact" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code>, <a class="reference internal" href="qiime.core.testing.html#qiime.core.testing.util.ArchiveTestingMixin" title="qiime.core.testing.util.ArchiveTestingMixin"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.testing.util.ArchiveTestingMixin</span></code></a></p>
 <dl class="method">
 <dt id="qiime.sdk.tests.test_artifact.TestArtifact.setUp">
 <code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_artifact.TestArtifact.setUp" title="Permalink to this definition">¶</a></dt>
@@ -159,11 +159,6 @@
 <dl class="method">
 <dt id="qiime.sdk.tests.test_artifact.TestArtifact.test_load_different_type_with_multiple_view_types">
 <code class="descname">test_load_different_type_with_multiple_view_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_artifact.TestArtifact.test_load_different_type_with_multiple_view_types" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="qiime.sdk.tests.test_artifact.TestArtifact.test_load_from_externally_created_zipfile">
-<code class="descname">test_load_from_externally_created_zipfile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_artifact.TestArtifact.test_load_from_externally_created_zipfile" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -391,7 +386,7 @@
 <dl class="class">
 <dt id="qiime.sdk.tests.test_result.TestResult">
 <em class="property">class </em><code class="descclassname">qiime.sdk.tests.test_result.</code><code class="descname">TestResult</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_result.TestResult" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code>, <a class="reference internal" href="qiime.core.testing.html#qiime.core.testing.util.ArchiveTestingMixin" title="qiime.core.testing.util.ArchiveTestingMixin"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.testing.util.ArchiveTestingMixin</span></code></a></p>
 <dl class="method">
 <dt id="qiime.sdk.tests.test_result.TestResult.setUp">
 <code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_result.TestResult.setUp" title="Permalink to this definition">¶</a></dt>
@@ -468,13 +463,13 @@
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="qiime.sdk.tests.test_result.TestResult.test_save_artifact_warning">
-<code class="descname">test_save_artifact_warning</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_result.TestResult.test_save_artifact_warning" title="Permalink to this definition">¶</a></dt>
+<dt id="qiime.sdk.tests.test_result.TestResult.test_save_artifact_auto_extension">
+<code class="descname">test_save_artifact_auto_extension</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_result.TestResult.test_save_artifact_auto_extension" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="qiime.sdk.tests.test_result.TestResult.test_save_visualization_warning">
-<code class="descname">test_save_visualization_warning</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_result.TestResult.test_save_visualization_warning" title="Permalink to this definition">¶</a></dt>
+<dt id="qiime.sdk.tests.test_result.TestResult.test_save_visualization_auto_extension">
+<code class="descname">test_save_visualization_auto_extension</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_result.TestResult.test_save_visualization_auto_extension" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -485,7 +480,7 @@
 <dl class="class">
 <dt id="qiime.sdk.tests.test_visualization.TestVisualization">
 <em class="property">class </em><code class="descclassname">qiime.sdk.tests.test_visualization.</code><code class="descname">TestVisualization</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_visualization.TestVisualization" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code>, <a class="reference internal" href="qiime.core.testing.html#qiime.core.testing.util.ArchiveTestingMixin" title="qiime.core.testing.util.ArchiveTestingMixin"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.testing.util.ArchiveTestingMixin</span></code></a></p>
 <dl class="method">
 <dt id="qiime.sdk.tests.test_visualization.TestVisualization.setUp">
 <code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_visualization.TestVisualization.setUp" title="Permalink to this definition">¶</a></dt>
@@ -572,11 +567,6 @@
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="qiime.sdk.tests.test_visualization.TestVisualization.test_load_from_externally_created_zipfile">
-<code class="descname">test_load_from_externally_created_zipfile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_visualization.TestVisualization.test_load_from_externally_created_zipfile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="qiime.sdk.tests.test_visualization.TestVisualization.test_load_with_archive_filepath_modified">
 <code class="descname">test_load_with_archive_filepath_modified</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_visualization.TestVisualization.test_load_with_archive_filepath_modified" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -634,7 +624,7 @@
 <dl class="class">
 <dt id="qiime.sdk.tests.test_visualizer.TestVisualizer">
 <em class="property">class </em><code class="descclassname">qiime.sdk.tests.test_visualizer.</code><code class="descname">TestVisualizer</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_visualizer.TestVisualizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code>, <a class="reference internal" href="qiime.core.testing.html#qiime.core.testing.util.ArchiveTestingMixin" title="qiime.core.testing.util.ArchiveTestingMixin"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.testing.util.ArchiveTestingMixin</span></code></a></p>
 <dl class="method">
 <dt id="qiime.sdk.tests.test_visualizer.TestVisualizer.setUp">
 <code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.sdk.tests.test_visualizer.TestVisualizer.setUp" title="Permalink to this definition">¶</a></dt>

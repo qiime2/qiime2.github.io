@@ -50,7 +50,7 @@
 <dl class="class">
 <dt id="qiime.core.tests.test_archiver.TestArchiver">
 <em class="property">class </em><code class="descclassname">qiime.core.tests.test_archiver.</code><code class="descname">TestArchiver</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code>, <a class="reference internal" href="qiime.core.testing.html#qiime.core.testing.util.ArchiveTestingMixin" title="qiime.core.testing.util.ArchiveTestingMixin"><code class="xref py py-class docutils literal"><span class="pre">qiime.core.testing.util.ArchiveTestingMixin</span></code></a></p>
 <dl class="method">
 <dt id="qiime.core.tests.test_archiver.TestArchiver.setUp">
 <code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.setUp" title="Permalink to this definition">¶</a></dt>
@@ -62,8 +62,48 @@
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_load_archive">
+<code class="descname">test_load_archive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_load_archive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_load_dotfile_only_archive">
+<code class="descname">test_load_dotfile_only_archive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_load_dotfile_only_archive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_load_empty_archive">
+<code class="descname">test_load_empty_archive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_load_empty_archive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_load_ignores_directory_members">
+<code class="descname">test_load_ignores_directory_members</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_load_ignores_directory_members" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_load_ignores_root_dotfiles">
+<code class="descname">test_load_ignores_root_dotfiles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_load_ignores_root_dotfiles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_load_invalid_uuid4_root_dir">
+<code class="descname">test_load_invalid_uuid4_root_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_load_invalid_uuid4_root_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="qiime.core.tests.test_archiver.TestArchiver.test_load_metadata_file_decoding">
 <code class="descname">test_load_metadata_file_decoding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_load_metadata_file_decoding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_load_multiple_root_dirs">
+<code class="descname">test_load_multiple_root_dirs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_load_multiple_root_dirs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_load_root_dir_metadata_uuid_mismatch">
+<code class="descname">test_load_root_dir_metadata_uuid_mismatch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_load_root_dir_metadata_uuid_mismatch" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -74,6 +114,31 @@
 <dl class="method">
 <dt id="qiime.core.tests.test_archiver.TestArchiver.test_metadata_pprint_yaml">
 <code class="descname">test_metadata_pprint_yaml</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_metadata_pprint_yaml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_parse_uuid_invalid">
+<code class="descname">test_parse_uuid_invalid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_parse_uuid_invalid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_parse_uuid_valid">
+<code class="descname">test_parse_uuid_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_parse_uuid_valid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_save_archive_members">
+<code class="descname">test_save_archive_members</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_save_archive_members" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_save_excludes_dotfiles_in_data_dir">
+<code class="descname">test_save_excludes_dotfiles_in_data_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_save_excludes_dotfiles_in_data_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qiime.core.tests.test_archiver.TestArchiver.test_save_invalid_filepath">
+<code class="descname">test_save_invalid_filepath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qiime.core.tests.test_archiver.TestArchiver.test_save_invalid_filepath" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
