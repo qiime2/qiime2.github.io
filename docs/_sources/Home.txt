@@ -1,6 +1,6 @@
 # General Information
 
-**Disclaimer:** *These wiki pages serve as temporary documentation for QIIME&trade; 2 while we're in our alpha release phase. They are primarily geared toward QIIME developers or users who are interested in experimenting with an alpha version of QIIME 2. Our documentation will move to www.qiime.org when we transition to our beta release phase. The wiki instructions will currently will not work on Windows.*
+**Disclaimer:** *These wiki pages serve as temporary documentation for QIIME™ 2 while we're in our alpha release phase. They are primarily geared toward QIIME developers or users who are interested in experimenting with an alpha version of QIIME 2. Our documentation will move to www.qiime.org when we transition to our beta release phase. The wiki instructions will currently will not work on Windows.*
 
 See the [release notes](https://github.com/qiime2/qiime2/releases/tag/2.0.1) for details about the QIIME 2 alpha release.
 
