@@ -22,6 +22,10 @@
         text-align: right;
     }
 
+    div.sphinxsidebar ul li {
+        list-style-type: none;
+    }
+
     /* Remove the black colored banner to match qiime.org */
     .github img {
         display: none;
