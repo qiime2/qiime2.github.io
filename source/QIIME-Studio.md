@@ -1,6 +1,6 @@
 # QIIME Studio
 
-QIIME Studio is a graphical user interface for QIIME 2. This document will show you how to install and use QIIME Studio, and is intended to be run after you've run [[Installing-and-using-QIIME-2]]. The examples presented here assume that you already have QIIME and some plugins installed, and rely on the QIIME Artifacts you downloaded and generated in that tutorial.
+QIIME Studio is a graphical user interface for QIIME 2. This document will show you how to install and use QIIME Studio, and is intended to be run after you've run [Installing-and-using-QIIME-2](Installing-and-using-QIIME-2.html). The examples presented here assume that you already have QIIME and some plugins installed, and rely on the QIIME Artifacts you downloaded and generated in that tutorial.
 
 **IMPORTANT: Currently installing QIIME Studio requires a source installation, soon after alpha we will provide a package distribution/installer which will greatly simplify this process.**
 
@@ -31,7 +31,7 @@ npm start
 
 This will bring up a new window that looks like the following:
 
-[[images/studio-1.png]]
+![](_static/studio-1.png)
 
 There are four sections to this interface. At the top you are able to select the directory in which you want to work. By default it starts in your home directory, but we want to change it to our current `qiime2-test` directory. To do so click the `Change Directory` button and navigate to that directory.
 
@@ -43,14 +43,14 @@ Finally in the bottom pane you'll see the artifacts and visualizations in the cu
 
 Once you have changed directories you should see 12 artifacts and 2 visualizations. Choose the ``Rarefy table`` method from the `feature-table` plugin, which will change the page to look like the following:
 
-[[images/studio-2.png]]
+![](_static/studio-2.png)
 
 On this page, you'll select your inputs and name your outputs. The inputs corresponding to QIIME artifacts (``Input Artifact: table`` on this method) will be populated with the available artifacts that are of the correct type. Fill in a rarefaction depth (`counts_per_sample`) of 100, name the output file `ft_100`, and click ``Go!``. This starts a job which will show in the ``Active Jobs`` tab until it completes where it will appear in the ``Finished Jobs`` (or ``Failed Jobs`` if something went wrong).
 
-[[images/studio-3.png]]
+![](_static/studio-3.png)
 
 You can select a job by clicking on it, bringing up a new window describing further details:
 
-[[images/studio-4.png]]
+![](_static/studio-4.png)
 
 You should spend a few minutes experimenting with other plugins.

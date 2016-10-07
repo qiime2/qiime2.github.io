@@ -44,7 +44,7 @@
             
   <div class="section" id="artifact-api">
 <span id="artifact-api"></span><h1>Artifact API<a class="headerlink" href="#artifact-api" title="Permalink to this headline">¶</a></h1>
-<p>The Artifact API is an application programmer interface for QIIME 2. This is useful for interactive use of QIIME 2, including in Jupyter Notebooks which is currently our primary target for use of this interface. This document will show you how use the Artifact API, and is intended to be run after you&#8217;ve run [[Installing-and-using-QIIME-2]]. The examples presented here assume that you already have QIIME and some plugins installed, and rely on the QIIME Artifacts you downloaded and generated in that tutorial.</p>
+<p>The Artifact API is an application programmer interface for QIIME 2. This is useful for interactive use of QIIME 2, including in Jupyter Notebooks which is currently our primary target for use of this interface. This document will show you how use the Artifact API, and is intended to be run after you&#8217;ve run <a class="reference external" href="Installing-and-using-QIIME-2.html">Installing-and-using-QIIME-2</a>. The examples presented here assume that you already have QIIME and some plugins installed, and rely on the QIIME Artifacts you downloaded and generated in that tutorial.</p>
 <p>The Artifact API is a part of the QIIME 2 framework, so does not need to be installed separately. This API is automatically generated, depending on which plugins are currently installed. To see this in action, begin by uninstalling the <code class="docutils literal"><span class="pre">q2-feature-table</span></code> plugin.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>conda uninstall q2-feature-table
 </pre></div>
@@ -116,7 +116,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">exit</span>
 </pre></div>
 </div>
-<p>One powerful feature of QIIME 2 is that you can combine interfaces. For example, you could develop a Python script that automatically processes files for you to generate results as we just did, and then perform analysis of those files using the command line interface or [[QIIME Studio]]. For example, you could now continue your analysis and view some results on the command line as follows:</p>
+<p>One powerful feature of QIIME 2 is that you can combine interfaces. For example, you could develop a Python script that automatically processes files for you to generate results as we just did, and then perform analysis of those files using the command line interface or <a class="reference external" href="QIIME-Studio.html">QIIME Studio</a>. For example, you could now continue your analysis and view some results on the command line as follows:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>qiime diversity alpha-compare --i-alpha-diversity oo.qza --m-metadata-file q2-demo-sample-md.tsv --m-metadata-category Subject --o-visualization oo-compare
 qiime tools view oo-compare.qzv
 </pre></div>

@@ -21,16 +21,3 @@ Wiki:
    Publishing-a-plugin-on-conda
    QIIME-Studio
    Semantic-types
-
-
-Contents:
-
-.. toctree::
-   :maxdepth: 2
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

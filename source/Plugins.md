@@ -8,6 +8,6 @@ The ``Status`` categories used in this spreadsheet are the following:
 * ``Planning`` : The plugin is in the planning stage. Development has not officially started, but it is expected to start soon. Someone has already committed to working on this plugin. There may be ``Unmet dependencies`` that are blocking its transition to ``Pre-release development``.
 * ``Needs developer`` : The plugin is in the early planning phase. It represents functionality that is needed or wanted, but no one has yet committed to working on this plugin. There may be ``Unmet dependencies`` that are blocking its transition to ``Planning`` or ``Pre-release development``.
 
-If you'd like to develop a QIIME 2 plugin, get in touch on our Slack channel (details [here](https://github.com/qiime2/qiime2/wiki#programming-with-qiime-2)) to request edit access to the spreadsheet.
+If you'd like to develop a QIIME 2 plugin, get in touch on our Slack channel (details [here](Home.html#programming-with-qiime-2)) to request edit access to the spreadsheet.
 
-If you're looking for documentation on plugin development, see [[Creating a QIIME 2 plugin]].
+If you're looking for documentation on plugin development, see [Creating a QIIME 2 plugin](Creating-a-QIIME-2-plugin.html).

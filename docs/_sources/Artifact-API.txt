@@ -1,6 +1,6 @@
 # Artifact API
 
-The Artifact API is an application programmer interface for QIIME 2. This is useful for interactive use of QIIME 2, including in Jupyter Notebooks which is currently our primary target for use of this interface. This document will show you how use the Artifact API, and is intended to be run after you've run [[Installing-and-using-QIIME-2]]. The examples presented here assume that you already have QIIME and some plugins installed, and rely on the QIIME Artifacts you downloaded and generated in that tutorial.
+The Artifact API is an application programmer interface for QIIME 2. This is useful for interactive use of QIIME 2, including in Jupyter Notebooks which is currently our primary target for use of this interface. This document will show you how use the Artifact API, and is intended to be run after you've run [Installing-and-using-QIIME-2](Installing-and-using-QIIME-2.html). The examples presented here assume that you already have QIIME and some plugins installed, and rely on the QIIME Artifacts you downloaded and generated in that tutorial.
 
 The Artifact API is a part of the QIIME 2 framework, so does not need to be installed separately. This API is automatically generated, depending on which plugins are currently installed. To see this in action, begin by uninstalling the ``q2-feature-table`` plugin.
 
@@ -91,7 +91,7 @@ Finally, we can save our ``Artifacts`` and exit the interpreter as follows:
 >>> exit
 ```
 
-One powerful feature of QIIME 2 is that you can combine interfaces. For example, you could develop a Python script that automatically processes files for you to generate results as we just did, and then perform analysis of those files using the command line interface or [[QIIME Studio]]. For example, you could now continue your analysis and view some results on the command line as follows:
+One powerful feature of QIIME 2 is that you can combine interfaces. For example, you could develop a Python script that automatically processes files for you to generate results as we just did, and then perform analysis of those files using the command line interface or [QIIME Studio](QIIME-Studio.html). For example, you could now continue your analysis and view some results on the command line as follows:
 
 ```bash
 qiime diversity alpha-compare --i-alpha-diversity oo.qza --m-metadata-file q2-demo-sample-md.tsv --m-metadata-category Subject --o-visualization oo-compare

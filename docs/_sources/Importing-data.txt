@@ -1,4 +1,4 @@
-*This page assumes that you have already run through the [Installing and using QIIME 2](https://github.com/qiime2/qiime2/wiki/Installing-and-using-QIIME-2) documentation.*
+*This page assumes that you have already run through the [Installing and using QIIME 2](Installing-and-using-QIIME-2.html) documentation.*
 
 # Importing Data
 
@@ -42,4 +42,4 @@ We can view a summary of that table as follows:
 qiime feature-table summarize --i-table ft-freqs.qza --o-visualization ft-freqs-summary
 qiime tools view ft-freqs-summary.qzv
 
-To see what semantic types are available in QIIME 2 and to learn more about them, see the [Semantic Types](https://github.com/qiime2/qiime2/wiki/Semantic-types) section of our documentation.
+To see what semantic types are available in QIIME 2 and to learn more about them, see the [Semantic Types](Semantic-types.html) section of our documentation.

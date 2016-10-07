@@ -2,7 +2,7 @@
 
 # Creating a QIIME 2 Plugin
 
-Creating a QIIME 2 plugin allows you to provide microbiome analysis functionality to QIIME 2 users. A plugin can be a standalone software project, or you can make a few small additions to your existing software project to make it a QIIME 2 plugin. Creating a single QIIME 2 plugin will make your functionality accessible through any QIIME 2 interface, including [QIIME Studio](https://github.com/qiime2/qiime-studio) (a graphical user interface), [q2cli](https://github.com/qiime2/q2cli) (a QIIME 2 command line interface), and the [[Artifact API]] (ideal for interactive use, for example in [Jupyter Notebooks](http://jupyter.org)).
+Creating a QIIME 2 plugin allows you to provide microbiome analysis functionality to QIIME 2 users. A plugin can be a standalone software project, or you can make a few small additions to your existing software project to make it a QIIME 2 plugin. Creating a single QIIME 2 plugin will make your functionality accessible through any QIIME 2 interface, including [QIIME Studio](https://github.com/qiime2/qiime-studio) (a graphical user interface), [q2cli](https://github.com/qiime2/q2cli) (a QIIME 2 command line interface), and the [Artifact API]('Artifact-API.html') (ideal for interactive use, for example in [Jupyter Notebooks](http://jupyter.org)).
 
 ## Overview
 
@@ -17,7 +17,7 @@ These steps are covered in detail in this document.
 
 Writing a simple QIIME 2 plugin should be a very straightforward process. For example, the [``q2-emperor``](https://github.com/qiime2/q2-emperor) plugin, which connects [Emperor](https://github.com/biocore/emperor) to QIIME 2, is written in only around 100 lines of code. It is a standalone plugin that defines how and which functionality in Emperor should be accessible through QIIME 2. Plugins will vary in their complexity. For example, a plugin that defines a lot of new functionality would likely be quite a bit bigger. [``q2-diversity``](https://github.com/qiime2/q2-diversity) is a good example of this. Unlike ``q2-emperor``, there is some specific functionality (and associated unit tests) defined in this project, and it depends on several other Python 3 compatible libraries.
 
-Before starting to write a plugin, you should [install QIIME 2 and some plugins](https://github.com/qiime2/qiime2/wiki/Installing-and-using-QIIME-2) to familiarize yourself with the system and to provide a means for testing your plugin.
+Before starting to write a plugin, you should [install QIIME 2 and some plugins](Installing-and-using-QIIME-2.html) to familiarize yourself with the system and to provide a means for testing your plugin.
 
 ## Initializing a plugin package
 
@@ -70,7 +70,7 @@ The following sections describe various plugin components, configuration, and ho
 
 ## Plugin components
 
-The following discussion will refer to the [``q2-diversity``](https://github.com/qiime2/q2-diversity) plugin as an example. This plugin will serve as a reference as you define your own QIIME 2 plugins, in addition to the initialized plugin you created above. See the instructions [here](https://github.com/qiime2/qiime2/wiki#programming-with-qiime-2) if you have questions related to plugin development.
+The following discussion will refer to the [``q2-diversity``](https://github.com/qiime2/q2-diversity) plugin as an example. This plugin will serve as a reference as you define your own QIIME 2 plugins, in addition to the initialized plugin you created above. See the instructions [here](Home.html#programming-with-qiime-2) if you have questions related to plugin development.
 
 ### Define functionality
 
@@ -172,7 +172,7 @@ The values being provided are:
 
 ``function``: The function to be registered as a method.
 
-``inputs``: A dictionary indicating the parameter name and its *semantic type*, for each input ``Artifact``. These semantic types differ from the data types that you provided in your ``mypy`` annotation of the input, as semantic types describe the data, where the data types indicate the structure of the data. The currently available semantic types are listed in [[Semantic types]], along with a discussion of the motivation for defining semantic types. In the example above we're indicating that the ``table`` parameter must be a ``FeatureTable`` of ``Frequency`` (i.e. counts), and that the ``phylogeny`` parameter must be a ``Phylogeny``.  Notice that the keys in ``inputs`` map directly to the parameter names in ``q2_diversity.beta_phylogenetic``.
+``inputs``: A dictionary indicating the parameter name and its *semantic type*, for each input ``Artifact``. These semantic types differ from the data types that you provided in your ``mypy`` annotation of the input, as semantic types describe the data, where the data types indicate the structure of the data. The currently available semantic types are listed in [Semantic types](Semantic-types.html), along with a discussion of the motivation for defining semantic types. In the example above we're indicating that the ``table`` parameter must be a ``FeatureTable`` of ``Frequency`` (i.e. counts), and that the ``phylogeny`` parameter must be a ``Phylogeny``.  Notice that the keys in ``inputs`` map directly to the parameter names in ``q2_diversity.beta_phylogenetic``.
 
 ``parameters``: A dictionary indicating the parameter name and its *semantic type*, for each input ``Parameter``. These parameters are primitive values (i.e., non-``Artifacts``). In the example above, we're indicating that the ``metric`` should be a string from a specific set (in this case, the set of known phylogenetic beta diversity metrics).
 
