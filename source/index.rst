@@ -1,12 +1,16 @@
-.. QIIME 2 documentation master file, created by
-   sphinx-quickstart on Wed Sep 14 12:55:57 2016.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+QIIME 2 documentation
+=====================
 
-Welcome to QIIME 2's documentation!
-===================================
+This page is the official source of information on QIIME™ 2, including installation instructions as tutorials.
 
-Wiki:
+.. toctree::
+   :maxdepth: 2
+   Tutorials
+
+Ported Wiki documentation
+-------------------------
+
+The following pages were ported from our pre-release Wiki. The information on these pages may be out of date, and the links to these pages should not be considered stable. As we update these pages we'll remove them from this section.
 
 .. toctree::
    :maxdepth: 2
