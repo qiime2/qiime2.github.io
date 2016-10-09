@@ -1,11 +1,21 @@
 QIIME 2 documentation
 =====================
 
-This page is the official source of information on QIIME™ 2, including installation instructions as tutorials.
+This site is the official source of information on QIIME™ 2, including installation instructions, tutorials, and other documentation. Visit http://qiime.org for information on QIIME™ 1.
+
+.. note:: QIIME 2 is in its **alpha release phase**. Since it is alpha software, it is not necessarily stable or complete. Commands, functionality, interfaces, and documentation **will change** as the software reaches beta status. QIIME 1 is still the recommended platform for microbiome analyses as it is relatively stable, feature-complete, and supports high-performance computing environments. QIIME 1 will continue to be supported through the end of 2017 to allow QIIME 2 to stabilize and users to transition to using this new software. Please give QIIME 2 a try and let us know how it can be improved by creating an issue on our `issue tracker`_.
+
+Table of contents
+-----------------
 
 .. toctree::
    :maxdepth: 2
-   Tutorials
+
+   overview
+   install
+   tutorials/index
+   plugins
+   interfaces/index
 
 Ported Wiki documentation
 -------------------------
@@ -15,13 +25,13 @@ The following pages were ported from our pre-release Wiki. The information on th
 .. toctree::
    :maxdepth: 2
 
-   Home
    Artifact-API
    Creating-a-QIIME-2-plugin
    Glossary
    Importing-data
-   Installing-and-using-QIIME-2
    Plugins
    Publishing-a-plugin-on-conda
    QIIME-Studio
    Semantic-types
+
+.. _`issue tracker`: https://github.com/qiime2/qiime2/issues
