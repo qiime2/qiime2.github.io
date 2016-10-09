@@ -1,0 +1,213 @@
+"88 soils" tutorial
+===================
+
+In this tutorial you'll use QIIME 2 to perform an analysis of soil samples from around the globe. A study based on these samples was originally published in `Lauber et al. (2009)`_. In that study, these samples had the hypervariable region 2 (V2) of the 16S rRNA sequenced on a Roche 454 instrument. The data used in this tutorial are based on a re-sequencing of those same samples on an Illumina HiSeq as part of the `Earth Microbiome Project`_. In this instance, the hypervariable region 4 (V4) of the 16S rRNA was sequenced.
+
+You should first look through the sample metadata to familiarize yourself with the samples used in this study. The `sample metadata`_ is available as a Google Spreadsheet. You should download this file as tab-separated text by selecting ``File`` > ``Download as`` > ``Tab-separated values``. Save the file as ``sample-metadata.tsv``.
+
+Prepare for the analysis
+------------------------
+
+First create a new directory and change to that directory.
+
+.. code-block:: shell
+
+   mkdir qiime2-88soils-tutorial
+   cd qiime2-88soils-tutorial
+
+Then, download the *demultiplexed sequences* that we'll use in this analysis. In this tutorial we'll work with a small subset (1%) of the complete sequence data so that the commands will run quickly. To see how this data was generated, and to learn how to start a QIIME 2 analysis from raw sequence data, see the :doc:`importing data tutorial` <importing/>`.
+
+.. code-block:: shell
+
+   curl -sO http://data.qiime.org/tutorials/88soils/88soils-tutorial-demux-1p.qza
+
+
+.. note::
+   *Demultiplexed sequences* refers to sequences that are already associated with samples. This format is commonly obtained from Illumina sequencing facilities, who will often provide per-sample fastq files.
+
+.. tip:: **QIIME 1 users:**
+   In QIIME 1, we generally suggested performing demultiplexing through QIIME (e.g., with ``split_libraries.py`` or ``split_libraries_fastq.py``) as this step also performed quality control of sequences. We now separate the demultiplexing and quality control steps, so you can begin QIIME 2 with either demultiplexed sequences (as we're doing here) or still-multiplexed sequences.
+
+Sequence quality control
+------------------------
+
+We'll begin by performing quality control on the demultiplexed sequences using `DADA2`_. DADA2 is a pipeline for detecting and correcting (where possible) Illumina amplicon sequence data. As implemented in the ``q2-dada2`` plugin, this quality control process will additionally filter any phiX reads (a common experimental artifact) that are identified in the sequencing data, and will filter chimeric sequences. The result of this step will be a ``FeatureTable[Frequency]`` artifact, which contains counts (frequencies) of each unique sequence in each sample in the dataset, and a ``FeatureData[Sequence]`` artifact, which maps feature identifiers in the ``FeatureTable`` to the sequence they represent.
+
+.. tip:: **QIIME 1 users:**
+   The ``FeatureTable[Frequency]`` artifact is the equivalent of the QIIME 1 OTU or BIOM table, and the ``FeatureData[Sequence]`` artifact is the equivalent of the QIIME 1 *representative sequences* file. Because the "OTUs" resulting from DADA2 are creating by grouping unique sequences, these are the equivalent of 100% OTUs from QIIME 1. In DADA2, these 100% OTUs are referred to as *denoised sequence variants*. In QIIME 2, these OTUs are higher resolution than the QIIME 1 default of 97% OTUs, and they're higher quality due to the DADA2 denoising process. This should therefore result in more accurate estimates of diversity and taxonomic composition of samples than was achieved with QIIME 1.
+
+The ``dada2 denoise`` method requires two parameters that are used in quality filtering: ``--p-trim-left m``, which trims off the first ``m`` bases of each sequence, and ``--p-trunc-len n`` which truncates each sequence at position ``m``. This allows the user to remove low quality regions of the sequences. To determine what values to pass for these two parameters, you should first run the ``dada2 plot-qualities`` visualizer, which will generate plots of the quality scores by position for a randomly selected set of samples. In the following command, we'll generate 10 quality plots (specified by passing ``--p-n 10``). Run the following command and view the resulting visualization.
+
+.. note::
+   As with all visualizers (i.e., commands that take a ``--o-visualization`` parameter), this will generate a ``.qzv`` file, which you can view using by passing it to ``qiime tools view``.
+
+.. tip:: **Question:**
+   What values would you choose for the ``--p-trunc-len`` and ``--p-trim-left`` in this case?
+
+.. code-block:: shell
+
+   qiime dada2 plot-qualities --i-demultiplexed-seqs 88soils-tutorial-demux-1p.qza --o-visualization 88soils-tutorial-demux-qual-plots --p-n 10
+
+In these plots, the quality of the initial bases seems to be high, so we won't trim any bases from the beginning of the sequences. The quality seems to drop off around position 75, so we'll truncate our sequences at 75 bases. This next command may take up to 10 minutes to run, and is the slowest step in this tutorial.
+
+.. code-block:: shell
+
+   qiime dada2 denoise --i-demultiplexed-seqs 88soils-tutorial-demux-1p.qza --p-trim-left 0 --p-trunc-len 75 --o-representative-sequences rep-seqs --o-table table
+
+After the ``dada2 denoise`` step completes, you'll want to explore the resulting objects. You can do this using the following two commands, which will create visual summaries of the data. The ``feature-table summarize`` command will give you information on how many sequences are associated with each sample and with each feature, histograms of those distributions, and some related summary statistics. The ``feature-table view-seq-data`` will provide a mapping of feature ids to sequences, and provide links to easily BLAST each sequence against the NCBI nt database. The latter visualization will be very useful later in the tutorial, when you want to learn more about specific features that are important in the data set.
+
+.. code-block:: shell
+
+   qiime feature-table summarize --i-table table.qza --o-visualization table
+   qiime feature-table view-seq-data --i-data rep-seqs.qza --o-visualization rep-seqs
+
+
+Generate a tree for phylogenetic diversity analyses
+---------------------------------------------------
+
+QIIME supports several phylogenetic diversity metrics, including Faith's Phylogenetic Diversity and weighted and unweighted UniFrac. In addition to counts of features per sample (i.e., the data in the ``FeatureTable[Frequency]`` artifact), these metrics require a rooted phylogenetic tree relating the features to one another. This information will be stored in a ``Phylogeny[Rooted]`` artifact. The following steps will generate this artifact.
+
+First, we perform a multiple sequence alignment of the sequences in our ``FeatureData[Sequence]`` to create a ``FeatureData[AlignedSequence]`` artifact. Here we do this with the `mafft` program.
+
+.. code-block:: shell
+
+   qiime alignment mafft --i-sequences rep-seqs.qza --o-alignment aligned-rep-seqs
+
+Next, we mask (or filter) the alignment to remove positions that are highly variable. These positions are generally considered to add noise to a resulting phylogenetic tree.
+
+.. code-block:: shell
+
+   qiime alignment mask --i-alignment aligned-rep-seqs.qza --o-masked-alignment masked-aligned-rep-seqs
+
+Next, we'll apply FastTree to generate a phylogenetic tree from the masked alignment.
+
+.. code-block:: shell
+
+   qiime phylogeny fasttree --i-alignment masked-aligned-rep-seqs.qza --o-tree unrooted-tree
+
+The FastTree program creates an unrooted tree, so in the final step in this section we apply midpoint rooting to place the root of the tree at the midpoint of the longest tip-to-tip distance in the unrooted tree.
+
+.. code-block:: shell
+
+   qiime phylogeny midpoint-root --i-tree unrooted-tree.qza --o-rooted-tree rooted-tree
+
+Alpha and beta diversity analysis
+---------------------------------
+
+QIIME 2's diversity analyses are available through the ``q2-diversity`` plugin, which supports computing alpha and beta diversity metric, applying related statistical tests, and generating interactive visualizations. We'll first apply the ``core-metrics`` method, which rarifies a ``FeatureTable[Frequency]`` to a user-specified depth, and then computes a series of alpha and beta diversity metrics. The metrics computed by default are:
+
+* Alpha diversity
+ * Shannon's diversity index (a quantitative measure of community richness)
+ * Observed OTUs (a qualitative measure of community richness)
+ * Faith's Phylogenetic Diversity (a qualitiative measure of community richness that incorporates phylogenetic relationships between the features)
+ * Evenness (or Pielou's Evenness; a measure of community evenness)
+* Beta diversity
+ * Jaccard distance (a qualitative measure of community dissimilarity)
+ * Bray-Curtis distance (a quantitative measure of community dissimilarity)
+ * unweighted UniFrac distance (a qualitative measure of community dissimilarity that incorporates phylogenetic relationships between the features)
+ * weighted UniFrac distance (a quantitative measure of community dissimilarity that incorporates phylogenetic relationships between the features)
+
+The only parameter that needs to be provided to this script is ``--p-counts-per-sample``, which is the even sampling or rarefaction depth. Because most diversity metrics are sensitive to different sampling depths across different samples, this script will randomly subsample the counts from each sample to the value provided for this parameter. (For example, if you provide ``--p-counts-per-sample 500``, this step will subsample the counts in each sample without replacement so that each sample in the resulting table has a total count of 500.) If the total count for any sample(s) are smaller than this value, those sample will be dropped from the diversity analysis. Choosing this value is tricky. We recommend making your choice by reviewing the information presented in the ``table.qzv`` file that was created above and choosing a value that is as high as possible (so you retain more sequences per sample) while excluding as few samples as possible. Here we set this parameter to 1000.
+
+.. tip:: **Question:**
+   View the ``table.qzv`` artifact. What value would you choose to pass for the ``--p-counts-per-sample``? How many samples will be excluded from your analysis based on this choice? Approximately many total sequences will you be analyzing in ``core-metrics`` command?
+
+.. code-block:: shell
+
+   qiime diversity core-metrics --i-phylogeny rooted-tree.qza --i-table table.qza --p-counts-per-sample 1000 --output-dir cm1000
+
+After computing diversity metrics, we can begin to explore the microbial composition of the samples in the context of the sample metadata. This information is present in the `sample metadata`_ file that was downloaded earlier (`sample-metadata.tsv`).
+
+First, we'll explore associations between the microbial composition of the samples and continuous sample metadata using bioenv (originally described in `Clarke and Ainsworth (1993)`_). This approach tests for associations of pairwise distances between sample microbial composition (a measure of beta diversity) and sample metadata (for example, the matrix of Bray-Curtis distances between samples and the matrix of absolute differences in pH between samples). A powerful feature of this method is that it explores combinations of sample metadata to see which groups of metadata differences are most strongly associated with the observed microbial differences between samples. You can apply bioenv to the unweighted UniFrac distances and Bray-Curtis distances between the samples, respectively, as follows. After running these commands, open the resulting visualizations.
+
+.. tip:: **Question:**
+   What sample metadata or combinations of sample metadata are most strongly associated with the differences in microbial composition of the samples? Are these associations stronger with unweighted UniFrac or with Bray-Curtis? Based on what you know about these metrics, what does that difference suggest?
+
+.. code-block:: shell
+
+   qiime diversity bioenv --i-distance-matrix cm1000/unweighted_unifrac_distance_matrix.qza --m-metadata-file sample-metadata.tsv --o-visualization cm1000/unweighted-unifrac-bioenv
+
+   qiime diversity bioenv --i-distance-matrix cm1000/bray_curtis_distance_matrix.qza --m-metadata-file sample-metadata.tsv --o-visualization cm1000/bray-curtis-bioenv
+
+Next, we'll test for associations between alpha diversity metrics and continuous sample metadata (such as pH or elevation). We can do this running the following two commands, which will support analysis of Faith's Phylogenetic Diversity metric (a measure of community richness) and evenness in the context of our continuous metadata. Run these commands and view the resulting artifacts.
+
+.. tip:: **Question:**
+   What do you conclude about the associations between continuous sample metadata and the richness and evenness of these samples? How does this compare to the results presented in `Lauber et al. (2009)`_? (Hint: Our findings here differ from what was present in `Lauber et al. (2009)`_. Start thinking about why that might be.)
+
+.. code-block:: shell
+
+   qiime diversity alpha-correlation --i-alpha-diversity cm1000/faith_pd_vector.qza --m-metadata-file sample-metadata.tsv  --o-visualization cm1000/faith-pd-correlation
+
+   qiime diversity alpha-correlation --i-alpha-diversity cm1000/evenness_vector.qza --m-metadata-file sample-metadata.tsv  --o-visualization cm1000/evenness-correlation
+
+The above analyses looked for associations between microbial community features and continuous sample metadata. Next we'll analyze sample composition in the context of discrete metadata using PERMANOVA (first described in `Anderson (2001)`_), and we'll again begin with beta diversity measures using the ``beta-group-significance``. The following commands will test whether distances between samples within a group, such as samples from the same biome type (e.g., forest or grassland), are more similar to each other then they are to samples from a different group. This command can be slow to run since it is based on permutation tests, so unlike the previous commands we'll run this on specific categories of metadata that we're interested in exploring, rather than all metadata categories that it's applicable to. Here we'll apply this to only our Bray-Curtis distances, but to two sample metadata categories, as follows.
+
+.. tip:: **Question:**
+   What discrete sample metadata categories are most strongly associated with the differences in microbial composition of the samples? Are these associations statistically significant? What biomes appear to be most different from each other? What pH groups appear to be most different from each other?
+
+.. code-block:: shell
+
+   qiime diversity beta-group-significance --i-distance-matrix cm1000/bray_curtis_distance_matrix.qza --m-metadata-file sample-metadata.tsv --m-metadata-category biome --o-visualization cm1000/bray-curtis-biome-significance
+
+   qiime diversity beta-group-significance --i-distance-matrix cm1000/bray_curtis_distance_matrix.qza --m-metadata-file sample-metadata.tsv --m-metadata-category pH-group --o-visualization cm1000/bray-curtis-pH-group-significance
+
+We can also test for associations between discrete metadata categories and alpha diversity data. We'll do that here for the Faith Phylogenetic Diversity and evenness metrics.
+
+.. tip:: **Question:**
+   What discrete sample metadata categories are most strongly associated with the differences in microbial community richness or evenness? Are these differences statistically significant?
+
+.. code-block:: shell
+
+   qiime diversity alpha-group-significance --i-alpha-diversity cm1000/faith_pd_vector.qza --m-metadata-file sample-metadata.tsv  --o-visualization cm1000/faith-pd-group-significance
+
+   qiime diversity alpha-group-significance --i-alpha-diversity cm1000/evenness_vector.qza --m-metadata-file sample-metadata.tsv  --o-visualization cm1000/evenness-group-significance
+
+Finally, ordination is a popular approach for exploring microbial community composition in the context of sample metadata. We can use the `Emperor`_ tool to explore principal coordinates (PCoA) plots in the context of sample metadata. PCoA is run as part of the `core-metrics` command, so we can generate these plots for unweighted UniFrac and Bray-Curtis as follows.
+
+.. tip:: **Question:**
+    Do the Emperor plots support the other beta diversity analyses we've performed here? (Hint: Experiment with coloring points by different metadata, including the using *Sequential* color schemes for continuous metadata data categories.)
+
+.. code-block:: shell
+
+   qiime emperor plot --i-pcoa cm1000/unweighted_unifrac_pcoa_results.qza --o-visualization cm1000/unweighted-unifrac-emperor --m-metadata-file sample-metadata.tsv
+
+   qiime emperor plot --i-pcoa cm1000/bray_curtis_pcoa_results.qza --o-visualization cm1000/bray-curtis-emperor --m-metadata-file sample-metadata.tsv
+
+
+Taxonomic analysis
+------------------
+
+.. code-block:: shell
+
+   curl -sO https://dl.dropboxusercontent.com/u/2868868/data/qiime2/artifacts/gg-13-8-99-515-806-nb-classifier.qza
+
+   qiime feature-classifier classify --i-classifier gg-13-8-99-515-806-nb-classifier.qza --i-reads rep-seqs.qza --o-classification taxonomy
+
+   qiime feature-table view-taxa-data --i-data taxonomy.qza --o-visualization taxonomy.qzv
+
+   qiime taxa barplot --i-table table.qza --i-taxonomy taxonomy.qza --m-metadata-file sample-metadata.tsv --o-visualization taxa-bar-plots
+
+
+Differential abundance analysis
+-------------------------------
+
+.. code-block:: shell
+
+   qiime composition add-pseudocount --i-table table.qza --o-composition-table comp-table
+
+   qiime composition ancom --i-table comp-table.qza --m-metadata-file sample-metadata.tsv --m-metadata-category pH-group --o-visualization ancom-pH-group
+
+   qiime taxa collapse --i-table table.qza --i-taxonomy taxonomy.qza --p-level 2 --o-collapsed-table table-l2
+
+   qiime composition add-pseudocount --i-table table-l2.qza --o-composition-table comp-table-l2
+
+   qiime composition ancom --i-table comp-table-l2.qza --m-metadata-file sample-metadata.tsv --m-metadata-category pH-group --o-visualization l2-ancom-pH-group
+
+.. _sample metadata: https://docs.google.com/spreadsheets/d/1p-jHnu6O0DPXcQqERkKM9A0w1XlkhYuR1VCP2VSRl1M/edit#gid=1346937406
+.. _DADA2: https://www.ncbi.nlm.nih.gov/pubmed/27214047
+.. _Lauber et al. (2009): https://www.ncbi.nlm.nih.gov/pubmed/19502440
+.. _Earth Microbiome Project: http://earthmicrobiome.org
+.. _Clarke and Ainsworth (1993): http://www.int-res.com/articles/meps/92/m092p205.pdf
+.. _PERMANOVA: http://onlinelibrary.wiley.com/doi/10.1111/j.1442-9993.2001.01070.pp.x/full
+.. _Anderson (2001): http://onlinelibrary.wiley.com/doi/10.1111/j.1442-9993.2001.01070.pp.x/full
+.. _Emperor: https://emperor.microbio.me
