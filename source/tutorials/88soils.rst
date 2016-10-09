@@ -19,7 +19,7 @@ Then, download the *demultiplexed sequences* that we'll use in this analysis. In
 
 .. code-block:: shell
 
-   curl -sO http://data.qiime.org/tutorials/88soils/88soils-tutorial-demux-1p.qza
+   curl -sLO http://data.qiime.org/tutorials/88soils/88soils-tutorial-demux-1p.qza
 
 
 .. note::
@@ -177,13 +177,28 @@ Finally, ordination is a popular approach for exploring microbial community comp
 Taxonomic analysis
 ------------------
 
+In the next sections we'll begin to explore the taxonomic composition of the samples, and again relate that to sample metadata. The first step in this process is to assign taxonomy to all of sequences in our ``FeatureData[Sequence]`` artifact. We'll do that using a Naive Bayes classifier with the ``q2-feature-classifier`` plugin. This classifier was trained on the Greengenes 13_8 99% OTUs, where the sequences have been trimmed to only include the region of the 16S that was sequenced in this analysis (the V4 region, bound by the 515F/806R primer pair). We'll download and apply the pre-trained classifier here because training this classifier can be slow, but it is easy to train Naive Bayes and other classifiers on custom sequence collections using the ``q2-feature-classifier`` plugin. We'll then apply this classifier to our sequences, and we can generate a visualization of the resulting mapping from sequence to taxonomy.
+
+.. tip:: **Question:**
+    Recall that our ``rep-seqs.qzv`` artifact allows you to easily BLAST the sequence associated with each feature against the NCBI nt database. Using that artifact and the ``taxonomy.qzv`` artifact created here, compare the taxonomic assignments with the taxonomy of the best BLAST hit for a few features. How similar are the assignments? If they're dissimilar, at what *taxonomic level* do they begin to differ (e.g., species, genus, family, ...)?
+
 .. code-block:: shell
 
-   curl -sO https://dl.dropboxusercontent.com/u/2868868/data/qiime2/artifacts/gg-13-8-99-515-806-nb-classifier.qza
+   curl -sLO http://data.qiime.org/common/gg-13-8-99-515-806-nb-classifier.qza
 
    qiime feature-classifier classify --i-classifier gg-13-8-99-515-806-nb-classifier.qza --i-reads rep-seqs.qza --o-classification taxonomy
 
-   qiime feature-table view-taxa-data --i-data taxonomy.qza --o-visualization taxonomy.qzv
+   qiime feature-table view-taxa-data --i-data taxonomy.qza --o-visualization taxonomy
+
+Next, we can view the taxonomic composition of our samples with interactive box plots. Generate those plots with the following command and then open the visualization.
+
+.. tip:: **Question:**
+    Sort the samples by their pH, and visualize them at *Level 2* (which corresponds to the phylum level in this analysis). What are the dominant phyla in these samples? Which phyla increase and which decrease with increasing pH?
+
+.. tip:: **Question:**
+    Compare the taxonomic composition of these samples with those in Figure 2 of `Lauber et al. (2009)`_. Are the changes you noted in response to the last question consistent with what you see in this plot? There is one major difference between the plots in Figure 2 of `Lauber et al. (2009)`_ and those generated here. What is it? (Hint: After spending some time to answer that question, take a look at `Bergmann et al. (2011)`_. How do the findings presented there relate to the analysis we're performing?)
+
+.. code-block:: shell
 
    qiime taxa barplot --i-table table.qza --i-taxonomy taxonomy.qza --m-metadata-file sample-metadata.tsv --o-visualization taxa-bar-plots
 
@@ -191,17 +206,29 @@ Taxonomic analysis
 Differential abundance analysis
 -------------------------------
 
+Finally, we can automate the process of identify taxa that are differentially abundance (or present in different abundances) across sample groups. We do that using ANCOM (`Mandal et al. (2015)`_), which is implemented in the ``q2-composition`` plugin. ANCOM operates on a ``FeatureTable[Composition]`` artifact, which is based on relative frequencies of features on a per-sample basis, but cannot tolerate frequencies of zero. We work around this by adding a small pseudocount of 1 to every feature count in our ``FeatureTable[Frequency]`` table. We can run this on the ``pH-group`` category to determine what features differ in abundance across our pH groups.
+
+.. tip:: **Question:**
+    What features differ in abundance across pH groups? What groups are they most and least abundant in? What are some the taxonomies of some of these features? (To answer that last question you'll need to refer to a visualization that we generated earlier in this tutorial.)
+
 .. code-block:: shell
 
    qiime composition add-pseudocount --i-table table.qza --o-composition-table comp-table
 
    qiime composition ancom --i-table comp-table.qza --m-metadata-file sample-metadata.tsv --m-metadata-category pH-group --o-visualization ancom-pH-group
 
+We're also often interested in performing a differential abundance test at a specific taxonomic level. To do this, we can collapse the features in our ``FeatureTable[Frequency]`` at the taxonomic level of interest, and then re-run the above steps.
+
+.. code-block:: shell
+
    qiime taxa collapse --i-table table.qza --i-taxonomy taxonomy.qza --p-level 2 --o-collapsed-table table-l2
 
    qiime composition add-pseudocount --i-table table-l2.qza --o-composition-table comp-table-l2
 
    qiime composition ancom --i-table comp-table-l2.qza --m-metadata-file sample-metadata.tsv --m-metadata-category pH-group --o-visualization l2-ancom-pH-group
+
+.. tip:: **Question:**
+    What phyla differ in abundance across pH groups? How does this align with what you observed in the ``taxa-bar-plots.qza`` visualization that was generated above? 
 
 .. _sample metadata: https://docs.google.com/spreadsheets/d/1p-jHnu6O0DPXcQqERkKM9A0w1XlkhYuR1VCP2VSRl1M/edit#gid=1346937406
 .. _DADA2: https://www.ncbi.nlm.nih.gov/pubmed/27214047
@@ -211,3 +238,5 @@ Differential abundance analysis
 .. _PERMANOVA: http://onlinelibrary.wiley.com/doi/10.1111/j.1442-9993.2001.01070.pp.x/full
 .. _Anderson (2001): http://onlinelibrary.wiley.com/doi/10.1111/j.1442-9993.2001.01070.pp.x/full
 .. _Emperor: https://emperor.microbio.me
+.. _Bergmann et al. (2011): https://www.ncbi.nlm.nih.gov/pubmed/22267877
+.. Mandal et al. (2015): https://www.ncbi.nlm.nih.gov/pubmed/26028277
