@@ -15,8 +15,10 @@ Table of contents
    install
    tutorials/index
    import
+   semantic-types
    plugins
    interfaces/index
+   glossary
 
 Ported Wiki documentation
 -------------------------
@@ -28,11 +30,8 @@ The following pages were ported from our pre-release Wiki. The information on th
 
    Artifact-API
    Creating-a-QIIME-2-plugin
-   Glossary
-   Importing-data
    Plugins
    Publishing-a-plugin-on-conda
    QIIME-Studio
-   Semantic-types
 
 .. _`issue tracker`: https://github.com/qiime2/qiime2/issues
