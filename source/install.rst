@@ -77,6 +77,7 @@ Out of the box, installing the QIIME 2 framework and command-line interface does
 
 .. code-block:: shell
 
+   conda install matplotlib==1.5.1
    conda install -c qiime2 q2-types q2-feature-table
    qiime info
 
