@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Glossary &#8212; QIIME 2 2.0.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="QIIME 2 2.0.5 documentation" href="index.html" />
+    <link rel="next" title="Artifact API" href="Artifact-API.html" />
+    <link rel="prev" title="Artifact API" href="interfaces/artifact-api.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="glossary">
+<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
+<p>This document is currently a work-in-progress QIIME 2 terminology glossary.</p>
+<dl class="glossary docutils">
+<dt id="term-action">Action</dt>
+<dd>A general term for a <em>method</em> or <em>visualizer</em>.</dd>
+<dt id="term-artifact">Artifact</dt>
+<dd>Data that can be used as input to a QIIME <em>method</em> or <em>visualizer</em>, or that can be generated as output from a QIIME <em>method</em>. Artifacts typically have the file extension <code class="docutils literal"><span class="pre">.qza</span></code>.</dd>
+<dt id="term-method">Method</dt>
+<dd>An <em>action</em> that takes some combination of <em>artifacts</em> and <em>parameters</em> as input, and produces one or more <em>artifacts</em> as output. These output <em>artifacts</em> could subsequently be used as input to other QIIME 2 <em>methods</em> or <em>visualizers</em>. <em>Methods</em> can produce intermediate or terminal outputs in a QIIME analysis.</dd>
+<dt id="term-parameter">Parameter</dt>
+<dd>A primitive (i.e., non-<em>artifact</em>) input to an <em>action</em>. For example, strings, integers, and booleans are primitives. Primitives are never output from an <em>action</em>.</dd>
+<dt id="term-pipeline">Pipeline</dt>
+<dd>A combination of <em>actions</em>. This is not yet implemented.</dd>
+<dt id="term-plugin">Plugin</dt>
+<dd>A plugin provides microbiome (i.e. domain-specific) analysis functionality that is accessible to users through a variety of interfaces built around the QIIME 2 framework. Plugins can be developed and distributed by anyone. In more technical terms, a plugin is a Python 3 package that instantiates a <code class="docutils literal"><span class="pre">qiime.plugin.Plugin</span></code> object, and registers <em>actions</em>, <em>data formats</em>, and/or <em>semantic types</em> that become discoverable in the QIIME 2 framework.</dd>
+<dt id="term-result">Result</dt>
+<dd>A general term for an <em>artifact</em> or <em>visualization</em>. A <em>result</em> is produced by a <em>method</em>, <em>visualizer</em>, or <em>pipeline</em>.</dd>
+<dt id="term-visualization">Visualization</dt>
+<dd>Data that can be generated as output from a QIIME <em>visualizer</em>. Visualizations typically have the file extension <code class="docutils literal"><span class="pre">.qzv</span></code>.</dd>
+<dt id="term-visualizer">Visualizer</dt>
+<dd>An <em>action</em> that takes some combination of <em>artifacts</em> and <em>parameters</em> as input, and produces exactly one <em>visualization</em> as output. Output <em>visualizations</em>, by definition, cannot be used as input to other QIIME 2 <em>methods</em> or <em>visualizers</em>. <em>Visualizers</em> can only produce terminal output in a QIIME analysis.</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="interfaces/artifact-api.html" title="previous chapter">Artifact API</a></li>
+      <li>Next: <a href="Artifact-API.html" title="next chapter">Artifact API</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, QIIME 2 Development Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/glossary.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/qiime2/" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Semantic types &#8212; QIIME 2 2.0.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="QIIME 2 2.0.5 documentation" href="index.html" />
+    <link rel="next" title="Plugins" href="plugins.html" />
+    <link rel="prev" title="Importing data" href="import.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="semantic-types">
+<h1>Semantic types<a class="headerlink" href="#semantic-types" title="Permalink to this headline">¶</a></h1>
+<p>All QIIME 2 <em>artifacts</em> have defined semantic types. This document is a placeholder for full documentation of how to use these types and how to define new semantic types in QIIME 2 plugins.</p>
+<div class="section" id="why-define-semantic-types">
+<h2>Why define semantic types?<a class="headerlink" href="#why-define-semantic-types" title="Permalink to this headline">¶</a></h2>
+<p>Defining semantic types allows us to ensure that the data that is passed to an <em>action</em> is meaningful for the operation that will be performed. For example, a <code class="docutils literal"><span class="pre">biom.Table</span></code> object could contain presence/absence data (i.e., a 1 to indicate that an OTU was observed at least one time in a given sample, and a 0 to indicate than an OTU was not observed at least one time in a given sample). However, if that were provided to a function computing a quantitative diversity metric where OTU abundances are included in the calculation (e.g., weighted UniFrac), the function would complete successfully, but the result would not be meaningful.</p>
+<p>QIIME 2 defines semantic types to help users avoid using functionality incorrectly, and to allow the system to reason about what <em>artifacts</em> can be used with which <em>methods</em> and <em>visualizers</em>.</p>
+</div>
+<div class="section" id="common-semantic-types">
+<h2>Common semantic types<a class="headerlink" href="#common-semantic-types" title="Permalink to this headline">¶</a></h2>
+<p>The following semantic types are defined by, and importable from, the <a class="reference external" href="https://github.com/qiime2/q2-types">q2-types</a> plugin. It is also possible to define semantic types in any plugin, so the available semantic types are not limited to those defined in <a class="reference external" href="https://github.com/qiime2/q2-types">q2-types</a>. Instructions will be added soon for how to accomplish this. In the meantime, you can refer to the <a class="reference external" href="https://github.com/qiime2/q2-dummy-types">q2-dummy-types</a> repository for annotated examples.</p>
+<p><code class="docutils literal"><span class="pre">FeatureTable[Frequency]</span></code>: A feature table (e.g., samples by OTUs) where each value indicates the frequency of an OTU in the corresponding sample expressed as raw counts.</p>
+<p><code class="docutils literal"><span class="pre">FeatureTable[RelativeFrequency]</span></code>: A feature table (e.g., samples by OTUs) where each value indicates the relative abundance of an OTU in the corresponding sample such that the values for each sample will sum to 1.0.</p>
+<p><code class="docutils literal"><span class="pre">FeatureTable[PresenceAbsence]</span></code>: a feature table (e.g., samples by OTUs) where each value indicates whether an OTU is present or absent in the corresponding sample.</p>
+<p><code class="docutils literal"><span class="pre">Phylogeny[Rooted]</span></code>: A rooted phylogenetic tree.</p>
+<p><code class="docutils literal"><span class="pre">Phylogeny[Unrooted]</span></code>: An unrooted phylogenetic tree.</p>
+<p><code class="docutils literal"><span class="pre">DistanceMatrix</span></code>: A distance matrix.</p>
+<p><code class="docutils literal"><span class="pre">PCoAResults</span></code>: The results of running principal coordinate analysis (PCoA).</p>
+<p><code class="docutils literal"><span class="pre">SampleData[AlphaDiversity]</span></code>: Alpha diversity values, each associated with a single sample identifier.</p>
+<p><code class="docutils literal"><span class="pre">SampleData[SequencesWithQuality]</span></code>: Sequences with quality scores, where each set of sequences is associated with a sample identifier (i.e. demultiplexed sequences).</p>
+<p><code class="docutils literal"><span class="pre">SampleData[PairedEndSequencesWithQuality]</span></code>: Paired-end sequences (forward and reverse) with quality scores, where each set of paired-end sequences is associated with a sample identifier (i.e. demultiplexed paired-end sequences).</p>
+<p><code class="docutils literal"><span class="pre">FeatureData[Taxonomy]</span></code>: Taxonomic information associated with a feature identifier.</p>
+<p><code class="docutils literal"><span class="pre">FeatureData[Sequence]</span></code>: A single unaligned sequence associated with a feature identifier (e.g. a representative sequence).</p>
+<p><code class="docutils literal"><span class="pre">FeatureData[AlignedSequence]</span></code>: A single aligned sequence associated with a feature identifier, where the alignment is with respect to the aligned sequences associated with all of the other feature identifiers (i.e., when more than one feature identifier is present this represents a multiple sequence alignment).</p>
+<p><code class="docutils literal"><span class="pre">FeatureData[PairedEndSequence]</span></code>: Paired-end sequences (forward and reverse) associated with a feature identifier.</p>
+<p><code class="docutils literal"><span class="pre">ReferenceFeatures[SSU]</span></code>: A collection of reference features for small subunit rRNA data. This will include aligned and unaligned sequences, taxonomic annotations, and a phylogenetic tree. (Subtypes for other types of references will be added in the future, possibly including <code class="docutils literal"><span class="pre">ReferenceFeatures[Genome]</span></code> for shotgun analysis, and <code class="docutils literal"><span class="pre">ReferenceFeatures[ITS]</span></code> for fungal ITS analysis.)</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Semantic types</a><ul>
+<li><a class="reference internal" href="#why-define-semantic-types">Why define semantic types?</a></li>
+<li><a class="reference internal" href="#common-semantic-types">Common semantic types</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="import.html" title="previous chapter">Importing data</a></li>
+      <li>Next: <a href="plugins.html" title="next chapter">Plugins</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, QIIME 2 Development Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/semantic-types.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/qiime2/" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
