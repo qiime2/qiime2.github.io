@@ -33,6 +33,5 @@ The following pages were ported from our pre-release Wiki. The information on th
    Plugins
    Publishing-a-plugin-on-conda
    QIIME-Studio
-   Semantic-types
 
 .. _`issue tracker`: https://github.com/qiime2/qiime2/issues
