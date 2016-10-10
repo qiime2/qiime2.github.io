@@ -14,6 +14,7 @@ Table of contents
    overview
    install
    tutorials/index
+   import
    plugins
    interfaces/index
 
