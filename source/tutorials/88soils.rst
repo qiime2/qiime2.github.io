@@ -1,6 +1,8 @@
 "88 soils" tutorial
 ===================
 
+.. note:: This guide assumes you have performed the steps in the :doc:`install guide <../install>`.
+
 In this tutorial you'll use QIIME 2 to perform an analysis of soil samples from around the globe. A study based on these samples was originally published in `Lauber et al. (2009)`_. In that study, these samples had the hypervariable region 2 (V2) of the 16S rRNA sequenced on a Roche 454 instrument. The data used in this tutorial are based on a re-sequencing of those same samples on an Illumina HiSeq as part of the `Earth Microbiome Project`_. In this instance, the hypervariable region 4 (V4) of the 16S rRNA was sequenced.
 
 You should first look through the sample metadata to familiarize yourself with the samples used in this study. The `sample metadata`_ is available as a Google Spreadsheet. You should download this file as tab-separated text by selecting ``File`` > ``Download as`` > ``Tab-separated values``. Save the file as ``sample-metadata.tsv``.

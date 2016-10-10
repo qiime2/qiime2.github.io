@@ -24,7 +24,7 @@ Create a directory to work in called ``qiime2-fmt-tutorial`` and change to that 
 
 As in the 88 soils study, you should begin your analysis by familiarizing yourself with the sample metadata. You can again access the `sample metadata`_ as a Google Spreadsheet. Notice that there are three tabs in this spreadsheet. This first tab (called sample-metadata) contains all of the clinical metadata. While you’re in the sample-metadata tab, you should download this file as a .tsv file by selecting “File > Download as > Tab-separated text”. Name the file sample-metadata.tsv and save it to the qiime2-fmt-tutorial directory that you created. (The first two tabs of the spreadsheet include the barcodes that would be used for demultiplexing.)
 
-Next, download the *demultiplexed sequences* that we'll use in this analysis. In this tutorial we'll work with a small subset (10%) of the complete sequence data so that the commands will run quickly. To learn how to start a QIIME 2 analysis from raw sequence data, see the :doc:`importing data documentation` <../import>`. We'll need to download two sets of demultiplexed sequences, each corresponding to one of the sequencing runs.
+Next, download the *demultiplexed sequences* that we'll use in this analysis. In this tutorial we'll work with a small subset (10%) of the complete sequence data so that the commands will run quickly. To learn how to start a QIIME 2 analysis from raw sequence data, see the :doc:`importing data documentation <../import>`. We'll need to download two sets of demultiplexed sequences, each corresponding to one of the sequencing runs.
 
 .. code-block:: shell
 
