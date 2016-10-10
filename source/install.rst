@@ -23,7 +23,7 @@ You can choose whatever name you'd like for the environment. In this example, we
 
    conda create -n qiime2 -c qiime2 python=3.5 qiime q2cli
 
-``-n qiime`` specifies the name of the environment, and ``-c qiime2`` specifies the channel to search for packages.
+``-n qiime2`` specifies the name of the environment, and ``-c qiime2`` specifies the channel to search for packages.
 
 Now that you have an environment, activate it using the environment's name:
 
