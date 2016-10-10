@@ -23,7 +23,7 @@ Table of contents
 Ported Wiki documentation
 -------------------------
 
-The following pages were ported from our pre-release Wiki. The information on these pages may be out of date, and the links to these pages should not be considered stable. As we update these pages we'll remove them from this section.
+The following pages were ported from our pre-release Wiki. The information on these pages may be out of date, and the links to these pages should not be considered stable. As we update these pages we'll remove them from this section and integrate them into the site.
 
 .. toctree::
    :maxdepth: 2
