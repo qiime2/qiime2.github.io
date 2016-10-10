@@ -1,7 +1,7 @@
 Fecal microbiota transplant (FMT) study: an exercise
 ====================================================
 
-This document is intended to be run after :doc:`the installation document <../install>` and :doc:`the 88 soils tutorial <88soils>`. It is designed to introduce a few new ideas, and to be an exercise in applying the tools that were explored in those documents.
+This document is intended to be run after :doc:`the installation document <../install>` and :doc:`the moving pictures tutorial <moving-pictures>`. It is designed to introduce a few new ideas, and to be an exercise in applying the tools that were explored in those documents.
 
 .. note::
    The data used in this study is currently under review for publication and we have been asked to not discuss some details of the study until its publication. We will expand the level of detail in this exercise, as well as the questions being addressed, upon publication. In the meantime, you should consider this to be a draft of this exercise.
@@ -10,7 +10,7 @@ The data used in this tutorial is derived from a Fecal Microbiome Transplant stu
 
 This tutorial dataset is a subsample of the data generated for this study. It includes data from five individuals who received treatment and five controls. Between six and sixteen samples are included per individual, including stool and fecal swab samples for each individual, and samples before and after FMT treatment. Five samples of the transplanted fecal material are also included.
 
-These data were sequenced on two Illumina MiSeq sequencing runs. As in the 88 soils tutorial, we'll use DADA2 to perform initial quality control and generate our ``FeatureTable[Frequency]`` and ``FeatureData[Sequence]`` objects. However, the DADA2 denoising process is only applicable to a single sequencing run at a time, so we need to run this on a per sequencing run basis and then merge the results. We'll work through this initial step, and then pose several questions that can be answered as an exercise.
+These data were sequenced on two Illumina MiSeq sequencing runs. As in the Moving Pictures tutorial, we'll use DADA2 to perform initial quality control and generate our ``FeatureTable[Frequency]`` and ``FeatureData[Sequence]`` objects. However, the DADA2 denoising process is only applicable to a single sequencing run at a time, so we need to run this on a per sequencing run basis and then merge the results. We'll work through this initial step, and then pose several questions that can be answered as an exercise.
 
 Prepare for the analysis
 ------------------------
@@ -22,9 +22,9 @@ Create a directory to work in called ``qiime2-fmt-tutorial`` and change to that 
    mkdir qiime2-fmt-tutorial
    cd qiime2-fmt-tutorial
 
-As in the 88 soils study, you should begin your analysis by familiarizing yourself with the sample metadata. You can again access the `sample metadata`_ as a Google Spreadsheet. Notice that there are three tabs in this spreadsheet. This first tab (called sample-metadata) contains all of the clinical metadata. While you’re in the sample-metadata tab, you should download this file as a .tsv file by selecting “File > Download as > Tab-separated text”. Name the file sample-metadata.tsv and save it to the qiime2-fmt-tutorial directory that you created. (The first two tabs of the spreadsheet include the barcodes that would be used for demultiplexing.)
+As in the Moving Pictures study, you should begin your analysis by familiarizing yourself with the sample metadata. You can again access the `sample metadata`_ as a Google Spreadsheet. Notice that there are three tabs in this spreadsheet. This first tab (called sample-metadata) contains all of the clinical metadata. While you’re in the sample-metadata tab, you should download this file as a .tsv file by selecting “File > Download as > Tab-separated text”. Name the file ``sample-metadata.tsv`` and save it to the ``qiime2-fmt-tutorial`` directory that you created. (The first two tabs of the spreadsheet include the barcodes that would be used for demultiplexing.)
 
-Next, download the *demultiplexed sequences* that we'll use in this analysis. In this tutorial we'll work with a small subset (10%) of the complete sequence data so that the commands will run quickly. To learn how to start a QIIME 2 analysis from raw sequence data, see the :doc:`importing data documentation` <../import>`. We'll need to download two sets of demultiplexed sequences, each corresponding to one of the sequencing runs.
+Next, download the *demultiplexed sequences* that we'll use in this analysis. In this tutorial we'll work with a small subset (10%) of the complete sequence data so that the commands will run quickly. To learn how to start a QIIME 2 analysis from raw sequence data, see the :doc:`importing data documentation <../import>`. We'll need to download two sets of demultiplexed sequences, each corresponding to one of the sequencing runs.
 
 .. code-block:: shell
 
@@ -42,7 +42,7 @@ We'll begin by performing quality control on the demultiplexed sequences using `
    qiime dada2 plot-qualities --i-demultiplexed-seqs fmt-tutorial-demux-2-10p.qza --p-n 10 --o-visualization demux-qual-plots-2
 
 .. question::
-   Based on the plots you see in ``demux-qual-plots-1.qzv`` and ``demux-qual-plots-2.qzv``, what values would you choose for ``--p-trunc-len`` and ``--p-trim-left`` in this case? How does these plots compare to those generated in the :doc:`the 88 soils tutorial <88soils>`?
+   Based on the plots you see in ``demux-qual-plots-1.qzv`` and ``demux-qual-plots-2.qzv``, what values would you choose for ``--p-trunc-len`` and ``--p-trim-left`` in this case? How does these plots compare to those generated in the :doc:`the moving pictures tutorial <moving-pictures>`?
 
 Here the quality seems relatively low in the first few bases, and seems to decrease again around 130 bases. We'll therefore trim the first 10 bases from each sequence and truncate the sequences at 130 bases. Each of the following commands will take a few minutes to complete.
 
@@ -82,10 +82,7 @@ We'll also generate a summary of the merged ``FeatureData[Sequence]`` artifact. 
 Diversity analysis
 ------------------
 
-Now that you have ``FeatureTable[Frequency]`` and ``FeatureData[Sequence]`` objects, you're ready to begin exploring the composition of these samples in the context of their metadata. Refer to :doc:`the 88 soils tutorial <88soils>` to derive the specific commands that you'll run.
-
-.. note::
-   One parameter setting that was not used in :doc:`the 88 soils tutorial <88soils>` but will be useful here is the ``--p-custom-axis`` parameter to the ``qiime emperor plot`` visualizer. If you pass the value ``week`` for this parameter, the resulting plot will contain axes for principal coordinate 1 (labelled ``0``), principal coordinate 1 (labelled ``1``), and week. This is useful for exploring how the samples change over time.
+Now that you have ``FeatureTable[Frequency]`` and ``FeatureData[Sequence]`` objects, you're ready to begin exploring the composition of these samples in the context of their metadata. Refer to :doc:`the moving pictures tutorial <moving-pictures>` to derive the specific commands that you'll run.
 
 .. note::
    One limitation in QIIME 2 as of this writing is a lack of paired tests (those are available in QIIME 1 - see ``identify_paired_differences.py``). Some of the questions that we would want to answer for this study, such as do all individuals who receive treatment experience the same change (either an increase or decrease) in community richness before and after treatment, require these types of tests. These are planned for addition to QIIME 2 in the near future, and we will update this tutorial at that time.

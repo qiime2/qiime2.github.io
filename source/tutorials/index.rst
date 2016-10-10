@@ -4,5 +4,6 @@ Tutorials
 .. toctree::
    :maxdepth: 2
 
-   88soils
+   moving-pictures
    fmt
+   88soils
