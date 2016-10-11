@@ -18,14 +18,6 @@
         border-left: 1px dashed #bbb;
     }
 
-    div.sphinxsidebar {
-        text-align: right;
-    }
-
-    div.sphinxsidebar ul li {
-        list-style-type: none;
-    }
-
     /* Remove the black colored banner to match qiime.org */
     .github img {
         display: none;
@@ -38,7 +30,7 @@
         height: 149px;
         top: 0;
         left: 0;
-        background-image: url('https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png')
+        background-image: url('https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png');
     }
 
     div.question {
