@@ -1,7 +1,7 @@
 QIIME 2 overview
 ================
 
-QIIME 2 is a complete redesign and rewrite of the `QIIME 1`_ microbiome analysis pipeline. QIIME 2 will address many of the limitations of QIIME 1, while retaining the features that makes QIIME 1 a powerful and widely-used analysis pipeline.
+QIIME 2 is a complete redesign and rewrite of the `QIIME 1`_ microbiome analysis pipeline. QIIME 2 will address many of the limitations of QIIME 1, while retaining the features that makes QIIME 1 a powerful and widely-used analysis pipeline. See the :doc:`key concepts <concepts>` page for details on how QIIME 2 addresses many of the limitations of QIIME 1.
 
 QIIME 2 is ready for experimental use while in its alpha release stage. **It currently supports an initial end-to-end microbiome analysis pipeline.** Because our microbiome analysis functionality is currently very new, QIIME 2 is not yet recommended as a replacement for QIIME 1, but we are very interested in having users test QIIME 2 and give us feedback. Until the QIIME 2 microbiome analysis functionality has expanded, we recommend that you continue to use `QIIME 1`_ and `Qiita`_ for your microbiome analyses, as these will provide you with complete analysis solutions supporting high-performance computing environments.
 
@@ -12,7 +12,9 @@ To see where we're headed with QIIME 2, take a look at Greg Caporaso's `American
 Getting started
 ---------------
 
-To begin experimenting with QIIME 2, start with the :doc:`installation guide <install>`, which will show you how to install the QIIME 2 framework, a command-line interface, and some plugins used in the :doc:`tutorials <tutorials/index>`.
+QIIME 2 introduces several new concepts that are not present in QIIME 1, and these concepts are important to understand as they are central to how you will interact with QIIME 2 to perform microbiome analyses. It is **highly recommended** to start with the :doc:`key concepts <concepts>` documentation before moving on to installing and using QIIME 2.
+
+To begin using QIIME 2, start with the :doc:`installation guide <install>`, which will show you how to install the QIIME 2 framework, a command-line interface, and some plugins used in the :doc:`tutorials <tutorials/index>`.
 
 Staying updated
 ---------------
