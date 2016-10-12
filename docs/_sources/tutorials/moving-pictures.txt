@@ -162,10 +162,10 @@ We'll first test for associations between discrete metadata categories and alpha
 **evenness-group-significance**: `visualization <../../_viz/evenness-group-significance/a7ec4e65-85d8-4433-97a6-8d9ae970f451/data/index.html>`_, `qzv <../../_viz/evenness-group-significance.qzv>`_
 
 .. question::
-   What discrete sample metadata categories are most strongly associated with the differences in microbial community richness? Are these differences statistically significant?
+   What discrete sample metadata categories are most strongly associated with the differences in microbial community **richness**? Are these differences statistically significant?
 
 .. question::
-   What discrete sample metadata categories are most strongly associated with the differences in microbial community evenness? Are these differences statistically significant?
+   What discrete sample metadata categories are most strongly associated with the differences in microbial community **evenness**? Are these differences statistically significant?
 
 Next, we'll test for associations between alpha diversity metrics and continuous sample metadata (such as pH or elevation). We can do this running the following two commands, which will support analysis of Faith's Phylogenetic Diversity metric and evenness in the context of our continuous metadata. Run these commands and view the resulting artifacts.
 
