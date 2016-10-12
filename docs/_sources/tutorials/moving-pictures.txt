@@ -262,7 +262,7 @@ Next, we can view the taxonomic composition of our samples with interactive bar 
 Differential abundance analysis
 -------------------------------
 
-Finally, we can quantify the process of identifying taxa that are differentially abundance (or present in different abundances) across sample groups. We do that using ANCOM (`Mandal et al. (2015)`_), which is implemented in the ``q2-composition`` plugin. ANCOM operates on a ``FeatureTable[Composition]`` artifact, which is based on relative frequencies of features on a per-sample basis, but cannot tolerate frequencies of zero. We work around this by adding a pseudocount of 1 to every count in our ``FeatureTable[Frequency]`` table. We can run this on the ``SampleType`` category to determine what features differ in abundance across our sample types.
+Finally, we can quantify the process of identifying taxa that are differentially abundance (or present in different abundances) across sample groups. We do that using ANCOM (`Mandal et al. (2015)`_), which is implemented in the ``q2-composition`` plugin. ANCOM operates on a ``FeatureTable[Composition]`` artifact, which is based on relative frequencies of features on a per-sample basis, but cannot tolerate frequencies of zero. We work around this by adding a pseudocount of 1 to every count in our ``FeatureTable[Frequency]`` table. We can run this on the ``SampleType`` category to determine what features differ in abundance across our sample types. This step may take about 5 minutes to complete.
 
 .. code-block:: shell
 
