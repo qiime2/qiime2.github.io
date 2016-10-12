@@ -270,7 +270,7 @@ Finally, we can quantify the process of identifying taxa that are differentially
 
    qiime composition ancom --i-table comp-table.qza --m-metadata-file sample-metadata.tsv --m-metadata-category SampleType --o-visualization ancom-SampleType
 
-**ancom-SampleType**: `visualization <../../_viz/ancom-SampleType/d3eca19f-a16c-4e85-bcac-9bbf9be13141/data/index.html>`_, `qzv <../../_viz/ancom-SampleType.qzv>`_
+**ancom-SampleType**: `visualization <../../_viz/ancom-SampleType/f2ee210b-1a25-478f-bcfc-37424610bad1/data/index.html>`_, `qzv <../../_viz/ancom-SampleType.qzv>`_
 
 .. question::
     What features differ in abundance across SampleType? What groups are they most and least abundant in? What are some the taxonomies of some of these features? (To answer that last question you'll need to refer to a visualization that we generated earlier in this tutorial.)
@@ -285,7 +285,7 @@ We're also often interested in performing a differential abundance test at a spe
 
    qiime composition ancom --i-table comp-table-l2.qza --m-metadata-file sample-metadata.tsv --m-metadata-category SampleType --o-visualization l2-ancom-SampleType
 
-**l2-ancom-SampleType**: `visualization <../../_viz/l2-ancom-SampleType/bb2ce36f-3793-4a81-b900-4ef85144a6ed/data/index.html>`_, `qzv <../../_viz/l2-ancom-SampleType.qzv>`_
+**l2-ancom-SampleType**: `visualization <../../_viz/l2-ancom-SampleType/7a44482c-fe21-4c35-91d3-d74c3aaba728/data/index.html>`_, `qzv <../../_viz/l2-ancom-SampleType.qzv>`_
 
 .. question::
     What phyla differ in abundance across SampleType? How does this align with what you observed in the ``taxa-bar-plots.qza`` visualization that was generated above?
