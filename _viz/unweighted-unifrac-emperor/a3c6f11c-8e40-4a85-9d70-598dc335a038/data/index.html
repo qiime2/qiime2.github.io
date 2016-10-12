@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Emperor</title>
+    <!-- core dependencies that are otherwise included via the jupyter notebook -->
+    <script src="./vendor/js/require-2.1.22.min.js"></script>
+    <script src="./vendor/js/jquery-2.1.4.min.js"></script>
+    <meta charset="utf-8">
+
+    <script type="text/javascript">
+
+if ($("#emperor-css").length == 0){{
+    $("head").append([
+
+        '<link id="emperor-css" rel="stylesheet" type="text/css" href="./css/emperor.css">',
+        '<link rel="stylesheet" type="text/css" href="./vendor/css/jquery-ui.min.css">',
+        '<link rel="stylesheet" type="text/css" href="./vendor/css/slick.grid.min.css">',
+        '<link rel="stylesheet" type="text/css" href="./vendor/css/spectrum.min.css">',
+        '<link rel="stylesheet" type="text/css" href="./vendor/css/chosen.min.css">',
+        '<link rel="stylesheet" type="text/css" href="./vendor/css/jquery.contextMenu.min.css">'
+    ]);
+}}
+</script>
+
+
+    <style>
+      #emperor-notebook-0xb2206d09 {
+        height:100vh !important;
+        padding: 0px !important;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='emperor-notebook-0xb2206d09' style="position: relative; width:100%; height:500px;">
+  <div class='loading' style="position: absolute;top: 50%;left: 50%;margin-left: -229px; margin-top: -59px; z-index: 10000;height:118px;width:458px;padding:0px"><img src='./img/emperor.png' alt='Emperor resources missing. Expected them to be found in .'></div>
+</div>
+</div>
+
+<script type="text/javascript">
+requirejs.config({
+// the left side is the module name, and the right side is the path
+// relative to the baseUrl attribute, do NOT include the .js extension
+'paths': {
+  /* jQuery */
+  'jquery': './vendor/js/jquery-2.1.4.min',
+  'jqueryui': './vendor/js/jquery-ui.min',
+  'jquery_drag': './vendor/js/jquery.event.drag-2.2.min',
+
+  /* jQuery plugins */
+  'chosen': './vendor/js/chosen.jquery.min',
+  'spectrum': './vendor/js/spectrum.min',
+  'position': './vendor/js/jquery.ui.position.min',
+  'contextmenu': './vendor/js/jquery.contextMenu.min',
+
+  /* other libraries */
+  'underscore': './vendor/js/underscore-min',
+  'chroma': './vendor/js/chroma.min',
+  'filesaver': './vendor/js/FileSaver.min',
+  'blob': './vendor/js/Blob',
+  'd3': './vendor/js/d3.min',
+
+  /* THREE.js and plugins */
+  'three': './vendor/js/three.min',
+  'orbitcontrols': './vendor/js/three.js-plugins/OrbitControls',
+  'projector': './vendor/js/three.js-plugins/Projector',
+  'svgrenderer': './vendor/js/three.js-plugins/SVGRenderer',
+
+  /* SlickGrid */
+  'slickcore': './vendor/js/slick.core.min',
+  'slickgrid': './vendor/js/slick.grid.min',
+  'slickformatters': './vendor/js/slick.editors.min',
+  'slickeditors': './vendor/js/slick.formatters.min',
+
+  /* Emperor's objects */
+  'util': './js/util',
+  'model': './js/model',
+  'view': './js/view',
+  'controller': './js/controller',
+  'draw': './js/draw',
+  'scene3d': './js/sceneplotview3d',
+  'abcviewcontroller': './js/abc-view-controller',
+  'viewcontroller': './js/view-controller',
+  'colorviewcontroller': './js/color-view-controller',
+  'visibilitycontroller': './js/visibility-controller',
+  'scaleviewcontroller': './js/scale-view-controller',
+  'shapecontroller': './js/shape-controller',
+  'axescontroller': './js/axes-controller',
+  'shape-editor': './js/shape-editor',
+  'color-editor': './js/color-editor',
+  'scale-editor': './js/scale-editor',
+  'shapes': './js/shapes'
+},
+/*
+   Libraries that are not AMD compatible need shim to declare their
+   dependencies.
+ */
+'shim': {
+  'jquery_drag': {
+    'deps': ['jquery', 'jqueryui']
+  },
+  'chosen': {
+    'deps': ['jquery'],
+    'exports': 'jQuery.fn.chosen'
+  },
+  'contextmenu' : {
+    'deps': ['jquery', 'jqueryui', 'position']
+  },
+  'filesaver' : {
+    'deps': ['blob']
+  },
+  'orbitcontrols': {
+    'deps': ['three']
+  },
+  'projector': {
+    'deps': ['three']
+  },
+  'svgrenderer': {
+    'deps': ['orbitcontrols', 'projector']
+  },
+'slickcore': ['jqueryui'],
+'slickgrid': ['slickcore', 'jquery_drag', 'slickformatters',
+              'slickeditors']
+}
+});
+
+requirejs(
+["jquery", "model", "controller"],
+function($, model, EmperorController) {
+  var DecompositionModel = model.DecompositionModel;
+
+  var div = $('#emperor-notebook-0xb2206d09');
+
+  var ids = ['L1S105', 'L1S140', 'L1S208', 'L1S257', 'L1S281', 'L1S57', 'L1S76', 'L1S8', 'L2S155', 'L2S175', 'L2S204', 'L2S222', 'L2S240', 'L2S309', 'L2S357', 'L2S382', 'L3S242', 'L3S294', 'L3S313', 'L3S341', 'L3S360', 'L3S378', 'L4S112', 'L4S137', 'L4S63', 'L5S104', 'L5S155', 'L5S174', 'L5S203', 'L5S222', 'L5S240', 'L6S20', 'L6S68', 'L6S93'];
+  var coords = [[0.6161894672554499, -0.3662643742690908, -0.19721516645061032, 0.00679770248496095, -0.019913301562602473, -0.04858601116829462], [-0.42361214489995647, -0.3658248331906357, -0.18398177488807513, 0.018335606143008623, 0.1284555499141949, -0.007816999581605592], [0.20026882239328725, -0.4089351989547294, -0.2703809252137088, 0.056438196225456594, 0.053804626856866385, 0.1730577960516246], [0.6161894672554499, -0.4111469884600731, -0.2941984851397779, 0.06739822290219734, 0.0386748047701956, 0.17672160216634492], [0.824149789686531, -0.4126256635671119, -0.27075073522840687, 0.053647669607640495, 0.07884686279987947, 0.2118787081722953], [0.20026882239328725, -0.42361214489995647, -0.26761148470404356, -0.00037686597659315215, -0.03034392147493651, -0.01189603368226253], [0.40822914482436845, -0.3824282755987472, -0.22064721743991447, 0.0013684616496568514, -0.06657931883220734, -0.03965690750518884], [-0.42361214489995647, -0.3260199623546444, -0.10313458733294999, -0.08620307478668046, -0.12145555015424343, -0.2709235529141204], [0.20026882239328725, 0.34437198356711934, -0.17745860558915003, 0.05424052739311393, -0.04038526222855385, 0.05284591818715054], [0.40822914482436845, 0.3782676362636675, -0.183913544079609, -0.09622893386114179, 0.16676683315077198, -0.03569895937668965], [0.6161894672554499, 0.34364012810612127, -0.23527275522466326, 0.08734654069922458, -0.21082210512933675, 0.053220528961800205], [0.824149789686531, 0.39139231964482313, -0.2682151649326561, -0.11745448298560783, 0.1275607260079568, 0.011614956509807976], [-0.42361214489995647, 0.06390309551573034, 0.2995054179091857, 0.0477896771623532, -0.017174296628104997, 0.002997066458982949], [0.20026882239328725, 0.38239983239995157, -0.23555108958819215, -0.18049017464863634, 0.10998080007008522, -0.022715834828925873], [0.6161894672554499, 0.3252897049599802, -0.11660124587461299, 0.016509469305921846, -0.17055520004974545, 0.023546063957234225], [0.824149789686531, 0.10836227017542123, 0.1492055505116564, 0.339727678855613, 0.2304528354662152, -0.11393884907726264], [-0.42361214489995647, -0.35811120625321696, -0.08328656476170586, -0.12836313794246906, -0.10012045484256601, -0.28179307463180453], [0.20026882239328725, 0.37570864013901956, -0.1748430100909451, -0.1870877473461565, 0.11800722991011915, -0.048292700634084876], [0.40822914482436845, 0.11680128891690164, 0.0834894948761742, 0.1587724445556681, -0.06161344997609429, -0.09019351638752252], [0.6161894672554499, 0.13103340916501155, 0.027319158131857244, 0.20976415013880384, -0.17406563511226167, -0.033222435419288675], [0.824149789686531, 0.3172663952189354, -0.1810649403485569, 0.02343198323373752, -0.2305558565783695, 0.0723186916424227], [-0.42361214489995647, -0.3677117927635505, -0.15459480862649203, -0.05814196695427457, 0.05724438648840398, -0.06370701764433775], [0.6161894672554499, 0.3586180801484309, -0.18045403516479358, 0.09393809429011038, -0.15965643228555024, 0.05319909617008616], [0.824149789686531, 0.15566836022296546, 0.15787447141794633, 0.3261183017379571, 0.18042123964896958, -0.13329791143707093], [0.20026882239328725, 0.41207489484326554, -0.24203685906877645, -0.12937995848559453, 0.16221140977663026, -0.014477826850818054], [-0.42361214489995647, -0.0011737445850539408, 0.3266755260009363, -0.0850334017464988, -0.11406383997591779, -0.0009158753806463945], [0.20026882239328725, -0.09599320166921413, 0.3538173241641367, -0.1409509181631588, -0.04293040571138807, 0.055524784638747555], [0.40822914482436845, -0.06015767692988838, 0.39232883065874946, -0.09545335392866124, 6.613223764495266e-05, 0.06130032705541657], [0.6161894672554499, -0.04704115477752626, 0.36406566163805054, -0.033746083353515186, 0.003380637847633022, 0.05894338155050492], [0.824149789686531, -0.03204354540427722, 0.38467979847155115, -0.07871904911780697, 0.0017713224481923113, 0.03664549884723075], [-0.42361214489995647, -0.05573144776798515, 0.37531736848377123, -0.0890786462222989, -0.02597143008352227, 0.029438557716966837], [0.20026882239328725, -0.04635941886258014, 0.37601287336696576, -0.030424895292608185, 0.041111484748964686, 0.0651286075602366], [0.6161894672554499, -0.012533174834009158, 0.3854221039638199, -0.023684597325326705, 0.03220254845193694, 0.0419843325570554], [0.824149789686531, -0.031084234145053978, 0.3654994201528407, -0.0008074382483964078, 0.05524703003074273, 0.03676758831601637]];
+  var pct_var = [-1.0, 33.51600277793562, 26.211915564348025, 5.942004573144813, 5.250617203120349, 4.010780581684819];
+  var md_headers = ['SampleID', 'BarcodeSequence', 'LinkerPrimerSequence', 'SampleType', 'Year', 'Month', 'Day', 'Subject', 'ReportedAntibioticUsage', 'DaysSinceExperimentStart', 'Description'];
+  var metadata = [['L1S105', 'AGTGCGATGCGT', 'GTGCCAGCMGCCGCGGTAA', 'gut', '2009', '3', '17', '1', 'No', '140', '1_Fece_3_17_2009'], ['L1S140', 'ATGGCAGCTCTA', 'GTGCCAGCMGCCGCGGTAA', 'gut', '2008', '10', '28', '2', 'Yes', '0', '2_Fece_10_28_2008'], ['L1S208', 'CTGAGATACGCG', 'GTGCCAGCMGCCGCGGTAA', 'gut', '2009', '1', '20', '2', 'No', '84', '2_Fece_1_20_2009'], ['L1S257', 'CCGACTGAGATG', 'GTGCCAGCMGCCGCGGTAA', 'gut', '2009', '3', '17', '2', 'No', '140', '2_Fece_3_17_2009'], ['L1S281', 'CCTCTCGTGATC', 'GTGCCAGCMGCCGCGGTAA', 'gut', '2009', '4', '14', '2', 'No', '168', '2_Fece_4_14_2009'], ['L1S57', 'ACACACTATGGC', 'GTGCCAGCMGCCGCGGTAA', 'gut', '2009', '1', '20', '1', 'No', '84', '1_Fece_1_20_2009'], ['L1S76', 'ACTACGTGTGGT', 'GTGCCAGCMGCCGCGGTAA', 'gut', '2009', '2', '17', '1', 'No', '112', '1_Fece_2_17_2009'], ['L1S8', 'AGCTGACTAGTC', 'GTGCCAGCMGCCGCGGTAA', 'gut', '2008', '10', '28', '1', 'Yes', '0', '1_Fece_10_28_2008'], ['L2S155', 'ACGATGCGACCA', 'GTGCCAGCMGCCGCGGTAA', 'left palm', '2009', '1', '20', '1', 'No', '84', '1_L_Palm_1_20_2009'], ['L2S175', 'AGCTATCCACGA', 'GTGCCAGCMGCCGCGGTAA', 'left palm', '2009', '2', '17', '1', 'No', '112', '1_L_Palm_2_17_2009'], ['L2S204', 'ATGCAGCTCAGT', 'GTGCCAGCMGCCGCGGTAA', 'left palm', '2009', '3', '17', '1', 'No', '140', '1_L_Palm_3_17_2009'], ['L2S222', 'CACGTGACATGT', 'GTGCCAGCMGCCGCGGTAA', 'left palm', '2009', '4', '14', '1', 'No', '168', '1_L_Palm_4_14_2009'], ['L2S240', 'CATATCGCAGTT', 'GTGCCAGCMGCCGCGGTAA', 'left palm', '2008', '10', '28', '2', 'Yes', '0', '2_L_Palm_10_28_2008'], ['L2S309', 'CGTGCATTATCA', 'GTGCCAGCMGCCGCGGTAA', 'left palm', '2009', '1', '20', '2', 'No', '84', '2_L_Palm_1_20_2009'], ['L2S357', 'CTAACGCAGTCA', 'GTGCCAGCMGCCGCGGTAA', 'left palm', '2009', '3', '17', '2', 'No', '140', '2_L_Palm_3_17_2009'], ['L2S382', 'CTCAATGACTCA', 'GTGCCAGCMGCCGCGGTAA', 'left palm', '2009', '4', '14', '2', 'No', '168', '2_L_Palm_4_14_2009'], ['L3S242', 'ACAGTTGCGCGA', 'GTGCCAGCMGCCGCGGTAA', 'right palm', '2008', '10', '28', '1', 'Yes', '0', '1_R_Palm_10_28_2008'], ['L3S294', 'CACGACAGGCTA', 'GTGCCAGCMGCCGCGGTAA', 'right palm', '2009', '1', '20', '1', 'No', '84', '1_R_Palm_1_20_2009'], ['L3S313', 'AGTGTCACGGTG', 'GTGCCAGCMGCCGCGGTAA', 'right palm', '2009', '2', '17', '1', 'No', '112', '1_R_Palm_2_17_2009'], ['L3S341', 'CAAGTGAGAGAG', 'GTGCCAGCMGCCGCGGTAA', 'right palm', '2009', '3', '17', '1', 'No', '140', '1_R_Palm_3_17_2009'], ['L3S360', 'CATCGTATCAAC', 'GTGCCAGCMGCCGCGGTAA', 'right palm', '2009', '4', '14', '1', 'No', '168', '1_R_Palm_4_14_2009'], ['L3S378', 'ATCGATCTGTGG', 'GTGCCAGCMGCCGCGGTAA', 'right palm', '2008', '10', '28', '2', 'Yes', '0', '2_R_Palm_10_28_2008'], ['L4S112', 'GCGTTACACACA', 'GTGCCAGCMGCCGCGGTAA', 'right palm', '2009', '3', '17', '2', 'No', '140', '2_R_Palm_3_17_2009'], ['L4S137', 'GAACTGTATCTC', 'GTGCCAGCMGCCGCGGTAA', 'right palm', '2009', '4', '14', '2', 'No', '168', '2_R_Palm_4_14_2009'], ['L4S63', 'CTCGTGGAGTAG', 'GTGCCAGCMGCCGCGGTAA', 'right palm', '2009', '1', '20', '2', 'No', '84', '2_R_Palm_1_20_2009'], ['L5S104', 'CAGTGTCAGGAC', 'GTGCCAGCMGCCGCGGTAA', 'tongue', '2008', '10', '28', '1', 'Yes', '0', '1_Tong_10_28_2008'], ['L5S155', 'ATCTTAGACTGC', 'GTGCCAGCMGCCGCGGTAA', 'tongue', '2009', '1', '20', '1', 'No', '84', '1_Tong_1_20_2009'], ['L5S174', 'CAGACATTGCGT', 'GTGCCAGCMGCCGCGGTAA', 'tongue', '2009', '2', '17', '1', 'No', '112', '1_Tong_2_17_2009'], ['L5S203', 'CGATGCACCAGA', 'GTGCCAGCMGCCGCGGTAA', 'tongue', '2009', '3', '17', '1', 'No', '140', '1_Tong_3_17_2009'], ['L5S222', 'CTAGAGACTCTT', 'GTGCCAGCMGCCGCGGTAA', 'tongue', '2009', '4', '14', '1', 'No', '168', '1_Tong_4_14_2009'], ['L5S240', 'CTGGACTCATAG', 'GTGCCAGCMGCCGCGGTAA', 'tongue', '2008', '10', '28', '2', 'Yes', '0', '2_Tong_10_28_2008'], ['L6S20', 'GAGGCTCATCAT', 'GTGCCAGCMGCCGCGGTAA', 'tongue', '2009', '1', '20', '2', 'No', '84', '2_Tong_1_20_2009'], ['L6S68', 'GATACGTCCTGA', 'GTGCCAGCMGCCGCGGTAA', 'tongue', '2009', '3', '17', '2', 'No', '140', '2_Tong_3_17_2009'], ['L6S93', 'GATTAGCACTCT', 'GTGCCAGCMGCCGCGGTAA', 'tongue', '2009', '4', '14', '2', 'No', '168', '2_Tong_4_14_2009']];
+  var axesNames = ['DaysSinceExperimentStart', 0, 1, 2, 3, 4];
+
+  var dm, ec;
+
+  function init() {
+    // Initialize the DecompositionModel
+    dm = new DecompositionModel(name, ids, coords, pct_var,
+                                md_headers, metadata, axesNames);
+    // Initialize the EmperorController
+    ec = new EmperorController(dm, 'emperor-notebook-0xb2206d09');
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    ec.render();
+  }
+  $(window).resize(function() {
+    ec.resize(div.innerWidth(), div.innerHeight());
+  });
+
+  $(function(){
+    init();
+    animate();
+
+  });
+
+}); // END REQUIRE.JS block
+</script>
+  </body>
+</html>

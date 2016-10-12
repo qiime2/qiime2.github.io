@@ -65,6 +65,8 @@ The ``dada2 denoise`` method requires two parameters that are used in quality fi
 
    qiime tools view demux-qual-plots.qzv
 
+**demux-qual-plots**: `visualization <../../_viz/demux-qual-plots/df384304-e414-4669-93a4-5ee997723b21/data/index.html>`_, `qzv <../../_viz/demux-qual-plots.qzv>`_
+
 .. question::
    Based on the plots you see in ``demux-qual-plots.qzv``, what values would you choose for ``--p-trunc-len`` and ``--p-trim-left`` in this case?
 
@@ -81,6 +83,10 @@ After the ``dada2 denoise`` step completes, you'll want to explore the resulting
    qiime feature-table summarize --i-table table.qza --o-visualization table
    qiime feature-table view-seq-data --i-data rep-seqs.qza --o-visualization rep-seqs
 
+
+**table**: `visualization <../../_viz/table/19d6165e-e76a-4a87-85c5-b270494f9357/data/index.html>`_, `qzv <../../_viz/table.qzv>`_
+
+**rep-seqs**: `visualization <../../_viz/rep-seqs/f6946a20-e6ba-46c2-8f54-c8333a4c05b4/data/index.html>`_, `qzv <../../_viz/rep-seqs.qzv>`_
 
 Generate a tree for phylogenetic diversity analyses
 ---------------------------------------------------
@@ -151,6 +157,10 @@ We'll first test for associations between discrete metadata categories and alpha
 
    qiime diversity alpha-group-significance --i-alpha-diversity cm1441/evenness_vector.qza --m-metadata-file sample-metadata.tsv  --o-visualization cm1441/evenness-group-significance
 
+**faith-pd-group-significance**: `visualization <../../_viz/faith-pd-group-significance/09503df5-547c-489c-bfea-d7ffefdaa40f/data/index.html>`_, `qzv <../../_viz/faith-pd-group-significance.qzv>`_
+
+**evenness-group-significance**: `visualization <../../_viz/evenness-group-significance/a7ec4e65-85d8-4433-97a6-8d9ae970f451/data/index.html>`_, `qzv <../../_viz/evenness-group-significance.qzv>`_
+
 .. question::
    What discrete sample metadata categories are most strongly associated with the differences in microbial community richness? Are these differences statistically significant?
 
@@ -165,6 +175,10 @@ Next, we'll test for associations between alpha diversity metrics and continuous
 
    qiime diversity alpha-correlation --i-alpha-diversity cm1441/evenness_vector.qza --m-metadata-file sample-metadata.tsv  --o-visualization cm1441/evenness-correlation
 
+**faith-pd-correlation**: `visualization <../../_viz/faith-pd-correlation/db2c6b0c-c6f1-481d-8a29-dcd03744f54d/data/index.html>`_, `qzv <../../_viz/faith-pd-correlation.qzv>`_
+
+**evenness-correlation**: `visualization <../../_viz/evenness-correlation/755b35d3-6a08-4f5c-8934-1a6b0ab45712/data/index.html>`_, `qzv <../../_viz/evenness-correlation.qzv>`_
+
 .. question::
    What do you conclude about the associations between continuous sample metadata and the richness and evenness of these samples?
 
@@ -175,6 +189,10 @@ Next we'll analyze sample composition in the context of discrete metadata using 
    qiime diversity beta-group-significance --i-distance-matrix cm1441/unweighted_unifrac_distance_matrix.qza --m-metadata-file sample-metadata.tsv --m-metadata-category SampleType --o-visualization cm1441/unweighted-unifrac-sample-type-significance
 
    qiime diversity beta-group-significance --i-distance-matrix cm1441/unweighted_unifrac_distance_matrix.qza --m-metadata-file sample-metadata.tsv --m-metadata-category Subject --o-visualization cm1441/unweighted-unifrac-subject-group-significance
+
+**unweighted-unifrac-sample-type-significance**: `visualization <../../_viz/unweighted-unifrac-sample-type-significance/b50e2972-c4dc-4ce4-9625-b635da8fda5e/data/index.html>`_, `qzv <../../_viz/unweighted-unifrac-sample-type-significance.qzv>`_
+
+**unweighted-unifrac-subject-group-significance**: `visualization <../../_viz/unweighted-unifrac-subject-group-significance/d7490128-4ec8-4bb8-80a3-c4aaa1238361/data/index.html>`_, `qzv <../../_viz/unweighted-unifrac-subject-group-significance.qzv>`_
 
 .. question::
    Are the associations between subjects and differences in microbial composition statistically significant? How about sample types? What sample types appear to be most different from each other?
@@ -187,6 +205,10 @@ Finally, we'll explore associations between the microbial composition of the sam
 
    qiime diversity bioenv --i-distance-matrix cm1441/bray_curtis_distance_matrix.qza --m-metadata-file sample-metadata.tsv --o-visualization cm1441/bray-curtis-bioenv
 
+**unweighted-unifrac-bioenv**: `visualization <../../_viz/unweighted-unifrac-bioenv/b29ee241-2cf2-4849-9828-1d46252b74a4/data/index.html>`_, `qzv <../../_viz/unweighted-unifrac-bioenv.qzv>`_
+
+**bray-curtis-bioenv**: `visualization <../../_viz/bray-curtis-bioenv/d927225c-e240-4753-90c3-c20bd2f66225/data/index.html>`_, `qzv <../../_viz/bray-curtis-bioenv.qzv>`_
+
 .. question::
    What sample metadata or combinations of sample metadata are most strongly associated with the differences in microbial composition of the samples? How strong are these correlations?
 
@@ -197,6 +219,10 @@ Finally, ordination is a popular approach for exploring microbial community comp
    qiime emperor plot --i-pcoa cm1441/unweighted_unifrac_pcoa_results.qza --o-visualization cm1441/unweighted-unifrac-emperor --m-metadata-file sample-metadata.tsv --p-custom-axis DaysSinceExperimentStart
 
    qiime emperor plot --i-pcoa cm1441/bray_curtis_pcoa_results.qza --o-visualization cm1441/bray-curtis-emperor --m-metadata-file sample-metadata.tsv --p-custom-axis DaysSinceExperimentStart
+
+**unweighted-unifrac-emperor**: `visualization <../../_viz/unweighted-unifrac-emperor/a3c6f11c-8e40-4a85-9d70-598dc335a038/data/index.html>`_, `qzv <../../_viz/unweighted-unifrac-emperor.qzv>`_
+
+**bray-curtis-emperor**: `visualization <../../_viz/bray-curtis-emperor/873f10c0-c301-47bc-a42c-8bbb00d9938a/data/index.html>`_, `qzv <../../_viz/bray-curtis-emperor.qzv>`_
 
 .. question::
     Do the Emperor plots support the other beta diversity analyses we've performed here? (Hint: Experiment with coloring points by different metadata.)
@@ -217,6 +243,8 @@ In the next sections we'll begin to explore the taxonomic composition of the sam
 
    qiime feature-table view-taxa-data --i-data taxonomy.qza --o-visualization taxonomy
 
+**taxonomy**: `visualization <../../_viz/taxonomy/0b32cf69-34c7-4e16-aff3-e486d79409c9/data/index.html>`_, `qzv <../../_viz/taxonomy.qzv>`_
+
 .. question::
     Recall that our ``rep-seqs.qzv`` artifact allows you to easily BLAST the sequence associated with each feature against the NCBI nt database. Using that artifact and the ``taxonomy.qzv`` artifact created here, compare the taxonomic assignments with the taxonomy of the best BLAST hit for a few features. How similar are the assignments? If they're dissimilar, at what *taxonomic level* do they begin to differ (e.g., species, genus, family, ...)?
 
@@ -225,6 +253,8 @@ Next, we can view the taxonomic composition of our samples with interactive bar 
 .. code-block:: shell
 
    qiime taxa barplot --i-table table.qza --i-taxonomy taxonomy.qza --m-metadata-file sample-metadata.tsv --o-visualization taxa-bar-plots
+
+**taxa-bar-plots**: `visualization <../../_viz/taxa-bar-plots/059297b8-2557-4cca-84da-281185238aa1/data/index.html>`_, `qzv <../../_viz/taxa-bar-plots.qzv>`_
 
 .. question::
     Visualize the samples at *Level 2* (which corresponds to the phylum level in this analysis), and then sort the samples by SampleType, then by Subject, and then by DaysSinceExperimentStart. What are the dominant phyla in each in SampleType? Do you observe any consistent change across the two subjects between DaysSinceExperimentStart ``0`` and the later timepoints?
@@ -240,6 +270,8 @@ Finally, we can quantify the process of identifying taxa that are differentially
 
    qiime composition ancom --i-table comp-table.qza --m-metadata-file sample-metadata.tsv --m-metadata-category SampleType --o-visualization ancom-SampleType
 
+**ancom-SampleType**: `visualization <../../_viz/ancom-SampleType/d3eca19f-a16c-4e85-bcac-9bbf9be13141/data/index.html>`_, `qzv <../../_viz/ancom-SampleType.qzv>`_
+
 .. question::
     What features differ in abundance across SampleType? What groups are they most and least abundant in? What are some the taxonomies of some of these features? (To answer that last question you'll need to refer to a visualization that we generated earlier in this tutorial.)
 
@@ -252,6 +284,8 @@ We're also often interested in performing a differential abundance test at a spe
    qiime composition add-pseudocount --i-table table-l2.qza --o-composition-table comp-table-l2
 
    qiime composition ancom --i-table comp-table-l2.qza --m-metadata-file sample-metadata.tsv --m-metadata-category SampleType --o-visualization l2-ancom-SampleType
+
+**l2-ancom-SampleType**: `visualization <../../_viz/l2-ancom-SampleType/bb2ce36f-3793-4a81-b900-4ef85144a6ed/data/index.html>`_, `qzv <../../_viz/l2-ancom-SampleType.qzv>`_
 
 .. question::
     What phyla differ in abundance across SampleType? How does this align with what you observed in the ``taxa-bar-plots.qza`` visualization that was generated above?
