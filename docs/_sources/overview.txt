@@ -19,7 +19,7 @@ To begin using QIIME 2, start with the :doc:`installation guide <install>`, whic
 Staying updated
 ---------------
 
-For updates on QIIME 2, follow `@qiime_`_ on Twitter.
+For updates on QIIME 2, follow `@qiime2`_ on Twitter.
 
 Requesting features, reporting bugs, providing feedback
 -------------------------------------------------------
@@ -52,7 +52,7 @@ Slack team
 
 .. _`SciPy 2016 presentation`: https://www.youtube.com/watch?v=tLtGg21Yu9Q
 
-.. _`@qiime_`: https://twitter.com/qiime_
+.. _`@qiime2`: https://twitter.com/qiime2
 
 .. _`issue tracker`: https://github.com/qiime2/qiime2/issues
 
