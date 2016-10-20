@@ -28,8 +28,8 @@ Next, download the *demultiplexed sequences* that we'll use in this analysis. In
 
 .. code-block:: shell
 
-   curl -sLO http://data.qiime.org/tutorials/fmt/fmt-tutorial-demux-1-10p.qza
-   curl -sLO http://data.qiime.org/tutorials/fmt/fmt-tutorial-demux-2-10p.qza
+   curl -sLO http://data.qiime2.org/tutorials/fmt/fmt-tutorial-demux-1-10p.qza
+   curl -sLO http://data.qiime2.org/tutorials/fmt/fmt-tutorial-demux-2-10p.qza
 
 Sequence quality control
 ------------------------
