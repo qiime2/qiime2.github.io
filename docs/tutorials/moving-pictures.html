@@ -60,8 +60,8 @@
 </div>
 <p>Then, download the raw sequences that we&#8217;ll use in this analysis. In this tutorial we&#8217;ll work with a small subset of the complete sequence data so that the commands will run quickly.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span></span>mkdir raw-sequences
-curl -sL http://data.qiime.org/tutorials/moving-pictures/raw-sequences/barcodes.fastq.gz &gt; raw-sequences/barcodes.fastq.gz
-curl -sL http://data.qiime.org/tutorials/moving-pictures/raw-sequences/sequences.fastq.gz &gt; raw-sequences/sequences.fastq.gz
+curl -sL http://data.qiime2.org/tutorials/moving-pictures/raw-sequences/barcodes.fastq.gz &gt; raw-sequences/barcodes.fastq.gz
+curl -sL http://data.qiime2.org/tutorials/moving-pictures/raw-sequences/sequences.fastq.gz &gt; raw-sequences/sequences.fastq.gz
 </pre></div>
 </div>
 <p>All data that is used as input to QIIME 2 is in form of QIIME 2 artifacts, which contain information about the type of data and the source of the data. So, the first thing we need to do is import these raw data files into a QIIME 2 artifact. The semantic type of this artifact is <code class="docutils literal"><span class="pre">RawSequences</span></code>.</p>
@@ -242,7 +242,7 @@ qiime emperor plot --i-pcoa cm1441/bray_curtis_pcoa_results.qza --o-visualizatio
 <div class="section" id="taxonomic-analysis">
 <h2>Taxonomic analysis<a class="headerlink" href="#taxonomic-analysis" title="Permalink to this headline">¶</a></h2>
 <p>In the next sections we&#8217;ll begin to explore the taxonomic composition of the samples, and again relate that to sample metadata. The first step in this process is to assign taxonomy to the sequences in our <code class="docutils literal"><span class="pre">FeatureData[Sequence]</span></code> artifact. We&#8217;ll do that using a Naive Bayes classifier with the <code class="docutils literal"><span class="pre">q2-feature-classifier</span></code> plugin. This classifier was trained on the Greengenes 13_8 99% OTUs, where the sequences have been trimmed to only include the region of the 16S that was sequenced in this analysis (the V4 region, bound by the 515F/806R primer pair). We&#8217;ll download and apply the pre-trained classifier here because training this classifier can be slow, but it is easy to train Naive Bayes and other classifiers on custom sequence collections using the <code class="docutils literal"><span class="pre">q2-feature-classifier</span></code> plugin. We&#8217;ll then apply this classifier to our sequences, and we can generate a visualization of the resulting mapping from sequence to taxonomy.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>curl -sLO http://data.qiime.org/common/gg-13-8-99-515-806-nb-classifier.qza
+<div class="highlight-shell"><div class="highlight"><pre><span></span>curl -sLO http://data.qiime2.org/common/gg-13-8-99-515-806-nb-classifier.qza
 
 qiime feature-classifier classify --i-classifier gg-13-8-99-515-806-nb-classifier.qza --i-reads rep-seqs.qza --o-classification taxonomy
 
