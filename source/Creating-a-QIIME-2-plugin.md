@@ -2,7 +2,7 @@
 
 # Creating a QIIME 2 Plugin
 
-Creating a QIIME 2 plugin allows you to provide microbiome analysis functionality to QIIME 2 users. A plugin can be a standalone software project, or you can make a few small additions to your existing software project to make it a QIIME 2 plugin. Creating a single QIIME 2 plugin will make your functionality accessible through any QIIME 2 interface, including [QIIME Studio](https://github.com/qiime2/qiime-studio) (a graphical user interface), [q2cli](https://github.com/qiime2/q2cli) (a QIIME 2 command line interface), and the [Artifact API]('Artifact-API.html') (ideal for interactive use, for example in [Jupyter Notebooks](http://jupyter.org)).
+Creating a QIIME 2 plugin allows you to provide microbiome analysis functionality to QIIME 2 users. A plugin can be a standalone software project, or you can make a few small additions to your existing software project to make it a QIIME 2 plugin. Creating a single QIIME 2 plugin will make your functionality accessible through any QIIME 2 interface, including [QIIME 2 Studio](https://github.com/qiime2/q2studio) (a graphical user interface), [q2cli](https://github.com/qiime2/q2cli) (a QIIME 2 command line interface), and the [Artifact API]('Artifact-API.html') (ideal for interactive use, for example in [Jupyter Notebooks](http://jupyter.org)).
 
 ## Overview
 
