@@ -33,15 +33,21 @@
         background-image: url('https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png');
     }
 
-    div.question {
+    div.admonition.question {
         color: #3C763D;
         background-color: #DFF0D8;
         border: 1px solid #D6E9C6;
     }
 
-    div.qiime1 {
+    div.admonition.qiime1 {
         color: #8A6D3B;
         background-color: #FCF8E3;
         border: 1px solid #FAEBCC;
+    }
+
+    div.admonition.tip, div.admonition.note {
+        color: #3A87AD;
+        background-color: #D9EDF7;
+        border: 1px solid #BCE8F1;
     }
 }

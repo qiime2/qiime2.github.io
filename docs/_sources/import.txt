@@ -9,23 +9,22 @@ Importing can be accomplished using any of the QIIME 2 :doc:`interfaces <interfa
 
 First, let's download an example ``.biom`` file:
 
-.. code-block:: shell
+.. command-block::
 
    curl -sLO http://data.qiime2.org/tutorials/examples/feature-table.biom
 
 Next we will use the ``qiime tools import`` command, providing a semantic type of ``FeatureTable[Frequency]`` for the ``.biom`` file because this is a feature table of counts (i.e. frequencies):
 
-.. code-block:: shell
+.. command-block::
 
-   qiime tools import --input-path feature-table.biom --output-path feature-table --type "FeatureTable[Frequency]"
+   qiime tools import --input-path feature-table.biom --output-path feature-table --type "FeatureTable[Frequency]" --source-format BIOMV100Format
 
 .. note:: We didn't specify a file extension for the output file (``--output-path feature-table``). The command-line interface will automatically append the ``.qza`` file extension (if it isn't present) to output artifacts, and the ``.qzv`` file extension to visualizations.
 
-We now have a QIIME 2 artifact called ``feature-table.qza`` that we can start using in QIIME 2 analyses! For example, we can view a summary of the feature table as follows:
+We now have a QIIME 2 artifact called ``feature-table.qza`` that we can start using in QIIME 2 analyses! For example, we can create a summary of the feature table as follows:
 
-.. code-block:: shell
+.. command-block::
 
    qiime feature-table summarize --i-table feature-table.qza --o-visualization table-summary
-   qiime tools view table-summary.qzv
 
 To see what semantic types are available in QIIME 2 and to learn more about them, see the :doc:`semantic types <semantic-types>` section of our documentation.

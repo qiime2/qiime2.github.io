@@ -14,7 +14,7 @@ You should first look through the sample metadata to familiarize yourself with t
 
 You can next download the *demultiplexed sequences* that we'll use in this analysis. In this tutorial we'll work with a small subset (1%) of the complete sequence data so that the commands will run quickly.
 
-.. code-block:: shell
+.. command-block::
 
    curl -sLO http://data.qiime2.org/tutorials/88soils/88soils-tutorial-demux-1p.qza
 
