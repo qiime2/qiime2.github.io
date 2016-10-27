@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installing QIIME 2 &#8212; QIIME 2 2.0.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/external-links.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="QIIME 2 2.0.5 documentation" href="../" />
+    <link rel="next" title="Tutorials" href="../tutorials/" />
+    <link rel="prev" title="Key concepts" href="../concepts/" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installing-qiime-2">
+<h1>Installing QIIME 2<a class="headerlink" href="#installing-qiime-2" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">QIIME 2 does not currently support Windows. It is something we will be working on soon, and in the meantime we recommend using a virtual machine or services such as Amazon Elastic Compute Cloud if a Unix/Mac platform is not available to you.</p>
+</div>
+<p>This document describes how to install the QIIME 2 framework, a command-line interface, and some plugins used in the <a class="reference internal" href="../tutorials/"><span class="doc">tutorials</span></a>.</p>
+<div class="section" id="install-miniconda">
+<h2>Install Miniconda<a class="headerlink" href="#install-miniconda" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://conda.pydata.org/miniconda.html">Miniconda</a> is the recommended way to install QIIME 2, which provides the <code class="docutils literal"><span class="pre">conda</span></code> environment and package manager. Follow the instructions for downloading and installing Miniconda.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">You may choose either Miniconda2 or Miniconda3 (i.e. Miniconda Python 2 or 3) as QIIME 2 will work with either version of Miniconda.</p>
+</div>
+</div>
+<div class="section" id="create-a-conda-environment-and-install-qiime-2">
+<h2>Create a conda environment and install QIIME 2<a class="headerlink" href="#create-a-conda-environment-and-install-qiime-2" title="Permalink to this headline">¶</a></h2>
+<p>Once you have Miniconda installed, create a <code class="docutils literal"><span class="pre">conda</span></code> environment to install QIIME 2 software in. You can use an existing environment if you have one, though we recommend creating an environment specifically for QIIME 2 as there are many required dependencies that you may not want added to an existing environment.</p>
+<p>You can choose whatever name you&#8217;d like for the environment. In this example, we&#8217;ll name the environment <code class="docutils literal"><span class="pre">qiime2</span></code>. While creating the environment, we will also instruct <code class="docutils literal"><span class="pre">conda</span></code> to install Python 3.5, the QIIME 2 framework, and <a class="reference external" href="https://github.com/qiime2/q2cli">q2cli</a> (a command-line interface for QIIME 2).</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>conda create -n qiime2 -c qiime2 <span class="nv">python</span><span class="o">=</span>3.5 qiime q2cli
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">-n</span> <span class="pre">qiime2</span></code> specifies the name of the environment, and <code class="docutils literal"><span class="pre">-c</span> <span class="pre">qiime2</span></code> specifies the channel to search for packages.</p>
+<p>Now that you have an environment, activate it using the environment&#8217;s name:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="nb">source</span> activate qiime2
+</pre></div>
+</div>
+<p>To deactivate an environment, run <code class="docutils literal"><span class="pre">source</span> <span class="pre">deactivate</span></code>.</p>
+</div>
+<div class="section" id="try-out-the-command-line-interface">
+<h2>Try out the command-line interface<a class="headerlink" href="#try-out-the-command-line-interface" title="Permalink to this headline">¶</a></h2>
+<p>Installing <code class="docutils literal"><span class="pre">q2cli</span></code> includes a new command, <code class="docutils literal"><span class="pre">qiime</span></code>, to execute QIIME analyses from the command line. Run <code class="docutils literal"><span class="pre">qiime</span></code> to see the available commands. You can discover what plugins you currently have installed (there aren&#8217;t any installed yet), as well as other information about your QIIME deployment, by running <code class="docutils literal"><span class="pre">qiime</span> <span class="pre">info</span></code>.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>qiime
+qiime info
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Supply <code class="docutils literal"><span class="pre">--help</span></code> to any command to display information about the command, including any subcommands, options, and arguments the command defines.</p>
+</div>
+</div>
+<div class="section" id="enable-command-line-tab-completion">
+<h2>Enable command-line tab completion<a class="headerlink" href="#enable-command-line-tab-completion" title="Permalink to this headline">¶</a></h2>
+<p>If you are using Bash as your shell (you probably are), you can enable tab completion, which substantially improves the usability of the QIIME 2 command-line interface (CLI). When tab completion is enabled, pressing the tab key will attempt to complete the command or option you have typed, or provide you with a list of available commands or options based on what you have typed so far. This reduces the amount of typing you have to do and makes commands and options more easily discoverable without passing <code class="docutils literal"><span class="pre">--help</span></code> to every command you&#8217;re wanting to run.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">QIIME 2 CLI tab completion is currently only supported in the Bash shell. To check what shell you have, run <code class="docutils literal"><span class="pre">echo</span> <span class="pre">$0</span></code>. You should see <code class="docutils literal"><span class="pre">-bash</span></code> in the output.</p>
+</div>
+<p>Run this command to enable tab completion:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="nb">source</span> tab-qiime
+</pre></div>
+</div>
+<p>You will need to run this command each time you open a new terminal and activate your QIIME 2 <code class="docutils literal"><span class="pre">conda</span></code> environment.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can add the <code class="docutils literal"><span class="pre">source</span> <span class="pre">tab-qiime</span></code> command to your <code class="docutils literal"><span class="pre">.bashrc</span></code>/<code class="docutils literal"><span class="pre">.bash_profile</span></code> to avoid running the command each time you open a new terminal and activate your QIIME 2 environment. If you choose to do this, you will need <code class="docutils literal"><span class="pre">q2cli</span></code> available when your terminal opens, as that&#8217;s when the command will be executed in your <code class="docutils literal"><span class="pre">.bashrc</span></code>/<code class="docutils literal"><span class="pre">.bash_profile</span></code>. Since <code class="docutils literal"><span class="pre">conda</span></code> environments are the recommended way of installing and using QIIME 2, this is typically not the case, unless you have <code class="docutils literal"><span class="pre">q2cli</span></code> installed to your root <code class="docutils literal"><span class="pre">conda</span></code> environment or the relevant environment is activated before <code class="docutils literal"><span class="pre">source</span> <span class="pre">tab-qiime</span></code> is executed in the file.</p>
+</div>
+<p>To test that tab completion is working, try typing in the following (partial) command, and without actually running the command, press the tab key. If tab completion is working, the command should auto-complete the <code class="docutils literal"><span class="pre">info</span></code> command.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>qiime i
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-plugins">
+<h2>Install plugins<a class="headerlink" href="#install-plugins" title="Permalink to this headline">¶</a></h2>
+<p>Out of the box, installing the QIIME 2 framework and command-line interface does not provide microbiome analysis functionality (plugins provide this). Install the <code class="docutils literal"><span class="pre">q2-types</span></code> and <code class="docutils literal"><span class="pre">q2-feature-table</span></code> plugins:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>conda install <span class="nv">matplotlib</span><span class="o">==</span>1.5.1
+conda install -c qiime2 q2-types q2-feature-table
+</pre></div>
+</div>
+<p>Now execute the <code class="docutils literal"><span class="pre">qiime</span> <span class="pre">info</span></code> command again:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>qiime info
+</pre></div>
+</div>
+<p>All installed plugins will be listed here, so you should now see that you have two plugins installed.</p>
+<p>If you run <code class="docutils literal"><span class="pre">qiime</span></code> again, you&#8217;ll see that you have a new command available corresponding to the <code class="docutils literal"><span class="pre">q2-feature-table</span></code> plugin. The <code class="docutils literal"><span class="pre">q2-types</span></code> plugin does not have any actions to perform so it is not listed as a subcommand (<code class="docutils literal"><span class="pre">q2-types</span></code> only defines semantic types and data formats used by many of the plugins). To see what actions the <code class="docutils literal"><span class="pre">q2-feature-table</span></code> plugin defines, run:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>qiime feature-table
+</pre></div>
+</div>
+<p>You will also see some other information about the plugin here, including its website, how it should be cited, and how users can get technical support with the plugin.</p>
+<p>Install the <code class="docutils literal"><span class="pre">q2-diversity</span></code> and <code class="docutils literal"><span class="pre">q2-emperor</span></code> plugins as well:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>conda install -c qiime2 -c conda-forge q2-diversity q2-emperor <span class="nv">emperor</span><span class="o">=</span>1.0.0beta5
+</pre></div>
+</div>
+<p>You&#8217;ll now have four plugins installed:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>qiime info
+qiime diversity
+qiime emperor
+</pre></div>
+</div>
+<p>To see more information about an action provided by a plugin, pass <code class="docutils literal"><span class="pre">--help</span></code> to the command. For example, running the following command will display information about the phylogenetic beta-diversity support provided by <code class="docutils literal"><span class="pre">q2-diversity</span></code>:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>qiime diversity beta-phylogenetic --help
+</pre></div>
+</div>
+<p>Let&#8217;s wrap up by installing several more plugins used in the tutorials.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>conda install -c bioconda -c r bioconductor-dada2 mafft
+conda install -c biocore fasttree
+conda install -c qiime2 q2-demux q2-alignment q2-phylogeny q2-dada2 q2-composition q2-taxa q2-feature-classifier
+</pre></div>
+</div>
+<p>Now that you have some plugins installed and have explored the command-line interface a bit, you&#8217;re ready to analyze microbiome data! Check out the <a class="reference internal" href="../tutorials/"><span class="doc">QIIME 2 tutorials</span></a> for analyses of tutorial datasets.</p>
+</div>
+<div class="section" id="working-with-other-qiime-2-interfaces">
+<h2>Working with other QIIME 2 interfaces<a class="headerlink" href="#working-with-other-qiime-2-interfaces" title="Permalink to this headline">¶</a></h2>
+<p>So far we have seen how to install QIIME 2 and explore its command-line interface. In the same way that QIIME 2 plugins can be added or removed to change the functionality of QIIME, you can also choose which interfaces to install and use for your analyses. Unlike QIIME 1, the command-line interface is only one possible interface for QIIME 2. You can explore <a class="reference internal" href="../interfaces/qiime-studio/"><span class="doc">QIIME Studio</span></a>, the first graphical user interface for QIIME 2, and the <a class="reference internal" href="../interfaces/artifact-api/"><span class="doc">Artifact API</span></a>, an <em>Application Programmer Interface</em> that is optimized for users working in the <a class="reference external" href="http://jupyter.org">Jupyter Notebook</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installing QIIME 2</a><ul>
+<li><a class="reference internal" href="#install-miniconda">Install Miniconda</a></li>
+<li><a class="reference internal" href="#create-a-conda-environment-and-install-qiime-2">Create a conda environment and install QIIME 2</a></li>
+<li><a class="reference internal" href="#try-out-the-command-line-interface">Try out the command-line interface</a></li>
+<li><a class="reference internal" href="#enable-command-line-tab-completion">Enable command-line tab completion</a></li>
+<li><a class="reference internal" href="#install-plugins">Install plugins</a></li>
+<li><a class="reference internal" href="#working-with-other-qiime-2-interfaces">Working with other QIIME 2 interfaces</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../">Documentation overview</a><ul>
+      <li>Previous: <a href="../concepts/" title="previous chapter">Key concepts</a></li>
+      <li>Next: <a href="../tutorials/" title="next chapter">Tutorials</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, QIIME 2 Development Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../_sources/install.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/qiime2/" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

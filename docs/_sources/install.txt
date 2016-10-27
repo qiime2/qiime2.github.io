@@ -19,7 +19,8 @@ Once you have Miniconda installed, create a ``conda`` environment to install QII
 
 You can choose whatever name you'd like for the environment. In this example, we'll name the environment ``qiime2``. While creating the environment, we will also instruct ``conda`` to install Python 3.5, the QIIME 2 framework, and `q2cli`_ (a command-line interface for QIIME 2).
 
-.. code-block:: shell
+.. command-block::
+   :no-exec:
 
    conda create -n qiime2 -c qiime2 python=3.5 qiime q2cli
 
@@ -27,7 +28,8 @@ You can choose whatever name you'd like for the environment. In this example, we
 
 Now that you have an environment, activate it using the environment's name:
 
-.. code-block:: shell
+.. command-block::
+   :no-exec:
 
    source activate qiime2
 
@@ -38,7 +40,7 @@ Try out the command-line interface
 
 Installing ``q2cli`` includes a new command, ``qiime``, to execute QIIME analyses from the command line. Run ``qiime`` to see the available commands. You can discover what plugins you currently have installed (there aren't any installed yet), as well as other information about your QIIME deployment, by running ``qiime info``.
 
-.. code-block:: shell
+.. command-block::
 
    qiime
    qiime info
@@ -54,7 +56,7 @@ If you are using Bash as your shell (you probably are), you can enable tab compl
 
 Run this command to enable tab completion:
 
-.. code-block:: shell
+.. command-block::
 
    source tab-qiime
 
@@ -66,49 +68,63 @@ You will need to run this command each time you open a new terminal and activate
 
 To test that tab completion is working, try typing in the following (partial) command, and without actually running the command, press the tab key. If tab completion is working, the command should auto-complete the ``info`` command.
 
-.. code-block:: shell
+.. command-block::
+   :no-exec:
 
    qiime i
 
 Install plugins
 ---------------
 
-Out of the box, installing the QIIME 2 framework and command-line interface does not provide microbiome analysis functionality (plugins provide this). Install the ``q2-types`` and ``q2-feature-table`` plugins and execute the ``qiime info`` command again.
+Out of the box, installing the QIIME 2 framework and command-line interface does not provide microbiome analysis functionality (plugins provide this). Install the ``q2-types`` and ``q2-feature-table`` plugins:
 
-.. code-block:: shell
+.. command-block::
+   :no-exec:
 
    conda install matplotlib==1.5.1
    conda install -c qiime2 q2-types q2-feature-table
+
+Now execute the ``qiime info`` command again:
+
+.. command-block::
+
    qiime info
 
 All installed plugins will be listed here, so you should now see that you have two plugins installed.
 
 If you run ``qiime`` again, you'll see that you have a new command available corresponding to the ``q2-feature-table`` plugin. The ``q2-types`` plugin does not have any actions to perform so it is not listed as a subcommand (``q2-types`` only defines semantic types and data formats used by many of the plugins). To see what actions the ``q2-feature-table`` plugin defines, run:
 
-.. code-block:: shell
+.. command-block::
 
    qiime feature-table
 
 You will also see some other information about the plugin here, including its website, how it should be cited, and how users can get technical support with the plugin.
 
-Install the ``q2-diversity`` and ``q2-emperor`` plugins as well. You'll then have four plugins installed. Note that the following commands also install dependencies needed by the plugins.
+Install the ``q2-diversity`` and ``q2-emperor`` plugins as well:
 
-.. code-block:: shell
+.. command-block::
+   :no-exec:
 
    conda install -c qiime2 -c conda-forge q2-diversity q2-emperor emperor=1.0.0beta5
+
+You'll now have four plugins installed:
+
+.. command-block::
+
    qiime info
    qiime diversity
    qiime emperor
 
 To see more information about an action provided by a plugin, pass ``--help`` to the command. For example, running the following command will display information about the phylogenetic beta-diversity support provided by ``q2-diversity``:
 
-.. code-block:: shell
+.. command-block::
 
    qiime diversity beta-phylogenetic --help
 
 Let's wrap up by installing several more plugins used in the tutorials.
 
-.. code-block:: shell
+.. command-block::
+   :no-exec:
 
    conda install -c bioconda -c r bioconductor-dada2 mafft
    conda install -c biocore fasttree
