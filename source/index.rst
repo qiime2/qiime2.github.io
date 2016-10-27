@@ -32,6 +32,6 @@ The following pages were ported from our pre-release Wiki. The information on th
    Artifact-API
    Creating-a-QIIME-2-plugin
    Publishing-a-plugin-on-conda
-   QIIME-2-Studio
+   QIIME-Studio
 
 .. _`issue tracker`: https://github.com/qiime2/qiime2/issues
