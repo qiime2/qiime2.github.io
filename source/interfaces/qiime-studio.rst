@@ -1,4 +1,4 @@
-QIIME 2 Studio
+QIIME Studio
 ============
 
 Placeholder
