@@ -1,22 +1,22 @@
-# QIIME Studio
+# QIIME 2 Studio
 
-QIIME Studio is a graphical user interface for QIIME 2. This document will show you how to install and use QIIME Studio, and is intended to be run after you've run [Installing-and-using-QIIME-2](Installing-and-using-QIIME-2.html). The examples presented here assume that you already have QIIME and some plugins installed, and rely on the QIIME Artifacts you downloaded and generated in that tutorial.
+QIIME 2 Studio is a graphical user interface for QIIME 2. This document will show you how to install and use QIIME 2 Studio, and is intended to be run after you've run [Installing-and-using-QIIME-2](Installing-and-using-QIIME-2.html). The examples presented here assume that you already have QIIME and some plugins installed, and rely on the QIIME Artifacts you downloaded and generated in that tutorial.
 
-**IMPORTANT: Currently installing QIIME Studio requires a source installation, soon after alpha we will provide a package distribution/installer which will greatly simplify this process.**
+**IMPORTANT: Currently installing QIIME 2 Studio requires a source installation, soon after alpha we will provide a package distribution/installer which will greatly simplify this process.**
 
 **This interface will require that your system has [`Node.js`](https://nodejs.org/en/). We currently require version 5 or later, you can find [installation instructions here](https://nodejs.org/en/download/current/).** (This will be unnecessary with the future installer.)
 
 Once you have installed `Node.js >= 5` you will need to download and extract the interface's source:
 
 ```bash
-curl -s https://codeload.github.com/qiime2/qiime-studio/zip/0.0.1 -o qiime-studio-0.0.1.zip
-unzip qiime-studio-0.0.1.zip && rm qiime-studio-0.0.1.zip
+curl -s https://codeload.github.com/qiime2/q2studio/zip/0.0.1 -o q2studio-0.0.1.zip
+unzip q2studio-0.0.1.zip && rm q2studio-0.0.1.zip
 ```
 
 Next we need to install it (both as a Python package, and as a Node.js package):
 
 ```bash
-cd qiime-studio-0.0.1
+cd q2studio-0.0.1
 pip install .
 npm install && npm run build
 ```
@@ -27,7 +27,7 @@ Finally we will be able to launch the interface with:
 npm start
 ```
 
-**NOTE: You must be in `qiime2-test/qiime-studio-0.0.1` in order to run `npm start`.**
+**NOTE: You must be in `qiime2-test/q2studio-0.0.1` in order to run `npm start`.**
 
 This will bring up a new window that looks like the following:
 
