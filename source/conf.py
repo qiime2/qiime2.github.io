@@ -368,3 +368,6 @@ texinfo_documents = [
 
 # Example configuration for intersphinx: refer to the Python standard library.
 # intersphinx_mapping = {'https://docs.python.org/': None}
+
+# Some links take awhile to hit (e.g. Heroku apps, Google Sheets).
+linkcheck_timeout = 15

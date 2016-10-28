@@ -6,5 +6,5 @@ install:
   - pip install -r requirements.txt
 script:
   # Fail early since some targets take awhile to complete.
-  - make clean && make dummy && make preview
+  - make clean && make dummy && make linkcheck && make preview
   - flake8

@@ -135,7 +135,7 @@ Now that you have some plugins installed and have explored the command-line inte
 Working with other QIIME 2 interfaces
 -------------------------------------
 
-So far we have seen how to install QIIME 2 and explore its command-line interface. In the same way that QIIME 2 plugins can be added or removed to change the functionality of QIIME, you can also choose which interfaces to install and use for your analyses. Unlike QIIME 1, the command-line interface is only one possible interface for QIIME 2. You can explore :doc:`QIIME Studio <interfaces/qiime-studio>`, the first graphical user interface for QIIME 2, and the :doc:`Artifact API <interfaces/artifact-api>`, an *Application Programmer Interface* that is optimized for users working in the `Jupyter Notebook`_.
+So far we have seen how to install QIIME 2 and explore its command-line interface. In the same way that QIIME 2 plugins can be added or removed to change the functionality of QIIME, you can also choose which interfaces to install and use for your analyses. Unlike QIIME 1, the command-line interface is only one possible interface for QIIME 2. You can explore :doc:`QIIME 2 Studio <interfaces/q2studio>`, the first graphical user interface for QIIME 2, and the :doc:`Artifact API <interfaces/artifact-api>`, an *Application Programmer Interface* that is optimized for users working in the `Jupyter Notebook`_.
 
 .. _`q2cli`: https://github.com/qiime2/q2cli
 

@@ -5,5 +5,5 @@ Interfaces
    :maxdepth: 2
 
    q2cli
-   qiime-studio
+   q2studio
    artifact-api

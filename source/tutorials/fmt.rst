@@ -119,4 +119,4 @@ Below are some specific questions to answer about this data, grouped into a few 
 
 
 .. _DADA2: https://www.ncbi.nlm.nih.gov/pubmed/27214047
-.. _sample metadata: https://docs.google.com/spreadsheets/d/16ANHgoFhnpjehCO6ulVPD1b93FDGuDVgA_xh2O4mIRU/edit#gid=0
+.. _sample metadata: https://docs.google.com/spreadsheets/d/16ANHgoFhnpjehCO6ulVPD1b93FDGuDVgA_xh2O4mIRU/edit?usp=sharing

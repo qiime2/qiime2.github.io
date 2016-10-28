@@ -176,7 +176,8 @@ class CommandBlockDirective(docutils.parsers.rst.Directive):
             for output_path in output_paths:
                 download_url = url_prefix + output_path.url
                 content.append(
-                    '* :file:`%s`: `view <https://view.qiime2.org?f=%s>`__ | '
+                    '* :file:`%s`: '
+                    '`view <https://view.qiime2.org?src=%s>`__ | '
                     '`download <%s>`__' %
                     (output_path.file, urllib.parse.quote_plus(download_url),
                      download_url))

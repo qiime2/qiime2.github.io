@@ -91,7 +91,7 @@ Finally, we can save our ``Artifacts`` and exit the interpreter as follows:
 >>> exit
 ```
 
-One powerful feature of QIIME 2 is that you can combine interfaces. For example, you could develop a Python script that automatically processes files for you to generate results as we just did, and then perform analysis of those files using the command line interface or [QIIME Studio](QIIME-Studio.html). For example, you could now continue your analysis and view some results on the command line as follows:
+One powerful feature of QIIME 2 is that you can combine interfaces. For example, you could develop a Python script that automatically processes files for you to generate results as we just did, and then perform analysis of those files using the command line interface or [QIIME 2 Studio](QIIME-2-Studio.html). For example, you could now continue your analysis and view some results on the command line as follows:
 
 ```bash
 qiime diversity alpha-compare --i-alpha-diversity oo.qza --m-metadata-file q2-demo-sample-md.tsv --m-metadata-category Subject --o-visualization oo-compare
