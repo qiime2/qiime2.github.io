@@ -43,7 +43,7 @@ Use the following questions to guide your analyses of the data. (Note: if you're
 
 #. What features differ in abundance across pH groups? What groups are they most and least abundant in? What are some the taxonomies of some of these features?
 
-.. _sample metadata: https://docs.google.com/spreadsheets/d/1p-jHnu6O0DPXcQqERkKM9A0w1XlkhYuR1VCP2VSRl1M/edit#gid=1346937406
+.. _sample metadata: https://docs.google.com/spreadsheets/d/1p-jHnu6O0DPXcQqERkKM9A0w1XlkhYuR1VCP2VSRl1M/edit?usp=sharing
 .. _DADA2: https://www.ncbi.nlm.nih.gov/pubmed/27214047
 .. _Lauber et al. (2009): https://www.ncbi.nlm.nih.gov/pubmed/19502440
 .. _Earth Microbiome Project: http://earthmicrobiome.org

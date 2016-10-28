@@ -61,7 +61,7 @@
 <span class="nb">cd</span> qiime2-fmt-tutorial
 </pre></div>
 </div>
-<p>As in the Moving Pictures study, you should begin your analysis by familiarizing yourself with the sample metadata. You can again access the <a class="reference external" href="https://docs.google.com/spreadsheets/d/16ANHgoFhnpjehCO6ulVPD1b93FDGuDVgA_xh2O4mIRU/edit#gid=0">sample metadata</a> as a Google Spreadsheet. Notice that there are three tabs in this spreadsheet. This first tab (called sample-metadata) contains all of the clinical metadata. While you’re in the sample-metadata tab, you should download this file as a .tsv file by selecting “File &gt; Download as &gt; Tab-separated text”. Name the file <code class="docutils literal"><span class="pre">sample-metadata.tsv</span></code> and save it to the <code class="docutils literal"><span class="pre">qiime2-fmt-tutorial</span></code> directory that you created. (The first two tabs of the spreadsheet include the barcodes that would be used for demultiplexing.)</p>
+<p>As in the Moving Pictures study, you should begin your analysis by familiarizing yourself with the sample metadata. You can again access the <a class="reference external" href="https://docs.google.com/spreadsheets/d/16ANHgoFhnpjehCO6ulVPD1b93FDGuDVgA_xh2O4mIRU/edit?usp=sharing">sample metadata</a> as a Google Spreadsheet. Notice that there are three tabs in this spreadsheet. This first tab (called sample-metadata) contains all of the clinical metadata. While you’re in the sample-metadata tab, you should download this file as a .tsv file by selecting “File &gt; Download as &gt; Tab-separated text”. Name the file <code class="docutils literal"><span class="pre">sample-metadata.tsv</span></code> and save it to the <code class="docutils literal"><span class="pre">qiime2-fmt-tutorial</span></code> directory that you created. (The first two tabs of the spreadsheet include the barcodes that would be used for demultiplexing.)</p>
 <p>Alternatively, the following command will download the sample metadata as tab-separated text and save it in the file <code class="docutils literal"><span class="pre">sample-metadata.tsv</span></code>.</p>
 <div class="highlight-shell"><div class="highlight"><pre><span></span>curl -sL <span class="s2">&quot;https://docs.google.com/spreadsheets/d/16ANHgoFhnpjehCO6ulVPD1b93FDGuDVgA_xh2O4mIRU/export?gid=0&amp;format=tsv&quot;</span> &gt; sample-metadata.tsv
 </pre></div>
@@ -74,8 +74,8 @@ curl -sLO http://data.qiime2.org/tutorials/fmt/fmt-tutorial-demux-2-10p.qza
 <div class="admonition">
 <p class="first"><strong>Output artifacts:</strong></p>
 <ul class="last simple">
-<li><code class="file docutils literal"><span class="pre">fmt-tutorial-demux-1-10p.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?f=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Ffmt-tutorial-demux-1-10p.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/fmt-tutorial-demux-1-10p.qza">download</a></li>
-<li><code class="file docutils literal"><span class="pre">fmt-tutorial-demux-2-10p.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?f=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Ffmt-tutorial-demux-2-10p.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/fmt-tutorial-demux-2-10p.qza">download</a></li>
+<li><code class="file docutils literal"><span class="pre">fmt-tutorial-demux-1-10p.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Ffmt-tutorial-demux-1-10p.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/fmt-tutorial-demux-1-10p.qza">download</a></li>
+<li><code class="file docutils literal"><span class="pre">fmt-tutorial-demux-2-10p.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Ffmt-tutorial-demux-2-10p.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/fmt-tutorial-demux-2-10p.qza">download</a></li>
 </ul>
 </div>
 </div>
@@ -89,8 +89,8 @@ qiime dada2 plot-qualities --i-demultiplexed-seqs fmt-tutorial-demux-2-10p.qza -
 <div class="admonition">
 <p class="first"><strong>Output visualizations:</strong></p>
 <ul class="last simple">
-<li><code class="file docutils literal"><span class="pre">demux-qual-plots-1.qzv</span></code>: <a class="reference external" href="https://view.qiime2.org?f=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Fdemux-qual-plots-1.qzv">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/demux-qual-plots-1.qzv">download</a></li>
-<li><code class="file docutils literal"><span class="pre">demux-qual-plots-2.qzv</span></code>: <a class="reference external" href="https://view.qiime2.org?f=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Fdemux-qual-plots-2.qzv">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/demux-qual-plots-2.qzv">download</a></li>
+<li><code class="file docutils literal"><span class="pre">demux-qual-plots-1.qzv</span></code>: <a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Fdemux-qual-plots-1.qzv">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/demux-qual-plots-1.qzv">download</a></li>
+<li><code class="file docutils literal"><span class="pre">demux-qual-plots-2.qzv</span></code>: <a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Fdemux-qual-plots-2.qzv">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/demux-qual-plots-2.qzv">download</a></li>
 </ul>
 </div>
 <div class="question admonition" id="question-0">
@@ -105,10 +105,10 @@ qiime dada2 denoise --p-trim-left <span class="m">10</span> --p-trunc-len <span 
 <div class="admonition">
 <p class="first"><strong>Output artifacts:</strong></p>
 <ul class="last simple">
-<li><code class="file docutils literal"><span class="pre">rep-seqs-1.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?f=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Frep-seqs-1.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/rep-seqs-1.qza">download</a></li>
-<li><code class="file docutils literal"><span class="pre">rep-seqs-2.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?f=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Frep-seqs-2.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/rep-seqs-2.qza">download</a></li>
-<li><code class="file docutils literal"><span class="pre">table-1.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?f=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Ftable-1.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/table-1.qza">download</a></li>
-<li><code class="file docutils literal"><span class="pre">table-2.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?f=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Ftable-2.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/table-2.qza">download</a></li>
+<li><code class="file docutils literal"><span class="pre">rep-seqs-1.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Frep-seqs-1.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/rep-seqs-1.qza">download</a></li>
+<li><code class="file docutils literal"><span class="pre">rep-seqs-2.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Frep-seqs-2.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/rep-seqs-2.qza">download</a></li>
+<li><code class="file docutils literal"><span class="pre">table-1.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Ftable-1.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/table-1.qza">download</a></li>
+<li><code class="file docutils literal"><span class="pre">table-2.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Ftable-2.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/table-2.qza">download</a></li>
 </ul>
 </div>
 </div>
@@ -122,8 +122,8 @@ qiime feature-table merge-seq-data --i-data1 rep-seqs-1.qza --i-data2 rep-seqs-2
 <div class="admonition">
 <p class="first"><strong>Output artifacts:</strong></p>
 <ul class="last simple">
-<li><code class="file docutils literal"><span class="pre">rep-seqs.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?f=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Frep-seqs.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/rep-seqs.qza">download</a></li>
-<li><code class="file docutils literal"><span class="pre">table.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?f=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Ftable.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/table.qza">download</a></li>
+<li><code class="file docutils literal"><span class="pre">rep-seqs.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Frep-seqs.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/rep-seqs.qza">download</a></li>
+<li><code class="file docutils literal"><span class="pre">table.qza</span></code>: <a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Ftable.qza">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/table.qza">download</a></li>
 </ul>
 </div>
 <p>Next, we&#8217;ll generate a summary of the merged <code class="docutils literal"><span class="pre">FeatureTable[Frequency]</span></code> artifact.</p>
@@ -133,7 +133,7 @@ qiime feature-table merge-seq-data --i-data1 rep-seqs-1.qza --i-data2 rep-seqs-2
 <div class="admonition">
 <p class="first"><strong>Output visualizations:</strong></p>
 <ul class="last simple">
-<li><code class="file docutils literal"><span class="pre">table.qzv</span></code>: <a class="reference external" href="https://view.qiime2.org?f=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Ftable.qzv">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/table.qzv">download</a></li>
+<li><code class="file docutils literal"><span class="pre">table.qzv</span></code>: <a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Ftable.qzv">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/table.qzv">download</a></li>
 </ul>
 </div>
 <div class="question admonition" id="question-1">
@@ -151,7 +151,7 @@ qiime feature-table merge-seq-data --i-data1 rep-seqs-1.qza --i-data2 rep-seqs-2
 <div class="admonition">
 <p class="first"><strong>Output visualizations:</strong></p>
 <ul class="last simple">
-<li><code class="file docutils literal"><span class="pre">rep-seqs.qzv</span></code>: <a class="reference external" href="https://view.qiime2.org?f=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Frep-seqs.qzv">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/rep-seqs.qzv">download</a></li>
+<li><code class="file docutils literal"><span class="pre">rep-seqs.qzv</span></code>: <a class="reference external" href="https://view.qiime2.org?src=https%3A%2F%2Fqiime2.org%2Fdocs%2Fdata%2Ftutorials%2Ffmt%2Frep-seqs.qzv">view</a> | <a class="reference external" href="https://qiime2.org/docs/data/tutorials/fmt/rep-seqs.qzv">download</a></li>
 </ul>
 </div>
 </div>
