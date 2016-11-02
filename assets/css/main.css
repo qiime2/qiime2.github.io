@@ -14,10 +14,6 @@ h1 {
   padding: 10px;
 }
 
-#header-img {
-  content: url('../img/qiime2-rect-200.png');
-}
-
 #content {
   min-height: cal(100vh - 200px);
 }
@@ -49,10 +45,7 @@ h1 {
   #header {
     padding: 20px 0 0 100px;
     height: 200px;
-  }
-
-  #header-img {
-    content: url('../img/qiime2-rect-400.png');
+    width: 100%;
   }
 
   .body {
@@ -61,7 +54,6 @@ h1 {
 
   .sidebar {
     text-align: right;
-
     border-top: none;
   }
 
