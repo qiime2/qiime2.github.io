@@ -10,6 +10,7 @@ body {
 .jumbotron {
   padding-top: 15px;
   padding-bottom: 10px;
+  box-shadow: inset 0px -5px 6px -5px rgb(153, 153, 153);
 }
 
 .trim-the-top-margin {
