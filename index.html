@@ -49,8 +49,11 @@
         </div>
         <div class="col-md-8">
           <p>
-            QIIME 2™ is a next-generation microbiome bioinformatics platform
-            that is extensible, free, open source, and <a href="https://github.com/orgs/qiime2/people" target="_blank">community developed.</a>
+            QIIME 2™ is a microbiome multi-omics bioinformatics and data science platform
+            that is <a href="https://library.qiime2.org" target="_blank">extensible</a>, free,
+            <a href="https://github.com/qiime2" target="_blank">open source</a>, and
+            community <a href="https://github.com/orgs/qiime2/people" target="_blank">developed</a>
+            and <a href="https://forum.qiime2.org" target="_blank">supported.</a>
           </p>
           <p>
             <a class="btn btn-info btn-lg" href="https://forum.qiime2.org/t/qiime-2-community-code-of-conduct/9057" role="button">Code of Conduct &raquo;</a>
@@ -66,38 +69,44 @@
     <div class="row">
       <div class="col-md-3">
         <img class="img-responsive center-block bottom-pad" width="100" height="100" src="./assets/img/provenance.svg">
-        <p class="text-justify">Automatically track your analyses with
-        decentralized data provenance &mdash; no more guesswork on what commands were
-        run!</p>
+        <p class="text-justify">Integrated provenance tracking ensures bioinformatics reproducibility
+        and even allows you to <a href="https://forum.qiime2.org/t/provenance-replay-alpha-release-and-tutorial/23279" target="_blank">"replay"</a>
+        your analysis steps on the same or new data &mdash; no more guesswork on what commands were run!</p>
       </div>
       <div class="col-md-3">
         <img class="img-responsive center-block bottom-pad" width="100" height="100" src="./assets/img/viz.svg">
-        <p class="text-justify">Interactively explore your data with beautiful
-        visualizations that provide new perspectives.</p>
+        <p class="text-justify">Beautiful, interactive visualizations provide new perspectives and help translate your data into knowledge.</p>
       </div>
       <div class="col-md-3">
         <img class="img-responsive center-block bottom-pad" width="100" height="100" src="./assets/img/sharing.svg">
-        <p class="text-justify">Easily share results with your team, even those
-        members without QIIME 2 installed.</p>
+        <p class="text-justify">Easily <a href="https://view.qiime2.org">share your results</a> with your team or the world!
+        Viewers don't need to have QIIME 2 installed.</p>
       </div>
       <div class="col-md-3">
         <img class="img-responsive center-block bottom-pad" width="100" height="100" src="./assets/img/plugin.svg">
-        <p class="text-justify">Plugin-based system &mdash; your favorite microbiome methods all in one place.</p>
+        <p class="text-justify">QIIME 2 plugins put your favorite microbiome methods all in one place, and enable bioinformatics
+          developers to rapidly <a href="https://library.qiime2.org">share new methods</a> with QIIME 2 users.</p>
       </div>
     </div>
 
     <hr>
 
     <div>
-      <h3 id="interfaces" class="trim-the-top-margin">Choose the interface that fits your needs</h3>
-
+      <div style="width:700px;margin:10px auto">
+        <h3 id="interfaces" class="trim-the-top-margin">
+          <center>
+          QIIME 2's different interfaces allow you to work in the environment that you're most productive with.
+         </center>
+        </h3>
+      </div>
+    <hr>
       <div class="row">
         <div class="col-md-4">
           <div class="row bottom-pad">
             <div class="col-md-12">
               <h4>
-                <a href="https://docs.qiime2.org/2022.11/interfaces/q2cli/">q2cli</a>
-                <small>the command line interface</small>
+                <a href="https://docs.qiime2.org/2022.11/interfaces/q2cli/">command line interface</a>
+                <small>the high-performance computing (HPC) user or power user's interface</small>
               </h4>
               <img class="img-responsive center-block interface" src="./assets/img/q2cli.png">
             </div>
@@ -105,8 +114,8 @@
           <div class="row">
             <div class="col-md-12">
               <h4>
-                <a href="https://docs.qiime2.org/2022.11/interfaces/artifact-api/">Artifact API</a>
-                <small>the data scientist's interface</small>
+                <a href="https://docs.qiime2.org/2022.11/interfaces/artifact-api/">Python 3 API</a>
+                <small>the data scientist or pipeline developer's interface</small>
               </h4>
               <img class="img-responsive center-block interface" src="./assets/img/artifact-api.png">
             </div>
@@ -115,7 +124,7 @@
         <div class="col-md-8">
           <h4>
             <a>q2galaxy</a>
-            <small>the graphical user interface</small>
+            <small>the fully graphical interface, for biologists and clinicians who don't want to code</small>
           </h4>
           <img class="img-responsive center-block interface" src="./assets/img/q2galaxy.png">
         </div>
@@ -126,6 +135,18 @@
 
     <div>
       <h3 id="citing">Citing QIIME 2</h3>
+
+      <p>
+        QIIME 2 plugins frequently utilize other software packages that
+        must be cited in addition to QIIME 2 itself. Run
+        <code>qiime tools citations</code>
+        on an Artifact or Visualization to discover all of the
+        citations relevant to the creation of that result. Lists of citations are provided by
+        <a href="https://view.qiime2.org">https://view.qiime2.org</a>
+        as well. To view the list of citations for a QIIME 2 Artifact or Visualization,
+        load your result at <a href="https://view.qiime2.org">https://view.qiime2.org</a> and
+        then navigate to the "Details" tab.
+      </p>
 
       <p>
         If you use QIIME 2 for any published research, please include the
@@ -160,22 +181,12 @@
         </a>
       </p>
 
-      <p>
-        QIIME 2 plugins frequently utilize other software packages that
-        must be cited in addition to QIIME 2 itself. Run
-        <code>qiime tools citations</code>
-        on an Artifact or Visualization to discover all of the
-        citations relevant to the creation of that result. Lists of citations are provided by
-        <a href="https://view.qiime2.org">https://view.qiime2.org</a>
-        as well. To generate the list of citations for a QIIME 2 Artifact or Visualization,
-        navigate to the "Provenance" page, and then to the "Citations" tab.
-      </p>
     </div>
 
     <hr>
 
     <footer>
-      <p>&copy; 2016-2021, QIIME 2 development team</p>
+      <p>&copy; 2016-2023, QIIME 2 development team</p>
     </footer>
   </div>
 
